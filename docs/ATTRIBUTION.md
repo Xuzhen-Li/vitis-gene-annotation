@@ -2,26 +2,28 @@
 
 Scripts and notes are **rewritten** for this *Vitis* grain. No third-party genotypes.
 
-## Last-mile / curation
+## Curation / QC
 
 | Peer | Role |
 |------|------|
-| [CJ-Chen/GSAman](https://github.com/CJ-Chen/GSAman) · Chen et al. 2026 *The Innovation* | WYSIWYG curation; four error classes |
+| [CJ-Chen/GSAman](https://github.com/CJ-Chen/GSAman) · Chen et al. 2026 *The Innovation* | WYSIWYG curation |
 | SynGAP · Wu et al. 2024 *Genome Biology* | Synteny polish |
-| PSAURON · BUSCO | Protein QC |
+| PSAURON · BUSCO · [OMArk](https://github.com/DessimozLab/OMArk) · [compleasm](https://github.com/huangnengCSU/compleasm) | Protein / orthology QC |
+| [GetaFilter](https://github.com/Datapotumas/GetaFilter) | Expression+domain screen pattern |
 
 ## Draft / merge / plant pipelines
 
 | Peer | Role |
 |------|------|
-| [KrabbenhoftLab/genome_annotation_pipeline](https://github.com/KrabbenhoftLab/genome_annotation_pipeline) | Softmask → HISAT → BRAKER → GeMoMa → EVM → eggNOG |
-| [plantgenomicslab/Sylvan](https://github.com/plantgenomicslab/Sylvan) | Helixer + EVM/PASA + RF filter + TidyGFF |
-| [keen-laras/GenomeAnnotation](https://github.com/keen-laras/GenomeAnnotation) | EviAnn backbone + BRAKER orphans |
-| [Gaius-Augustus/BRAKER](https://github.com/Gaius-Augustus/BRAKER), [GALBA](https://github.com/Gaius-Augustus/GALBA), [TSEBRA](https://github.com/Gaius-Augustus/TSEBRA) | Engines / combiner |
-| [alekseyzimin/EviAnn_release](https://github.com/alekseyzimin/EviAnn_release) | Evidence-first draft |
-| [NBISweden/AGAT](https://github.com/NBISweden/AGAT) | GFF statistics / fix |
-| [PGSB-HMGU/plant.annot](https://github.com/PGSB-HMGU/plant.annot) | Plant Snakemake Iso-seq/RNA/protein |
-| [baozg/assembly-annotation-pipeline](https://github.com/baozg/assembly-annotation-pipeline) | NLR cluster → manual curation warning |
-| [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) | Sibling skill (plant traps) |
+| KrabbenhoftLab genome_annotation_pipeline | Softmask → BRAKER → GeMoMa → EVM |
+| Sylvan / Sylvan2 | Helixer, EVM/PASA, Liftoff, RF filter |
+| keen-laras GenomeAnnotation | EviAnn backbone merge |
+| BRAKER / GALBA / TSEBRA | Engines / combiner |
+| EviAnn | Evidence-first draft |
+| AGAT | GFF statistics |
+| PGSB plant.annot · baozg pipeline | Plant Snakemake / NLR warning |
+| [ncbi/egapx](https://github.com/ncbi/egapx) | Optional NCBI Gnomon path (rosids OK) |
+| Liftoff | Homologous lift from PN40024-like refs |
+| [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) | Sibling plant-trap skill |
 
-Full peer notes: [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
+See [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
