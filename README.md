@@ -1,64 +1,46 @@
 # vitis-gene-annotation
 
-*Vitis* **last-mile** gene-structure annotation: QC, priority curation, and release of versioned GFF3.
+Full *Vitis* gene-structure annotation path: **soft-mask → draft → QC → priority curation → release**.
 
-Automated drafts (BRAKER3 / GALBA / GeMoMa / EviAnn-class tools) live in
+Master map: **[`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md)** (start here).
+
+Draft engines (BRAKER3 / GALBA / GeMoMa / EviAnn) are chosen with notes from
 [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation).
-This repo starts **after** a draft GFF exists.
+This repo owns the **wired full playbook** plus last-mile QC / GSAman / SynGAP.
 
 ## This is not
 
-- Not the auto-annotation engine — [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation)
-- Not TE library curation — [vitis-te](https://github.com/Xuzhen-Li/vitis-te)
-- Not pangenome graphs / PAV — [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome)
+- Not TE library construction — [vitis-te](https://github.com/Xuzhen-Li/vitis-te) (A0 consumes its softmask)
+- Not pangenome graphs — [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome)
 - Not synteny / SyRI — [vitis-synteny](https://github.com/Xuzhen-Li/vitis-synteny)
 
 No unpublished genotypes, private BAM/Iso-seq dumps, or sample-level matrices.
 
-## Why a separate grain
+## Stages (short)
 
-Assemblies are often “good enough”; gene models are not.
-Plant annotations commonly fail in four ways (Chen et al. 2026, GSAman):
-
-1. Gene-model fragmentation  
-2. Adjacent-gene fusion  
-3. Exon loss / splice-site error  
-4. Tandem-duplicate collapse  
-
-Grape gene families (NLRs, stilbene synthases, etc.) and haplotype / dosage work are especially sensitive to (4) and (1)–(2).
-
-## Playbook (last mile)
-
-| Step | Doc / script |
-|------|----------------|
-| Overview | [`pipeline/00_overview.md`](pipeline/00_overview.md) |
-| QC — BUSCO + PSAURON | [`pipeline/01_qc_busco_psauron.sh`](pipeline/01_qc_busco_psauron.sh) |
-| Priority loci list | [`pipeline/02_priority_loci.py`](pipeline/02_priority_loci.py) |
-| Evidence checklist | [`pipeline/03_evidence_checklist.md`](pipeline/03_evidence_checklist.md) |
-| Manual curation (GSAman) | [`pipeline/04_gsaman_curation.md`](pipeline/04_gsaman_curation.md) |
-| Optional SynGAP polish | [`pipeline/05_syngap_polish.md`](pipeline/05_syngap_polish.md) |
-| Release GFF | [`pipeline/06_release_gff.md`](pipeline/06_release_gff.md) |
-
-Config skeleton: [`config/example.env`](config/example.env).  
-Credit / peers: [`docs/ATTRIBUTION.md`](docs/ATTRIBUTION.md).  
-Error classes: [`docs/ERROR_CLASSES.md`](docs/ERROR_CLASSES.md).
-
-### Quick start (cluster / laptop)
+| ID | Script / doc |
+|----|----------------|
+| Full map | [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) |
+| A0 Soft-mask | [`pipeline/A0_softmask.md`](pipeline/A0_softmask.md) |
+| A1 Choose engine | [`pipeline/A1_choose_engine.md`](pipeline/A1_choose_engine.md) |
+| A2 Draft | [`pipeline/A2_run_draft.sh`](pipeline/A2_run_draft.sh) |
+| A3 Proteins | [`pipeline/A3_proteins_from_gff.sh`](pipeline/A3_proteins_from_gff.sh) |
+| 01 QC | [`pipeline/01_qc_busco_psauron.sh`](pipeline/01_qc_busco_psauron.sh) |
+| 02 Priority | [`pipeline/02_priority_loci.py`](pipeline/02_priority_loci.py) |
+| 03–06 | evidence → GSAman → SynGAP → release |
 
 ```bash
-cp config/example.env config/local.env   # edit; keep private paths out of git
+cp config/example.env config/local.env
 set -a && source config/local.env && set +a
-# 0) draft GFF from plant-gene-annotation (not this repo)
+bash pipeline/A2_run_draft.sh          # after wiring cluster commands
+bash pipeline/A3_proteins_from_gff.sh
 bash pipeline/01_qc_busco_psauron.sh
-python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" -o work/priority.tsv
-# then curate priority loci in GSAman; optionally SynGAP; then 06_release
+python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" -o "$PRIORITY_TSV"
 ```
 
 ## See also
 
-- [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) — draft engines  
-- [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome) — graphs after gene models exist  
-- [vitis-te](https://github.com/Xuzhen-Li/vitis-te) — softmask / TE libraries  
-- [bioinfo-agent-skills](https://github.com/Xuzhen-Li/bioinfo-agent-skills) — index  
+- [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) — engine skill / plant traps  
+- [vitis-te](https://github.com/Xuzhen-Li/vitis-te) · [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome) · [bioinfo-agent-skills](https://github.com/Xuzhen-Li/bioinfo-agent-skills)
 
 **Author:** Xuzhen Li · [ORCID](https://orcid.org/0000-0003-3670-6657)

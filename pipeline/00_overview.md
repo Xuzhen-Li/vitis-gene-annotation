@@ -1,27 +1,9 @@
-# Last-mile overview
+# Overview
 
-```
-plant-gene-annotation (draft GFF)
-        │
-        ▼
-01 QC ── BUSCO (proteins) + PSAURON
-        │
-        ▼
-02 Priority list (worst scores + tandem neighborhoods + gene families of interest)
-        │
-        ▼
-03 Evidence pack (Iso-seq / RNA BAM, Miniprot hits, homolog GFFs)
-        │
-        ▼
-04 GSAman manual curation (priority first — not whole genome on day one)
-        │
-        ▼
-05 Optional SynGAP polish (multi-haplotype / related species)
-        │
-        ▼
-06 Versioned GFF release + changelog of error classes fixed
-```
+Use **[`docs/FULL_PIPELINE.md`](../docs/FULL_PIPELINE.md)** as the single map.
 
-Honest scope: full-genome manual curation needs Iso-seq depth and person-months
-(rice MH63 curated >10k loci). For *Vitis*, start with families that move your paper
-(NLR, stilbene, flowering, disease QTL windows).
+- **A0–A3** — soft-mask and draft GFF (templates; wire BRAKER3/GALBA/GeMoMa/EviAnn on your cluster).
+- **01–06** — QC, priority list, GSAman, optional SynGAP, release.
+
+Sibling skill with plant traps:
+https://github.com/Xuzhen-Li/plant-gene-annotation
