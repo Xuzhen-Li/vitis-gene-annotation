@@ -13,10 +13,11 @@ Prefer **containers** (Docker / Singularity / Apptainer) over compiling by hand.
 | F1a | [DIAMOND](tools/diamond_func.md) | SwissProt hits |
 | F1b | [eggNOG-mapper](tools/eggnog_mapper.md) | GO/KEGG/COG/Pfam |
 | F1c | [InterProScan](tools/interproscan.md) | domains + GO |
-| F4 | [AHRD](tools/ahrd.md) | readable names |
+| F4 | [AHRD](tools/ahrd.md) / [PANNZER2](tools/pannzer2.md) | readable names / GO |
 | F3 | [EnTAP](tools/entap.md) | alt frame |
 | F5 | [Trinotate](tools/trinotate.md) | transcriptome |
 | F2+ | [KEGGaNOG](tools/kegganog.md) | pathway plots |
+| F1+ | [Phobius/SignalP](tools/phobius_signalp.md) | secreted/TM |
 | F8 | [HRP](tools/hrp.md) | NLR |
 
 Merge: `pipeline/F_merge_tables.py`. Guide: [`FUNCTIONAL_GUIDE.md`](FUNCTIONAL_GUIDE.md).

@@ -53,3 +53,7 @@ See [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
 ## Functional focus (2026-09-10)
 
 Repo primary product reframed to functional annotation. Peers: eggnog-mapper, KEGGaNOG, EnTAP, AHRD/eifunannot, Trinotate, HRP.
+
+## T2T / recent FA survey (2026-09-10)
+
+Cell Genomics T2T collection (assembly-first); Camellia nitidissima Sci Data FA = IPS+emapper+PANNZER2+Mercator4; GeneForge FA extras; LiftOn; T2T-Hub.

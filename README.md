@@ -7,6 +7,8 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 
 | Doc | |
 |-----|--|
+| [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md) | Cell T2T / recent high-quality FA stacks |
+| **[`docs/INSTALL_FUNCTIONAL.md`](docs/INSTALL_FUNCTIONAL.md)** | **Install DBs + tools (start here)** |
 | **[`docs/steps/FUNCTIONAL_MAIN.md`](docs/steps/FUNCTIONAL_MAIN.md)** | **Main process — functional** |
 | **[`docs/FUNCTIONAL_GUIDE.md`](docs/FUNCTIONAL_GUIDE.md)** | Functional steps + commands |
 | **[`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md)** | F1–F8 situations |
@@ -46,6 +48,13 @@ flowchart TD
   inn -.->|no GFF yet| struct[Upstream structural S1–S14]
   struct -.-> inn
 ```
+
+## Start here (copy-paste)
+
+1. [`docs/INSTALL_FUNCTIONAL.md`](docs/INSTALL_FUNCTIONAL.md)
+2. [`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md) **F1**
+3. `bash pipeline/F_release.sh`
+4. Why this stack: [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md)
 
 ## Default line
 

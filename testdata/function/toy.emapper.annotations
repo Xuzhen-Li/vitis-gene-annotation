@@ -1,0 +1,2 @@
+#query	seed_ortholog	Description	GOs	KEGG_ko	KEGG_Pathway	COG_category	PFAMs	Preferred_name
+geneA	x	Example protein	GO:0008150	ko:K00001	ko00010	C	PF00001	exA
