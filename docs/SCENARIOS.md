@@ -1,221 +1,339 @@
-**Full command-level detail:** [`DETAILED_GUIDE.md`](DETAILED_GUIDE.md).
+# Scenarios — how to annotate in each situation
 
-# Branch recipes — how to annotate in each situation
+**Command-level spine (read first):** [`DETAILED_GUIDE.md`](DETAILED_GUIDE.md)  
+**Checklist:** [`PLAYBOOK.md`](PLAYBOOK.md) · **Peers:** [`PEER_PIPELINES.md`](PEER_PIPELINES.md)
 
-Prerequisites for all branches unless noted: **Asm0 → Asm1 → A0** done; `config/local.env` filled.
-
-Each scenario ends by rejoining: **A3 → 01 → 02 → GSAman → 06** (qualification).
-
----
-
-## S1 — RNA + proteins (default)
-
-**Goal:** Standard qualified annotation for one haplotype.
-
-### Steps
-
-1. **A1b** Align Illumina RNA → `RNA_BAM` (HISAT2 or STAR).  
-2. **A2** `DRAFT_ENGINE=braker3` — BRAKER3 on `GENOME_SOFT` + OrthoDB eudicots/Viridiplantae + `RNA_BAM`.  
-3. **A2b** Second set: GeMoMa **or** Liftoff from PN40024 → `DRAFT_GFF_B`.  
-4. **A4** `MERGE_MODE=evm` (BRAKER+GeMoMa) or `tsebra` if both BRAKER-family → `MERGED_GFF`.  
-5. **A5** `bash pipeline/A5_agat_stats.sh "$MERGED_GFF"`.  
-6. `export DRAFT_GFF="$MERGED_GFF"` then **A3 → 01 → 02**.  
-7. **03–04** GSAman on `priority.tsv` (NLR/stilbene boosted).  
-8. **06** Re-QC; tick qualification checklist in PLAYBOOK.
-
-### Commands (after cluster engines are wired)
-
-```bash
-set -a && source config/local.env && set +a
-bash pipeline/A2_run_draft.sh          # produce DRAFT_GFF
-# run second predictor → DRAFT_GFF_B
-MERGE_MODE=evm bash pipeline/A4_merge_sets.sh
-bash pipeline/A5_agat_stats.sh "$MERGED_GFF"
-export DRAFT_GFF="$MERGED_GFF"
-bash pipeline/A3_proteins_from_gff.sh
-bash pipeline/01_qc_busco_psauron.sh
-python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" -o "$PRIORITY_TSV"
-# GSAman manually → CURATED_GFF; then pipeline/06_release_gff.md
-```
+Every scenario below is a full recipe. Shared early steps always mean:  
+**Asm0 → Asm1 → soft-mask (A0+A0b)** unless the scenario says otherwise.
 
 ---
 
-## S2 — Proteins only
+## S1 — Default: RNA-seq + proteins → qualified GFF
 
-**Goal:** No usable RNA.
+**When:** Illumina RNA from the same (or very close) genotype + OrthoDB / grape proteins.
 
-### Steps
+### Steps (do in order)
 
-1. Skip A1b (or keep BAM empty).  
-2. **A2** `DRAFT_ENGINE=galba` **or** GeMoMa from close Vitaceae.  
-3. **A2c** Liftoff from PN40024 as second set.  
-4. Merge: homology backbone (GeMoMa/Liftoff) + GALBA orphans via EVM weights or manual AGAT keep list.  
-5. **A5 → A3 → 01 → 02**.  
-6. **Heavier GSAman** — splice sites weak without RNA.  
-7. Release may stay `provisional` until RNA arrives.
+1. **Assemble** — HiFi (+ Hi-C if available) → `GENOME_FA`. Dual-hap? Decide now (else S4 later).  
+   Details: [`DETAILED_GUIDE.md`](DETAILED_GUIDE.md) Step 1 · [`../pipeline/Asm0_assembly.md`](../pipeline/Asm0_assembly.md)
 
-```bash
-DRAFT_ENGINE=galba bash pipeline/A2_run_draft.sh
-# Liftoff → DRAFT_GFF_B (see A2c_liftoff.md)
-MERGE_MODE=evm bash pipeline/A4_merge_sets.sh   # adjust weights toward homology
-# then A5 → A3 → 01 → 02 → GSAman → 06
-```
+2. **Assembly QC** — genome BUSCO + contig stats. Set `ASSEMBLY_OK=yes` only if pass.  
+   Step 2 · [`../pipeline/Asm1_assembly_qc.md`](../pipeline/Asm1_assembly_qc.md)
+
+3. **Soft-mask** — curated TE lib → ProtExcluder clean → RepeatMasker `-xsmall` → `GENOME_SOFT`.  
+   Step 3 · [`../pipeline/A0_softmask.md`](../pipeline/A0_softmask.md)
+
+4. **Align RNA** — HISAT2 or STAR → `RNA_BAM` + index.  
+   Step 4 · [`../pipeline/A1b_rna_align.md`](../pipeline/A1b_rna_align.md)
+
+5. **Primary draft** — BRAKER3 with `--bam` + `--prot_seq` + `--softmasking` → `DRAFT_GFF`.  
+   ```bash
+   DRAFT_ENGINE=braker3 bash pipeline/A2_run_draft.sh
+   ```
+   Step 5
+
+6. **Second draft** — GeMoMa or Liftoff from PN40024 → `DRAFT_GFF_B`.  
+   Step 6 · [`../pipeline/A2b_second_predictor.md`](../pipeline/A2b_second_predictor.md) · [`../pipeline/A2c_liftoff.md`](../pipeline/A2c_liftoff.md)
+
+7. **Merge** — EVM (or TSEBRA if two BRAKER-family sets) → `MERGED_GFF`.  
+   ```bash
+   MERGE_MODE=evm bash pipeline/A4_merge_sets.sh
+   bash pipeline/A5_agat_stats.sh "$MERGED_GFF"
+   ```
+   Step 7
+
+8. **Proteins** — representative `PROTEINS_FA` from merged GFF.  
+   ```bash
+   DRAFT_GFF="$MERGED_GFF" bash pipeline/A3_proteins_from_gff.sh
+   ```
+
+9. **QC** — BUSCO proteins + PSAURON (+ OMArk/Compleasm if available).  
+   ```bash
+   bash pipeline/01_qc_busco_psauron.sh
+   ```
+
+10. **Priority** — low PSAURON + NLR/stilbene boost → `priority.tsv`.  
+    ```bash
+    python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" -o curate/priority.tsv --threshold 90
+    ```
+
+11. **GSAman** — load genome, GFF, BAM, homologs; fix priority loci; tag [`ERROR_CLASSES.md`](ERROR_CLASSES.md); export `CURATED_GFF`.  
+    [`../pipeline/03_evidence_checklist.md`](../pipeline/03_evidence_checklist.md) · [`../pipeline/04_gsaman_curation.md`](../pipeline/04_gsaman_curation.md)
+
+12. **Re-QC + release** — proteins/BUSCO/AGAT again; pass qualification checklist; freeze `RELEASE_TAG`.  
+    Step 13 · [`../pipeline/06_release_gff.md`](../pipeline/06_release_gff.md)
+
+**Stop early?** See S12.
 
 ---
 
-## S3 — Deep Iso-seq
+## S2 — Proteins only (no usable RNA)
 
-**Goal:** Long-read transcriptome is the backbone.
+**When:** No RNA, or RNA is distant / bad mapping.
 
 ### Steps
 
-1. Map FLNC/Iso-seq (minimap2) per haplotype if phased → `ISOSEQ_BAM`.  
-2. **A2** `DRAFT_ENGINE=eviann` → evidence GFF.  
-3. **A2** BRAKER3 as secondary (species-specific genes).  
-4. **A4** `MERGE_MODE=evi_backbone`.  
-5. A5 → A3 → 01 → 02 → GSAman on conflicts + priority → 06.
+1–3. Same as S1 (assembly, QC, soft-mask).
 
-```bash
-DRAFT_ENGINE=eviann bash pipeline/A2_run_draft.sh    # → evidence GFF as DRAFT_GFF_B preferred
-# BRAKER → DRAFT_GFF
-MERGE_MODE=evi_backbone bash pipeline/A4_merge_sets.sh
-# A5 → A3 → 01 → 02 → GSAman → 06
-```
+4. **Skip RNA** — `RNA_BAM=none` in `config/local.env`.
+
+5. **Primary** — GALBA (close proteins) **or** GeMoMa as primary. Prefer GALBA if proteins are diverse; GeMoMa if one excellent grape GFF+FA exists.  
+   ```bash
+   DRAFT_ENGINE=galba bash pipeline/A2_run_draft.sh
+   # or DRAFT_ENGINE=gemoma ...
+   ```
+
+6. **Second** — Liftoff PN40024 → `DRAFT_GFF_B` (always useful without RNA).
+
+7. **Merge** — EVM with **higher weights on homology / Liftoff** than ab initio.  
+   Document weights in METHODS.
+
+8–10. Same as S1 (proteins, BUSCO/PSAURON, priority).  
+   Expect more low-PSAURON splice issues.
+
+11. **GSAman** — emphasize splice-site and start/stop fixes; use protein alignments heavily.
+
+12. **Release** — if no RNA ever: set `status=provisional` unless S5 bar and heavy curation met.
 
 ---
 
-## S4 — Haplotype / cultivar panel
+## S3 — Deep Iso-seq / full-length transcripts
 
-**Goal:** Consistent models across hap1/hap2 or cultivars.
+**When:** PacBio Iso-seq or equivalent FLNC depth is high.
 
 ### Steps
 
-1. Choose **reference haplotype**; run **S1 or S3** to a curated GFF (`CURATED_GFF`).  
-2. For each other haplotype: **A2c Liftoff** (or GeMoMa) from that curated ref.  
-3. **05 SynGAP** between ref and each target — collect conflict BED.  
-4. GSAman **only** SynGAP conflicts + priority families on each hap.  
-5. Release: `ref.curated.gff3` + `hapN.lifted.gff3` with provenance.
+1–3. Same as S1.
 
-```bash
-# on ref (after S1 curation):
-# for each hapN:
-liftoff -g "$CURATED_GFF" -o hapN.liftoff.gff3 -polish hapN.fa "$REF_FA"
-# SynGAP per pipeline/05_syngap_polish.md
-# GSAman conflicts → release set
-```
+4. **Map Iso-seq**  
+   ```bash
+   minimap2 -t "$THREADS" -ax splice:hq -uf "$GENOME_FA" flnc.fq.gz \
+     | samtools sort -o "$WORK_DIR/rna/isoseq.bam"
+   samtools index "$WORK_DIR/rna/isoseq.bam"
+   export ISOSEQ_BAM="$WORK_DIR/rna/isoseq.bam"
+   ```
+   Optional: also keep Illumina BAM for coverage.
+
+5. **Primary** — EviAnn with Iso-seq + proteins → evidence GFF as backbone candidate.  
+   ```bash
+   DRAFT_ENGINE=eviann bash pipeline/A2_run_draft.sh
+   ```
+
+6. **Secondary** — BRAKER3 (RNA short-read BAM if any, else proteins) → `DRAFT_GFF`.
+
+7. **Merge** — EviAnn backbone; add BRAKER-only orphans after AGAT/overlap filter.  
+   ```bash
+   MERGE_MODE=evi_backbone bash pipeline/A4_merge_sets.sh
+   ```
+
+8–12. Same as S1.  
+   GSAman: resolve backbone vs orphan conflicts first; Iso-seq tracks are ground truth for exons.
+
+---
+
+## S4 — Multi-haplotype / pangenome panel
+
+**When:** Two+ phased haplotypes or cultivar panel.
+
+### Steps
+
+1. Pick **reference haplotype**. Run **full S1 (or S3)** through qualified `CURATED_GFF` on that hap.
+
+2. For each other haplotype `H`:  
+   ```bash
+   # Liftoff curated ref GFF onto H (see A2c)
+   liftoff -g "$CURATED_GFF" -o "draft/${H}.liftoff.gff3" -polish \
+     -p "$THREADS" "asm/${H}.fa" "$GENOME_FA"
+   ```
+
+3. **SynGAP** (or equivalent) ref vs each `H` → conflict / presence-absence list.  
+   [`../pipeline/05_syngap_polish.md`](../pipeline/05_syngap_polish.md)
+
+4. **GSAman** on each hap: only SynGAP conflicts + NLR/QTL priority — not whole genome again.
+
+5. **Release** a set:  
+   - `ref.${RELEASE_TAG}.gff3`  
+   - `hap2.${RELEASE_TAG}.gff3` …  
+   - SynGAP reports + METHODS naming which hap is reference
 
 ---
 
 ## S5 — T2T / publication-grade
 
-**Goal:** Paper claims reference-quality structure.
+**When:** Paper or database release needs “qualified,” not provisional.
 
 ### Steps
 
-1. Asm1 must pass strict contigency / genome BUSCO.  
-2. Run **S1** (or S3 if Iso-seq deep) fully.  
-3. After first GSAman: **A5b** OMArk/Compleasm; expand priority to all fragmented BUSCOs + all tandem arrays.  
-4. Second GSAman round; stop via S12.  
-5. Optional **S8** EGAPx comparison table in supplement.  
-6. METHODS: versions, lineages, RNA libs, merge weights; qualification checklist 100%.
+1. **Asm1 stricter** — write numeric pass criteria into METHODS before annotating (BUSCO-C, N50, #chr).
+
+2. Run **complete S1** through first GSAman pass (or S3 if Iso-seq exists).
+
+3. **Mandatory** OMArk + Compleasm (`A5b`); save tables under `qc/`.
+
+4. **Expand priority** — all fragmented BUSCO genes + genome-wide tandem arrays (not only PSAURON < 90).
+
+5. **Second GSAman round** on expanded list.
+
+6. Apply **S12** — stop when BUSCO-C stable and priority empty.
+
+7. Optional: **S8** EGAPx side-by-side table in METHODS.
+
+8. Release only if [`PLAYBOOK.md`](PLAYBOOK.md) checklist is 100% — no `provisional`.
 
 ---
 
 ## S6 — Thin evidence
 
-**Goal:** Something usable; honesty over polish.
+**When:** Distant proteins only; little/no RNA; assembly OK but evidence weak.
 
 ### Steps
 
-1. **A2c** Liftoff/GeMoMa from closest grape = primary.  
-2. Optional BRAKER3 protein-only = orphans only.  
-3. Light merge; **A5 → A3 → 01**.  
-4. GSAman on priority families only.  
-5. Tag release `provisional`; plan Iso-seq → S3 upgrade.
+1–3. Same (do not skip soft-mask).
+
+4. **No RNA** (or ignore low-mapping RNA).
+
+5. **Draft** — Liftoff and/or GeMoMa only. Optional weak BRAKER protein-only for orphans.
+
+6. **Light merge** — prefer homology GFF; do not over-trust ab initio.
+
+7–10. Proteins + QC + priority (families only if known).
+
+11. **GSAman** — **only** NLR / stilbene / QTL windows. Do not pretend genome-wide polish.
+
+12. Release `status=provisional`. Plan Iso-seq → re-enter **S3**.
 
 ---
 
-## S7 — Family / QTL first
+## S7 — Family / QTL-first
 
-**Goal:** Correct models where the biology is; auto elsewhere.
+**When:** Science question is a locus or gene family, not whole-genome polish.
 
 ### Steps
 
-1. Run genome-wide **S1** draft + A5 + A3 + 01 (do not skip QC).  
-2. Prepare `families.tsv` (`gene_id\\tfamily`).  
-3. `python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" --families families.tsv -o "$PRIORITY_TSV"`.  
-4. GSAman **only** those windows (± tandem neighbors).  
-5. Release `auto.gff3` + `curated_regions.gff3` (or merge with `curated=yes` tags).
+1. Run S1 Steps 1–10 **genome-wide automated** (through priority).
+
+2. Build `families.tsv`:  
+   `gene_id<TAB>family_or_window` for Orthogroups / QTL interval genes.
+
+3. Re-rank:  
+   ```bash
+   python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" -o curate/priority.tsv \
+     --threshold 90 --families curate/families.tsv
+   ```
+
+4. **GSAman** only those windows (±100 kb for tandems). Leave rest as draft.
+
+5. Release options:  
+   - Dual tracks (`full.gff3` + `curated_windows.gff3`), or  
+   - One GFF with `curated=yes` attributes on edited genes  
+
+   METHODS must state curation scope.
 
 ---
 
 ## S8 — NCBI EGAPx parallel
 
-**Goal:** Gnomon-style comparison / GenBank path.
+**When:** You want an external NCBI-style annotation for comparison or NCBI submission path.
 
 ### Steps
 
-1. Keep lab **S1** as primary.  
-2. Run EGAPx (`A2d`) with *Vitis* taxid + multi-tissue RNA.  
-3. AGAT + BUSCO both GFFs; spot-check NLR in GSAman.  
-4. Publish primary lab GFF; EGAPx as comparative set unless EGAPx clearly wins QC and curation.
+1. Keep **S1 (or S3)** as the lab primary through merge (do not replace it).
+
+2. Install/run [ncbi/egapx](https://github.com/ncbi/egapx) with *Vitis* taxonomy + RNA YAML.  
+   [`../pipeline/A2d_egapx_optional.md`](../pipeline/A2d_egapx_optional.md)
+
+3. AGAT + protein BUSCO on **both** lab merge and EGAPx GFF.
+
+4. Spot-check NLR / known genes in GSAman on both; table differences in METHODS.
+
+5. **Primary release = lab branch** unless EGAPx clearly wins documented metrics — then say so and release EGAPx (or a curated hybrid).
 
 ---
 
-## S9 — Polyploid / high BUSCO-D
+## S9 — High BUSCO-D / suspected polyploid collapse
 
-**Goal:** Do not purge real haplotypes.
+**When:** Asm1 genome BUSCO shows high Duplicate; or known tetraploid / collapsed haplotigs.
 
 ### Steps
 
-1. Asm1: interpret BUSCO-D with ploidy.  
-2. Prefer **S4** (annotate hap1 & hap2) over collapsed primary.  
-3. If collapsed primary unavoidable: document; expect fusion/split errors → more GSAman.  
-4. Report BUSCO-C and -D separately in release.
+1. At Asm1: **do not purge** until ploidy / haplotig status is known.
+
+2. Prefer **phased hap1+hap2** and follow **S4**, rather than annotating one collapsed primary.
+
+3. If you must annotate collapsed primary:  
+   - Still soft-mask + S1/S2 draft  
+   - GSAman heavily for **fusion vs split** (error classes)  
+   - Report BUSCO-D and warn users in METHODS  
+
+4. Do not claim “haplotype-resolved annotation” if assembly is collapsed.
 
 ---
 
-## S10 — TE ORF inflation
+## S10 — TE / ORF inflation
 
-**Goal:** Deflate fake gene count.
+**When:** AGAT gene count ≫ near relatives × ploidy, or many tiny proteins / TE-like ORFs.
 
 ### Steps
 
-1. Stop prediction. Rebuild TE lib + **A0b ProtExcluder**; re-soft-mask.  
-2. Re-run **S1** (or S2).  
-3. **A5c**: drop models lacking RNA **and** Pfam **and** homolog only.  
-4. Protect NLR/stilbene from FPKM-only deletion.  
-5. Re-QC gene count vs near relative × ploidy.
+1. **Stop** further curation on the inflated GFF.
+
+2. Rebuild TE library; run **ProtExcluder** (`A0b`); re-soft-mask (`A0`).
+
+3. **Re-enter S1 from draft** (Step 5) — do not merge old TE-inflated models forward.
+
+4. Optional filter (`A5c`): drop loci that fail **RNA ∩ Pfam ∩ homolog** all three — never FPKM-only kill of NLR.
+
+5. Re-run AGAT; gene count should drop toward clade norms before GSAman.
 
 ---
 
-## S11 — Quick lift only
+## S11 — Lift-only (quick transfer)
 
-**Goal:** Provisional IDs for synteny / early popgen.
+**When:** Need a fast working GFF for another cultivar / close assembly; not a publication annotation.
 
 ### Steps
 
-1. Asm1 minimal OK. Soft-mask optional for Liftoff but recommended.  
-2. **A2c** Liftoff from PN40024.  
-3. AGAT counts; optional protein BUSCO.  
-4. **No** claim of qualified reference — METHODS `status=provisional`.  
-5. Upgrade path: S1 when RNA ready.
+1. Asm1 light check (stats + optional BUSCO). Soft-mask recommended.
 
-```bash
-liftoff -g "$REF_GFF" -o "$WORK_DIR/draft/liftoff.gff3" -polish \
-  "$GENOME_FA" "$REF_FA"
-bash pipeline/A5_agat_stats.sh "$WORK_DIR/draft/liftoff.gff3"
-```
+2. **Only Liftoff** from best grape GFF — no BRAKER required.  
+   [`../pipeline/A2c_liftoff.md`](../pipeline/A2c_liftoff.md)
+
+3. AGAT (+ optional protein BUSCO). Flag `valid_ORF=False` for later.
+
+4. METHODS: `status=provisional`, `method=liftoff-only`.
+
+5. **Do not** claim qualified / last-mile complete.
 
 ---
 
-## S12 — Stop rules (all branches)
+## S12 — Stop rules (when to freeze)
 
-| Signal | Action |
-|--------|--------|
-| Priority empty at PSAURON threshold | Freeze candidate GFF |
-| BUSCO-C flat across 2 curation rounds | Stop genome-wide GSAman |
-| Only TE-like residuals | Document; don’t chase |
-| New Iso-seq | Re-enter S3 on affected chromosomes |
+Apply after any GSAman round:
 
-Qualified release = PLAYBOOK checklist, not “one more ab initio tool.”
+| Observation | Action |
+|-------------|--------|
+| `priority.tsv` empty at your threshold | Freeze GFF → S1 Step 12 / DETAILED Step 13 |
+| Protein BUSCO-C unchanged after round 2 | Stop genome-wide GSAman |
+| Remaining issues are TE-like only | Document in METHODS; freeze |
+| New deep Iso-seq arrives | Re-open **S3** on chromosomes that change |
+
+Do not endless-polish for a 0.1% BUSCO bump.
+
+---
+
+## Choosing a branch (one-liner)
+
+| Evidence / goal | Branch |
+|-----------------|--------|
+| RNA + proteins, normal release | **S1** |
+| No RNA | **S2** |
+| Deep Iso-seq | **S3** |
+| Multiple haps | **S4** |
+| Paper T2T bar | **S5** |
+| Almost no evidence | **S6** |
+| One family/QTL | **S7** |
+| Want NCBI parallel | **S8** |
+| High BUSCO-D | **S9** |
+| Gene count exploded | **S10** |
+| Quick lift | **S11** |
+| Done polishing | **S12** |

@@ -1,25 +1,45 @@
 # Asm0 — Genome assembly (before annotation)
 
-This grain does **not** replace a dedicated assembly repo. Use these as the
-gate into annotation. Typical *Vitis* diploid / haplotype path:
+Full command narrative: [`../docs/DETAILED_GUIDE.md`](../docs/DETAILED_GUIDE.md) Step 1.
 
-| Goal | Tools (examples) | Output |
-|------|------------------|--------|
-| Contigs | hifiasm (HiFi ± ONT) | primary / hap1 / hap2 |
-| Scaffold | Hi-C (YaHS / salsa) | chromosome-scale |
-| Purge | purge_dups / purge_haplotigs | reduced false duplications |
-| Polish | optional NextPolish / Medaka | fewer small errors |
+## Purpose
+Produce the FASTA that annotation will treat as truth. Annotation cannot fix a shattered or wrongly purged assembly.
 
-## Hand-off files for annotation
+## Typical *Vitis* inputs
+| Data | Role |
+|------|------|
+| PacBio HiFi | Contigs (hifiasm / HiCanu) |
+| Hi-C | Chromosome scaffolding (YaHS / 3D-DNA) |
+| ONT (optional) | Gap filling / scaffolding assist |
+| Illumina (optional) | Polishing / QV |
 
-- `GENOME_FA` — chromosome-scale FASTA (one haplotype or collapsed primary)
-- Optional: `hap1.fa` / `hap2.fa` for panel annotation (scenario S4)
-- Assembly report: N50, gaps, BUSCO *genome* mode (not proteins yet)
+## Example path (edit for your cluster)
 
-## Do not annotate yet if
+```bash
+# 1) Contigs
+hifiasm -o "$WORK_DIR/asm/vitis" -t "$THREADS" hifi.fastq.gz
+# Extract primary / hap1 / hap2 per hifiasm docs (gfa → fa)
 
-- Contig N50 still tiny / not chromosome-scale for your claim
-- You have not decided primary vs dual-haplotype annotation (see S9)
-- TE lib / soft-mask not planned (A0)
+# 2) Optional purge (only if clearly haplotig-inflated AND not polyploid — see S9)
+# purge_dups ...
 
-Next: [`Asm1_assembly_qc.md`](Asm1_assembly_qc.md) → [`A0_softmask.md`](A0_softmask.md).
+# 3) Hi-C scaffold
+# bwa mem / chromap → BAM; then:
+# yahs contigs.fa hic.bam -o "$WORK_DIR/asm/yahs"
+
+# 4) Manual / juicebox review of scaffolds → GENOME_FA
+```
+
+## Decisions to record in `asm/README.txt`
+- Primary only vs dual haplotype annotation  
+- Chromosome naming scheme (chr01… vs scaffold)  
+- Assembly software + versions  
+- Whether purge was applied  
+
+## Outputs
+- `GENOME_FA` — annotation target  
+- Optional `GENOME_FA_HAP2`  
+- `asm/README.txt`
+
+## Next
+[`Asm1_assembly_qc.md`](Asm1_assembly_qc.md)

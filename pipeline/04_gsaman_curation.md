@@ -1,15 +1,22 @@
-# Manual curation with GSAman
+# 04 — GSAman curation (detailed)
 
-Upstream: https://github.com/CJ-Chen/GSAman/releases  
-Paper: Chen et al. 2026 *The Innovation* doi:10.1016/j.xinn.2026.101471
+Paper context: Chen, Chen & Xia (2026), *The Innovation* — last-mile gene structure.
 
-## Practice for this lab
+## Order of work
+1. Sort `priority.tsv` (worst PSAURON and boosted families first).  
+2. Open locus ± flanking genes (tandems need neighbors).  
+3. Classify error: fragmentation / fusion / exon-splice / tandem-collapse.  
+4. Edit structure; save; export GFF periodically → `CURATED_GFF`.  
+5. Append `curate/changelog.tsv`: `gene_id`, `class`, `date`, `note`.
 
-1. Load genome + draft GFF + evidence tracks.
-2. Work **priority.tsv** top-down; tag each fix with an [error class](../docs/ERROR_CLASSES.md).
-3. Prefer Iso-seq-supported intron boundaries; check canonical GT-AG when flipping splice sites.
-4. For tandem arrays: zoom out, count paralogs against protein hits — do not accept one collapsed CDS without evidence.
-5. Export curated GFF3 frequently; keep a short changelog (`work/changelog.tsv`: gene_id, class, note).
+## Round discipline
+- Round 1: priority list only.  
+- Re-run proteins + BUSCO + PSAURON.  
+- Round 2 (S5): expanded BUSCO-fragment + tandem list.  
+- Apply **S12** stop rules — do not infinite-polish.
 
-GSAman is local / offline-friendly relative to Apollo2 server stacks.
-Respect upstream non-commercial terms on the release page.
+## SynGAP (S4)
+After Liftoff to other haplotypes, curate only SynGAP conflicts + priority families on each hap ([`05_syngap_polish.md`](05_syngap_polish.md)).
+
+## Done when
+`CURATED_GFF` exports cleanly and release checklist in [`../docs/PLAYBOOK.md`](../docs/PLAYBOOK.md) is ready.
