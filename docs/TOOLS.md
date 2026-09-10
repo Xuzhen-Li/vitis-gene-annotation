@@ -39,6 +39,7 @@ Use tools **in this sequence**. Later steps assume earlier outputs exist.
 | TE inflation (**S10**) | Stop; go back to #4–#5; restart from #7 |
 | Lift-only (**S11**) | After #3 (light): only Liftoff → AGAT; skip BRAKER/EVM/GSAman claim |
 | Helixer path (**S13**) | #8b Helixer → #9 Mikado instead of BRAKER+EVM |
+| CantuLab (**S14**) | Repeats → [PASA](tools/pasa.md) train Augustus/GeneMark → EVM (cantulab weights) → PASA polish → A5e filter → A6b rename |
 | BRAKER gene collapse | After #7 run #9b; TSEBRA `-k` rescue (Copetti) |
 
 **Install order on a new machine** (so you can actually run the sequence above):
@@ -58,7 +59,7 @@ Use tools **in this sequence**. Later steps assume earlier outputs exist.
 | Soft-mask | [`tools/edta.md`](tools/edta.md), [`tools/repeatmasker.md`](tools/repeatmasker.md), [`tools/protexcluder.md`](tools/protexcluder.md) |
 | RNA / Iso-seq | [`tools/hisat2_star.md`](tools/hisat2_star.md), [`tools/stringtie.md`](tools/stringtie.md), [`tools/minimap2.md`](tools/minimap2.md) |
 | Draft genes | [`tools/braker3.md`](tools/braker3.md), [`tools/galba.md`](tools/galba.md), [`tools/gemoma.md`](tools/gemoma.md), [`tools/eviann.md`](tools/eviann.md), [`tools/liftoff.md`](tools/liftoff.md), [`tools/helixer.md`](tools/helixer.md), [`tools/maker_p.md`](tools/maker_p.md), [`tools/miniprot.md`](tools/miniprot.md) |
-| Merge | [`tools/evm.md`](tools/evm.md), [`tools/tsebra.md`](tools/tsebra.md), [`tools/mikado.md`](tools/mikado.md) |
+| Merge | [`tools/evm.md`](tools/evm.md), [`tools/tsebra.md`](tools/tsebra.md), [`tools/mikado.md`](tools/mikado.md), [`tools/pasa.md`](tools/pasa.md) |
 | GFF / proteins | [`tools/agat_gffread.md`](tools/agat_gffread.md) |
 | QC | [`tools/busco.md`](tools/busco.md), [`tools/psauron.md`](tools/psauron.md), [`tools/omark_compleasm.md`](tools/omark_compleasm.md) |
 | Curation | [`tools/gsaman.md`](tools/gsaman.md), [`tools/syngap.md`](tools/syngap.md) |

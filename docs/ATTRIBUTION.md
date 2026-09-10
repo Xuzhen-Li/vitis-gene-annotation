@@ -36,3 +36,8 @@ See [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
 - PlantGenotationFlow — assembly-to-Liftoff/GALBA Snakemake outline.
 - GeneCAD preprint (doi:10.1101/2025.10.31.685877) — sequence-only foundation-model annotation (pointer only).
 - Chen, Chen & Xia (2026) GSAman / *The Innovation* — last-mile curation (already core).
+
+## CantuLab EVM pipeline
+
+- [CantuLab/AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab) — step order, EVM weights, filter/rename practice; v1 [andreaminio/AnnotationPipeline-EVM_based-DClab](https://github.com/andreaminio/AnnotationPipeline-EVM_based-DClab).
+- Filter/rename helpers here are Python3 rewrites inspired by their `scripts/`; for exact lab scripts use upstream.

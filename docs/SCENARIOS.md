@@ -365,6 +365,43 @@ bash pipeline/A5d_stage_counts.sh \
 
 If BRAKER << other sets: TSEBRA rescue ([`tools/tsebra.md`](tools/tsebra.md)) before EVM. Full write-up: [`peers/copetti.md`](peers/copetti.md).
 
+
+
+---
+
+## S14 — CantuLab / DC Lab EVM pipeline (grape METHODS)
+
+**When:** You want the published Cantu Lab structural-annotation path (PASA → train Augustus/GeneMark → EVM → PASA polish), as in [AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab).
+
+### Steps (follow upstream docs for full flags)
+
+1. **Asm0–Asm1** as usual; set vars per their `00-Setup.md` (`GENOME_FASTA`, `REPEAT_LIB`, `GENOME_PREFIX`, …).
+
+2. **01 External evidences** — Iso-Seq HQ and/or related CDS / RNA assemblies.
+
+3. **02 Repeats** — RepeatMasker `-xsmall`; build `repeats.gff3` for EVM ([`../tools/repeatmasker.md`](../tools/repeatmasker.md)).
+
+4. **03–04 PASA training set → train Augustus + GeneMark-ET** ([`../tools/pasa.md`](../tools/pasa.md)).
+
+5. **05–06** Genome-wide ab initio + transcript alignment tracks.
+
+6. **07 EVM** with [`../config/evm_weights_cantulab.txt`](../config/evm_weights_cantulab.txt); then **PASA polish**.  
+   Peer summary: [`peers/cantulab_evm.md`](peers/cantulab_evm.md).
+
+7. **08 Filter** — no stop / &lt;50 aa:  
+   ```bash
+   bash pipeline/A5e_filter_proteins.sh path/to/gene_models.gff3 50
+   ```
+
+8. **09 Rename** (optional):  
+   ```bash
+   python3 pipeline/A6b_rename_gff.py VitisVinifera 1 chr models.checked.gff3 > models.named.gff3
+   ```
+
+9. **QC + last mile** — AGAT, BUSCO, PSAURON, priority, GSAman (S1 steps 9–12). Still apply Copetti `A5d` if you also have BRAKER.
+
+**Do not copy** their absolute tool paths; clone upstream and point `SCRIPTS_DIR` / `EVM_TOOLS` at your install.
+
 ## Choosing a branch (one-liner)
 
 | Evidence / goal | Branch |

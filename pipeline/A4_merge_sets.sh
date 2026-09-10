@@ -22,6 +22,8 @@ Typical flow (Krabbenhoft / EVM wiki):
        OTHER_PREDICTION	Liftoff	7
        TRANSCRIPT	stringtie_or_pasa	10   # if you have it
   3) partition → EvmUtils → combine → $MERGED_GFF
+Weight templates: config/evm_weights_cantulab.txt (PASA/S14) or config/evm_weights_s1_braker.txt (S1).
+Full CantuLab partition commands: docs/peers/cantulab_evm.md and upstream step 07.
 Wire your site’s run_EVM.sh here, then:
   # cp final.gff3 $MERGED_GFF
 MSG

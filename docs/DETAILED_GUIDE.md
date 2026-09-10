@@ -529,3 +529,8 @@ MERGE_MODE=evi_backbone bash pipeline/A4_merge_sets.sh
 | Release | `pipeline/06_release_gff.md` |
 
 Peers: [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
+
+
+## S14 — CantuLab EVM (pointer)
+
+Full grape-lab path: [`peers/cantulab_evm.md`](peers/cantulab_evm.md) · scenario [`SCENARIOS.md`](SCENARIOS.md) S14 · upstream https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab

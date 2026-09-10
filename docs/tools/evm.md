@@ -30,3 +30,9 @@ No RNA → raise homology weights, lower ab initio.
 - Equal weights on everything → mush.  
 - Feeding unfiltered TE-ORFs as predictions.  
 - Skipping AGAT after merge.
+
+
+## CantuLab / DC Lab grape defaults
+
+See [`../peers/cantulab_evm.md`](../peers/cantulab_evm.md) and `config/evm_weights_cantulab.txt`.  
+Upstream runbook: https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab/blob/main/07-EVM_consensus.md

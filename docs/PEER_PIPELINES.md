@@ -2,6 +2,7 @@
 
 | Peer | Stack | Idea used here |
 |------|--------|----------------|
+| **[CantuLab/AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab)** (+ [v1 andreaminio](https://github.com/andreaminio/AnnotationPipeline-EVM_based-DClab)) | RepeatMasker → PASA → Augustus/GeneMark → EVM → PASA polish → filter → rename | [`peers/cantulab_evm.md`](peers/cantulab_evm.md); **S14**; `A5e`/`A6b`; `config/evm_weights_cantulab.txt` |
 | **Dario Copetti** ([Rabiosa / MAKER-P](https://doi.org/10.25739/1e5z-pc33); [BRAKER#949](https://github.com/Gaius-Augustus/BRAKER/issues/949)) | EDTA → HISAT/StringTie → BRAKER → stage BUSCO + mono:multi; TSEBRA rescue; MAKER-P classical | [`peers/copetti.md`](peers/copetti.md); `A5d_stage_counts.sh` |
 | [ryandkuster/ragnarok](https://github.com/ryandkuster/ragnarok) (preprint 2025) | Helixer + Mikado + RNA/protein; EDTA; NLR extras | [`peers/ragnarok.md`](peers/ragnarok.md); S13 |
 | [Plant-Food-Research-Open/genepal](https://github.com/Plant-Food-Research-Open/genepal) | EDTA/RM → STAR → BRAKER C/D → Liftoff → TSEBRA → AGAT | [`peers/genepal.md`](peers/genepal.md) |
