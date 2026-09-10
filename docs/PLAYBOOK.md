@@ -1,3 +1,5 @@
+**Primary checklist (functional):** see [`FUNCTIONAL_GUIDE.md`](FUNCTIONAL_GUIDE.md) release list.
+
 # *Vitis* annotation playbook — assembly to qualified GFF
 
 **Main spine:** [`steps/MAIN.md`](steps/MAIN.md). **AI assist:** [`AI_ASSIST.md`](AI_ASSIST.md). **S14:** [`steps/dclab/`](steps/dclab/).

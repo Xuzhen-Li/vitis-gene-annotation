@@ -1,9 +1,7 @@
-# A6 — Functional annotation (optional, after structure is stable)
+# A6 — Functional annotation (PRIMARY product of this repo)
 
-Krabbenhoft steps 9–10 pattern:
+Structural curation ends at a stable GFF/proteins. **Functional work starts there.**
 
-- **eggNOG-mapper** (or InterProScan) on representative proteins
-- Optional reciprocal DIAMOND vs UniProt / a grape proteome
+→ Follow [`../docs/steps/FUNCTIONAL_MAIN.md`](../docs/steps/FUNCTIONAL_MAIN.md) and [`../docs/FUNCTIONAL_GUIDE.md`](../docs/FUNCTIONAL_GUIDE.md).
 
-Do this **after** last-mile structural curation, or you will re-annotate junk ORFs.
-Functional TSVs can live under `work/function/` — do not treat them as gene models.
+Scripts: `F1_diamond.sh`, `F2_eggnog.sh`, `F3_interproscan.sh`, `F_merge_tables.py`.

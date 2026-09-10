@@ -1,87 +1,65 @@
 # vitis-gene-annotation
 
-Full path: **genome assembly → main branched process → qualified GFF**.
+**Main product: functional annotation** of *Vitis* gene sets  
+(GO / KEGG / domains / readable names / pathway summaries).
+
+Structural annotation (finding gene models) is **upstream input**, documented under `docs/steps/` so you can produce or accept a qualified GFF+proteins — then this repo’s primary spine starts.
 
 | Doc | |
 |-----|--|
-| **[`docs/steps/MAIN.md`](docs/steps/MAIN.md)** | **Main process (all branches on one spine)** |
-| **[`docs/AI_ASSIST.md`](docs/AI_ASSIST.md)** | **AI co-pilot: prompts, data, order, checks** |
-| **[`docs/DETAILED_GUIDE.md`](docs/DETAILED_GUIDE.md)** | Step commands (S1 default + branch deltas) |
-| **[`docs/TOOLS.md`](docs/TOOLS.md)** | Tool install & use |
-| [`docs/SCENARIOS.md`](docs/SCENARIOS.md) | S1–S14 recipes |
-| [`docs/steps/dclab/`](docs/steps/dclab/) | **S14 CantuLab EVM (merged)** |
-| [`docs/PLAYBOOK.md`](docs/PLAYBOOK.md) | Qualification checklist |
+| **[`docs/steps/FUNCTIONAL_MAIN.md`](docs/steps/FUNCTIONAL_MAIN.md)** | **Main process — functional** |
+| **[`docs/FUNCTIONAL_GUIDE.md`](docs/FUNCTIONAL_GUIDE.md)** | Functional steps + commands |
+| **[`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md)** | F1–F8 situations |
+| **[`docs/AI_ASSIST.md`](docs/AI_ASSIST.md)** | AI co-pilot (prompts / data / checks) |
+| [`docs/steps/MAIN.md`](docs/steps/MAIN.md) | Upstream structural spine (S1–S14) |
+| [`docs/TOOLS.md`](docs/TOOLS.md) | Tools (functional section first) |
 | [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md) | Blueprints |
 
-**Tool order (S1):** hifiasm → YaHS → BUSCO(genome) → EDTA/ProtExcluder → RepeatMasker → HISAT2/STAR → **BRAKER4 (or BRAKER3)** → GeMoMa/Liftoff → EVM → AGAT → BUSCO+PSAURON → GSAman → release.  
-**S14 order:** repeats → PASA → train Augustus/GeneMark → predict → EVM → PASA polish → filter → rename → same QC/GSAman/release.
-
-## Branch flowchart (main process)
+## Main flowchart (functional)
 
 ```mermaid
 flowchart TD
-  start([Raw reads HiFi / ONT / Hi-C]) --> Asm0[Asm0 Assemble / phase / scaffold / purge]
-  Asm0 --> Asm1{Asm1 Assembly QC gate}
-  Asm1 -->|fail| Asm0
-  Asm1 -->|pass| A0[A0 Soft-mask TE + ProtExcluder / EDTA]
-  A0 --> pick{Main branch pick}
+  inn([Input: curated GFF + proteins.faa]) --> F0[F0 Protein QC BUSCO / OMArk]
+  F0 --> pick{Functional branch}
 
-  pick -->|S1 RNA+prot| S1[S1 BRAKER3 + GeMoMa/Liftoff → EVM]
-  pick -->|S2 no RNA| S2[S2 GALBA/GeMoMa + Liftoff]
-  pick -->|S3 Iso-seq| S3[S3 EviAnn + BRAKER orphans]
-  pick -->|S6 thin| S6[S6 Homology provisional]
-  pick -->|S11 lift only| S11[S11 Liftoff provisional]
-  pick -->|S13 Helixer| S13[S13 Helixer + Mikado]
-  pick -->|S14 CantuLab| S14[S14 PASA → Augustus/GeneMark → EVM → polish]
+  pick -->|F1 full| F1[eggNOG-mapper + InterProScan + DIAMOND]
+  pick -->|F2 fast| F2[eggNOG-mapper only]
+  pick -->|F3 EnTAP| F3[EnTAP frame]
+  pick -->|F4 names| F4[AHRD / eifunannot descriptions]
+  pick -->|F5 transcript| F5[Trinotate if CDS from RNA]
+  pick -->|F6 plant paths| F6[Mercator / MapMan optional]
+  pick -->|F7 ortho| F7[OrthoFinder panel summarize]
 
-  S1 --> multi{S4 many haplotypes?}
-  S2 --> multi
-  S3 --> multi
-  S6 --> multi
-  S13 --> multi
-  S14 --> multi
-  S11 --> QC
+  F1 --> merge[F_merge: tables + GFF attributes]
+  F2 --> merge
+  F3 --> merge
+  F4 --> merge
+  F5 --> merge
+  F6 --> merge
+  F7 --> merge
 
-  multi -->|yes| S4[S4 Liftoff + SynGAP panel]
-  multi -->|no| draft[Merged / polished draft GFF]
-  S4 --> draft
+  merge --> special{NLR / family?}
+  special -->|yes F8| F8[HRP / domain filter + priority]
+  special -->|no| out
+  F8 --> out[Release: TSV + annotated GFF + METHODS]
 
-  draft --> focus{Depth?}
-  focus -->|S5 paper| S5[S5 OMArk + deep GSAman]
-  focus -->|S7 family/QTL| S7[S7 Window curation]
-  focus -->|standard| QC[AGAT → proteins → BUSCO + PSAURON + A5d]
-  S5 --> QC
-  S7 --> QC
-
-  QC --> problems{Repair?}
-  problems -->|S10 TE inflation| S10[S10 Remask → re-draft]
-  problems -->|S9 high BUSCO-D| S9[S9 Per-haplotype annotation]
-  problems -->|S8 NCBI| S8[S8 EGAPx parallel]
-  problems -->|OK| pri[Priority → GSAman]
-  S10 --> pick
-  S9 --> S4
-  S8 --> pri
-
-  pri --> stop{S12 Stop rules}
-  stop -->|more| pri
-  stop -->|stable| qual[Qualification checklist]
-  qual --> release([Qualified GFF + METHODS])
+  inn -.->|no GFF yet| struct[Upstream structural S1–S14]
+  struct -.-> inn
 ```
 
-## Default lines
+## Default line
 
-- **Modern default:** `Asm0 → Asm1 → A0 → S1 → QC → GSAman → release`  
-- **CantuLab grape METHODS:** `Asm0 → Asm1 → A0 → S14 → QC → GSAman → release`  
-- **AI helping:** [`docs/AI_ASSIST.md`](docs/AI_ASSIST.md)
+`proteins.faa` (+ optional GFF) → **F1** (emapper + InterProScan + SwissProt DIAMOND) → merge → release under `work/function/`.
 
 ```bash
-cp config/example.env config/local.env
+cp config/example.env config/local.env   # set PROTEINS_FA, optional DRAFT_GFF/CURATED_GFF
 set -a && source config/local.env && set +a
+# docs/SCENARIOS_FUNCTIONAL.md F1
 ```
 
 ## This is not
 
-- Not a HiFi assembler package — Asm0 is a hand-off checklist  
+- Not primarily a gene-finder package — use upstream S1–S14 or bring your own GFF  
 - Not TE-only — [vitis-te](https://github.com/Xuzhen-Li/vitis-te)  
 - Not graphs — [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome)
 

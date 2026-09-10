@@ -5,7 +5,24 @@ This page is **tool literacy**: what each program is for, how to get it, a minim
 
 Prefer **containers** (Docker / Singularity / Apptainer) over compiling by hand. Paths below are templates — put your image tags and module names in `config/local.env`.
 
-## Order (default S1 — do not skip around)
+## Functional tools (main product)
+
+| Order | Tool | Makes |
+|-------|------|-------|
+| F0 | [BUSCO](tools/busco.md) proteins | completeness |
+| F1a | [DIAMOND](tools/diamond_func.md) | SwissProt hits |
+| F1b | [eggNOG-mapper](tools/eggnog_mapper.md) | GO/KEGG/COG/Pfam |
+| F1c | [InterProScan](tools/interproscan.md) | domains + GO |
+| F4 | [AHRD](tools/ahrd.md) | readable names |
+| F3 | [EnTAP](tools/entap.md) | alt frame |
+| F5 | [Trinotate](tools/trinotate.md) | transcriptome |
+| F2+ | [KEGGaNOG](tools/kegganog.md) | pathway plots |
+| F8 | [HRP](tools/hrp.md) | NLR |
+
+Merge: `pipeline/F_merge_tables.py`. Guide: [`FUNCTIONAL_GUIDE.md`](FUNCTIONAL_GUIDE.md).
+
+---
+## Order (upstream structural S1 — do not skip around)
 
 Use tools **in this sequence**. Later steps assume earlier outputs exist.
 

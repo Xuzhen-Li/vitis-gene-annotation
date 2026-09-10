@@ -225,3 +225,31 @@ Before calling annotation qualified:
 4. Tag `RELEASE_TAG`; never commit BAM/FASTQ  
 
 AI chat is not the archive — `release/` + METHODS are.
+
+
+---
+
+## Functional annotation prompts (main product)
+
+### Pick F-branch
+
+```text
+Playbook: Xuzhen-Li/vitis-gene-annotation functional spine
+(docs/SCENARIOS_FUNCTIONAL.md). Proteins: <path or BUSCO summary>.
+Goal: paper|fast|names|NLR. Recommend F1–F8. No invented GO counts.
+```
+
+### Next functional command
+
+```text
+Branch F1. Done: F0. Next step only: eggNOG-mapper or InterProScan
+using config/example.env. Point to pipeline/F*.sh.
+```
+
+### Interpret emapper/IPS
+
+```text
+I paste head -50 of emapper.annotations and IPS tsv.
+Explain columns; how to merge with F_merge_tables.py;
+what fraction unannotated is normal — only from my numbers.
+```

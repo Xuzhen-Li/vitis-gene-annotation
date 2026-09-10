@@ -1,4 +1,8 @@
-# Main process — all branches on one spine
+# Upstream structural spine (optional)
+
+**This repo’s primary deliverable is functional annotation** — see [`FUNCTIONAL_MAIN.md`](FUNCTIONAL_MAIN.md).
+
+Use the spine below only when you still need a GFF/proteins.
 
 This is the **main** annotation process. S1–S14 are not side docs; they are named exits from the same spine. CantuLab EVM is **S14** and is fully specified under [`dclab/`](dclab/).
 

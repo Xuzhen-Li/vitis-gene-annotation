@@ -1,10 +1,7 @@
 # Overview
 
-1. **Main process:** [`../docs/steps/MAIN.md`](../docs/steps/MAIN.md)
-2. **AI assist:** [`../docs/AI_ASSIST.md`](../docs/AI_ASSIST.md)
-3. Branch diagram: [`../README.md`](../README.md)
-4. Detailed steps: [`../docs/DETAILED_GUIDE.md`](../docs/DETAILED_GUIDE.md)
-5. S1–S14 recipes: [`../docs/SCENARIOS.md`](../docs/SCENARIOS.md)
-6. **S14 CantuLab:** [`../docs/steps/dclab/`](../docs/steps/dclab/)
-7. Tool manuals: [`../docs/TOOLS.md`](../docs/TOOLS.md)
-8. Checklist: [`../docs/PLAYBOOK.md`](../docs/PLAYBOOK.md)
+1. **Functional main:** [`../docs/steps/FUNCTIONAL_MAIN.md`](../docs/steps/FUNCTIONAL_MAIN.md)
+2. **Functional guide:** [`../docs/FUNCTIONAL_GUIDE.md`](../docs/FUNCTIONAL_GUIDE.md)
+3. **F1–F8:** [`../docs/SCENARIOS_FUNCTIONAL.md`](../docs/SCENARIOS_FUNCTIONAL.md)
+4. Upstream structural (if needed): [`../docs/steps/MAIN.md`](../docs/steps/MAIN.md)
+5. AI: [`../docs/AI_ASSIST.md`](../docs/AI_ASSIST.md)

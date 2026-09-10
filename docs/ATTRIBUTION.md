@@ -49,3 +49,7 @@ See [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
 - nf-core/genomeannotator, nf-core/isoseq — Nextflow eukaryote / Iso-seq annotation.
 - meiyang12/Genome-annotation-pipeline — BRAKER+miniprot+EVM+PASA spine.
 - nextgenusfs/funannotate, juliawiggeshoff/AugusMake, bwang27/Gene_Annotation_Pipeline — alternate stacks / AED.
+
+## Functional focus (2026-09-10)
+
+Repo primary product reframed to functional annotation. Peers: eggnog-mapper, KEGGaNOG, EnTAP, AHRD/eifunannot, Trinotate, HRP.

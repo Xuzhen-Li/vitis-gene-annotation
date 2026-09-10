@@ -1,3 +1,19 @@
+# Peer pipelines (字爹)
+
+## Functional annotation peers (this repo’s main focus)
+
+| Peer | Role |
+|------|------|
+| [eggnogdb/eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper) | Default F1/F2 engine |
+| [ilypopv/KEGGaNOG](https://github.com/ilypopv/KEGGaNOG) | KEGG views from emapper |
+| [harta55/EnTAP](https://github.com/harta55/EnTAP) → [GitLab EnTAP](https://gitlab.com/PlantGenomicsLab/EnTAP) | F3 frame |
+| [groupschoof/AHRD](https://github.com/groupschoof/AHRD) · [EI eifunannot](https://github.com/EI-CoreBioinformatics/eifunannot) | F4 descriptions |
+| [Trinotate/Trinotate](https://github.com/Trinotate/Trinotate) | F5 transcriptome |
+| [AndolfoG/HRP](https://github.com/AndolfoG/HRP) | F8 NLR |
+| TropicalBreeding coffee OrthoFinder–Trinotate–GO | F7-style panel ideas |
+
+---
+
 # Peer annotation pipelines (字爹)
 
 
