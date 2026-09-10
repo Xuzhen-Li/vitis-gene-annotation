@@ -11,6 +11,9 @@ Full path: **genome assembly → branched annotation routes → qualified GFF**.
 | [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) | Stage index |
 | [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md) | Blueprints |
 
+**Tool order (S1):** hifiasm → YaHS → BUSCO(genome) → ProtExcluder → RepeatMasker → HISAT2/STAR → BRAKER3 → GeMoMa/Liftoff → EVM → AGAT/gffread → BUSCO+PSAURON → GSAman → re-QC/release.  Full table: [`docs/TOOLS.md`](docs/TOOLS.md).
+
+
 ## Branch flowchart
 
 ```mermaid
