@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Primary draft launcher. Fill in the real binary/container lines for your cluster.
-# Full narrative: docs/DETAILED_GUIDE.md Step 5.
+# Full narrative: docs/DETAILED_GUIDE.md Step 5. Tool howto: docs/tools/braker3.md
 set -euo pipefail
 
 : "${WORK_DIR:?}"

@@ -1,5 +1,8 @@
 # Scenarios — how to annotate in each situation
 
+**Tool how-tos:** [`TOOLS.md`](TOOLS.md).
+
+
 **Command-level spine (read first):** [`DETAILED_GUIDE.md`](DETAILED_GUIDE.md)  
 **Checklist:** [`PLAYBOOK.md`](PLAYBOOK.md) · **Peers:** [`PEER_PIPELINES.md`](PEER_PIPELINES.md)
 

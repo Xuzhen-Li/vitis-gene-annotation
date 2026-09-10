@@ -1,5 +1,7 @@
 # *Vitis* annotation playbook — assembly to qualified GFF
 
+**Tool how-tos:** [`TOOLS.md`](TOOLS.md).
+
 **Homepage flowchart:** see repository [`README.md`](../README.md).  
 **Branch recipes:** [`SCENARIOS.md`](SCENARIOS.md) (S1–S12, step-by-step).  
 **Stage list:** [`FULL_PIPELINE.md`](FULL_PIPELINE.md).

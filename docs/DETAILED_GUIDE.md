@@ -1,5 +1,8 @@
 # Detailed guide — every step from assembly to qualified annotation
 
+**Tool how-tos:** [`TOOLS.md`](TOOLS.md).
+
+
 Work directory layout assumed:
 
 ```text
