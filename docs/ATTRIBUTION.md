@@ -1,16 +1,27 @@
 # Attribution (字爹)
 
-This playbook is adapted from public tools and papers. Scripts here are rewritten
-for a *Vitis* lab grain; they do not vendor third-party binaries or genotype data.
+Scripts and notes are **rewritten** for this *Vitis* grain. No third-party genotypes.
 
-| Peer | Role here |
-|------|-----------|
-| [CJ-Chen/GSAman](https://github.com/CJ-Chen/GSAman) · Chen et al. 2026 *The Innovation* ([doi:10.1016/j.xinn.2026.101471](https://doi.org/10.1016/j.xinn.2026.101471)) | Local WYSIWYG gene-structure curation; four error classes; MH63 case study metrics |
-| SynGAP · Wu, Mai, Chen, Xia 2024 *Genome Biology* ([doi:10.1186/s13059-024-03359-8](https://doi.org/10.1186/s13059-024-03359-8)) | Synteny-based polishing across related haplotypes / species |
-| EviAnn · Zimin et al. 2026 *Nat Methods* | Evidence-first automated draft (run via sibling [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) notes) |
-| PSAURON · (see GSAman Methods) | ML score for whether a predicted CDS looks like a real coding region |
-| BUSCO | Completeness of protein set vs lineage odb |
-| Ji, Pertea & Salzberg 2026 *Nat Rev Genet* | Broader annotation-at-scale review (context only) |
+## Last-mile / curation
 
-Install GSAman from upstream releases (non-commercial terms on their page).
-Do not commit private Iso-seq / RNA-seq into this repo.
+| Peer | Role |
+|------|------|
+| [CJ-Chen/GSAman](https://github.com/CJ-Chen/GSAman) · Chen et al. 2026 *The Innovation* | WYSIWYG curation; four error classes |
+| SynGAP · Wu et al. 2024 *Genome Biology* | Synteny polish |
+| PSAURON · BUSCO | Protein QC |
+
+## Draft / merge / plant pipelines
+
+| Peer | Role |
+|------|------|
+| [KrabbenhoftLab/genome_annotation_pipeline](https://github.com/KrabbenhoftLab/genome_annotation_pipeline) | Softmask → HISAT → BRAKER → GeMoMa → EVM → eggNOG |
+| [plantgenomicslab/Sylvan](https://github.com/plantgenomicslab/Sylvan) | Helixer + EVM/PASA + RF filter + TidyGFF |
+| [keen-laras/GenomeAnnotation](https://github.com/keen-laras/GenomeAnnotation) | EviAnn backbone + BRAKER orphans |
+| [Gaius-Augustus/BRAKER](https://github.com/Gaius-Augustus/BRAKER), [GALBA](https://github.com/Gaius-Augustus/GALBA), [TSEBRA](https://github.com/Gaius-Augustus/TSEBRA) | Engines / combiner |
+| [alekseyzimin/EviAnn_release](https://github.com/alekseyzimin/EviAnn_release) | Evidence-first draft |
+| [NBISweden/AGAT](https://github.com/NBISweden/AGAT) | GFF statistics / fix |
+| [PGSB-HMGU/plant.annot](https://github.com/PGSB-HMGU/plant.annot) | Plant Snakemake Iso-seq/RNA/protein |
+| [baozg/assembly-annotation-pipeline](https://github.com/baozg/assembly-annotation-pipeline) | NLR cluster → manual curation warning |
+| [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) | Sibling skill (plant traps) |
+
+Full peer notes: [`PEER_PIPELINES.md`](PEER_PIPELINES.md).

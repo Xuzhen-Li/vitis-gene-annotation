@@ -1,73 +1,61 @@
 # Full *Vitis* gene-structure annotation pipeline
 
-End-to-end path from assembly to a curated, versioned GFF3.
-Draft engines are documented in
-[plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation);
-last-mile QC and curation live in **this** repo.
+Soft-mask → RNA → dual draft → merge → AGAT → BUSCO/PSAURON → GSAman → release.
+
+Peers: [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
 
 ```mermaid
 flowchart TD
-  A[Chromosome-scale assembly] --> B[Soft-mask TE library]
-  B --> C{Evidence available?}
-  C -->|RNA + proteins| D[BRAKER3]
-  C -->|proteins only| E[GALBA]
-  C -->|close annotated ref| F[GeMoMa]
-  C -->|rich Iso-seq / RNA| G[EviAnn-class evidence build]
-  D --> H[Draft GFF3]
-  E --> H
-  F --> H
-  G --> H
-  H --> I[Extract proteins]
-  I --> J[BUSCO proteins + PSAURON]
-  J --> K[Priority loci list]
-  K --> L[Evidence pack Iso-seq / Miniprot]
-  L --> M[GSAman manual curation]
-  M --> N{Multi-haplotype?}
-  N -->|yes| O[SynGAP polish]
-  N -->|no| P[Validate GFF]
-  O --> P
-  P --> Q[Re-QC BUSCO / PSAURON]
-  Q --> R[Release tag + METHODS]
+  A[Assembly] --> B[TE lib + ProtExcluder]
+  B --> C[Soft-mask]
+  C --> D[HISAT2/STAR/Iso-seq map]
+  D --> E1[BRAKER3 / GALBA / Helixer]
+  C --> E2[GeMoMa / EviAnn]
+  E1 --> F[Merge TSEBRA or EVM or Evi-backbone]
+  E2 --> F
+  F --> G[AGAT stats / fix]
+  G --> H[Proteins]
+  H --> I[BUSCO + PSAURON]
+  I --> J[Priority loci]
+  J --> K[GSAman curation]
+  K --> L[Optional SynGAP]
+  L --> M[Re-QC + release GFF]
+  M --> N[Optional eggNOG]
 ```
 
-## Stage map
+## Stage table
 
-| Stage | Where | What |
-|-------|--------|------|
-| A0 Soft-mask | [vitis-te](https://github.com/Xuzhen-Li/vitis-te) + [`pipeline/A0_softmask.md`](../pipeline/A0_softmask.md) | Soft-mask only; keep NLR/R-genes out of TE lib |
-| A1 Choose engine | [`pipeline/A1_choose_engine.md`](../pipeline/A1_choose_engine.md) | BRAKER3 / GALBA / GeMoMa / EviAnn |
-| A2 Run draft | [`pipeline/A2_run_draft.sh`](../pipeline/A2_run_draft.sh) | Produce `DRAFT_GFF` |
-| A3 Proteins from GFF | [`pipeline/A3_proteins_from_gff.sh`](../pipeline/A3_proteins_from_gff.sh) | One protein per gene for QC |
-| 01 QC | [`pipeline/01_qc_busco_psauron.sh`](../pipeline/01_qc_busco_psauron.sh) | BUSCO + PSAURON |
-| 02 Priority | [`pipeline/02_priority_loci.py`](../pipeline/02_priority_loci.py) | Triage list |
-| 03 Evidence | [`pipeline/03_evidence_checklist.md`](../pipeline/03_evidence_checklist.md) | Tracks for the browser |
-| 04 GSAman | [`pipeline/04_gsaman_curation.md`](../pipeline/04_gsaman_curation.md) | Fix four error classes |
-| 05 SynGAP | [`pipeline/05_syngap_polish.md`](../pipeline/05_syngap_polish.md) | Optional multi-hap polish |
-| 06 Release | [`pipeline/06_release_gff.md`](../pipeline/06_release_gff.md) | Versioned public GFF |
+| Stage | Doc / script | Peer idea |
+|-------|----------------|-----------|
+| A0 Soft-mask | [`../pipeline/A0_softmask.md`](../pipeline/A0_softmask.md) | Krabbenhoft 1–3, vitis-te |
+| A0b Clean TE lib | [`../pipeline/A0b_protexcluder.md`](../pipeline/A0b_protexcluder.md) | ProtExcluder |
+| A1 Engine choice | [`../pipeline/A1_choose_engine.md`](../pipeline/A1_choose_engine.md) | plant-gene-annotation skill |
+| A1b RNA align | [`../pipeline/A1b_rna_align.md`](../pipeline/A1b_rna_align.md) | Krabbenhoft / Sylvan |
+| A2 Primary draft | [`../pipeline/A2_run_draft.sh`](../pipeline/A2_run_draft.sh) | BRAKER3 / GALBA / GeMoMa / EviAnn |
+| A2b Second set | [`../pipeline/A2b_second_predictor.md`](../pipeline/A2b_second_predictor.md) | GeMoMa / EviAnn / Helixer |
+| A4 Merge | [`../pipeline/A4_merge_sets.sh`](../pipeline/A4_merge_sets.sh) | TSEBRA / EVM / keen-laras |
+| A5 AGAT | [`../pipeline/A5_agat_stats.sh`](../pipeline/A5_agat_stats.sh) | AGAT |
+| A3 Proteins | [`../pipeline/A3_proteins_from_gff.sh`](../pipeline/A3_proteins_from_gff.sh) | — |
+| 01–02 QC / priority | `01` `02` | GSAman Methods |
+| 03–04 Evidence / GSAman | `03` `04` | GSAman; baozg NLR warning |
+| 05 SynGAP | `05` | SynGAP |
+| 06 Release | `06` | Sylvan TidyGFF idea |
+| A6 Function | [`../pipeline/A6_functional_optional.md`](../pipeline/A6_functional_optional.md) | eggNOG |
 
-Config: [`config/example.env`](../config/example.env).
+## Recommended *Vitis* default path
+
+1. Soft-mask with curated TE lib (A0 / A0b).  
+2. Map RNA (A1b).  
+3. **BRAKER3** (OrthoDB eudicots/Viridiplantae) + **GeMoMa** from PN40024 (or EviAnn if Iso-seq is deep).  
+4. Merge with **EVM** (BRAKER+GeMoMa) or **TSEBRA** (two BRAKER-family sets) or **evi_backbone**.  
+5. AGAT stats → proteins → BUSCO + PSAURON → priority list.  
+6. GSAman on NLR / stilbene / QTL windows first (tandem collapse).  
+7. Release versioned GFF; then optional eggNOG.
 
 ## Honest scope
 
-- Full-genome manual curation is person-months + Iso-seq (rice MH63 >10k loci).
-- For *Vitis*, finish A0–A3 + 01–02 on the whole genome; run 03–04 on **priority families / QTL windows** first.
-- Do not hard-mask before prediction. Do not feed Metazoa OrthoDB to Vitis BRAKER3.
-- TE work stays in `vitis-te`. Graph / PAV stays in `vitis-pangenome`.
+- Full manual curation is expensive — prioritize families (baozg + GSAman).  
+- Templates in `A2` / `A4` need your cluster module lines.  
+- No private FASTQ/BAM in git.
 
-## Suggested first run (one haplotype)
-
-```bash
-cp config/example.env config/local.env   # edit paths
-set -a && source config/local.env && set +a
-
-# A0: soft-masked FASTA already prepared (see A0_softmask.md)
-# A1–A2: draft
-bash pipeline/A2_run_draft.sh
-# A3 + last mile
-bash pipeline/A3_proteins_from_gff.sh
-bash pipeline/01_qc_busco_psauron.sh
-python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" -o "$PRIORITY_TSV"
-# then GSAman on priority.tsv → curated GFF → 06_release
-```
-
-Peers and citations: [`ATTRIBUTION.md`](ATTRIBUTION.md).
+Config: [`../config/example.env`](../config/example.env).

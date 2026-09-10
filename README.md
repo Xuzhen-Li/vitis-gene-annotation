@@ -1,46 +1,44 @@
 # vitis-gene-annotation
 
-Full *Vitis* gene-structure annotation path: **soft-mask → draft → QC → priority curation → release**.
+Full *Vitis* gene-structure annotation: soft-mask → dual draft → merge → QC → GSAman → release.
 
-Master map: **[`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md)** (start here).
-
-Draft engines (BRAKER3 / GALBA / GeMoMa / EviAnn) are chosen with notes from
-[plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation).
-This repo owns the **wired full playbook** plus last-mile QC / GSAman / SynGAP.
+**Start here:** [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) · peers: [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md)
 
 ## This is not
 
-- Not TE library construction — [vitis-te](https://github.com/Xuzhen-Li/vitis-te) (A0 consumes its softmask)
-- Not pangenome graphs — [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome)
-- Not synteny / SyRI — [vitis-synteny](https://github.com/Xuzhen-Li/vitis-synteny)
+- Not TE library construction alone — [vitis-te](https://github.com/Xuzhen-Li/vitis-te)
+- Not graphs / PAV — [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome)
+- Not synteny — [vitis-synteny](https://github.com/Xuzhen-Li/vitis-synteny)
 
-No unpublished genotypes, private BAM/Iso-seq dumps, or sample-level matrices.
+No unpublished genotypes or private BAM/FASTQ in git.
 
-## Stages (short)
+## Stages
 
-| ID | Script / doc |
-|----|----------------|
+| Stage | Path |
+|-------|------|
 | Full map | [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) |
-| A0 Soft-mask | [`pipeline/A0_softmask.md`](pipeline/A0_softmask.md) |
-| A1 Choose engine | [`pipeline/A1_choose_engine.md`](pipeline/A1_choose_engine.md) |
-| A2 Draft | [`pipeline/A2_run_draft.sh`](pipeline/A2_run_draft.sh) |
-| A3 Proteins | [`pipeline/A3_proteins_from_gff.sh`](pipeline/A3_proteins_from_gff.sh) |
-| 01 QC | [`pipeline/01_qc_busco_psauron.sh`](pipeline/01_qc_busco_psauron.sh) |
-| 02 Priority | [`pipeline/02_priority_loci.py`](pipeline/02_priority_loci.py) |
-| 03–06 | evidence → GSAman → SynGAP → release |
+| A0 Soft-mask | `pipeline/A0_softmask.md` |
+| A0b ProtExcluder | `pipeline/A0b_protexcluder.md` |
+| A1 / A1b Engine + RNA | `A1_choose_engine.md` · `A1b_rna_align.md` |
+| A2 / A2b Dual draft | `A2_run_draft.sh` · `A2b_second_predictor.md` |
+| A4 Merge | `A4_merge_sets.sh` (`tsebra` \| `evm` \| `evi_backbone`) |
+| A5 AGAT | `A5_agat_stats.sh` |
+| A3 Proteins | `A3_proteins_from_gff.sh` |
+| 01–06 Last mile | QC → priority → GSAman → SynGAP → release |
+| A6 Function | `A6_functional_optional.md` |
 
 ```bash
 cp config/example.env config/local.env
 set -a && source config/local.env && set +a
-bash pipeline/A2_run_draft.sh          # after wiring cluster commands
+# … A0–A2b on cluster, then:
+bash pipeline/A4_merge_sets.sh
+bash pipeline/A5_agat_stats.sh "$MERGED_GFF"
+export DRAFT_GFF="$MERGED_GFF"
 bash pipeline/A3_proteins_from_gff.sh
 bash pipeline/01_qc_busco_psauron.sh
 python3 pipeline/02_priority_loci.py -i "$PSAURON_TSV" -o "$PRIORITY_TSV"
 ```
 
-## See also
-
-- [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) — engine skill / plant traps  
-- [vitis-te](https://github.com/Xuzhen-Li/vitis-te) · [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome) · [bioinfo-agent-skills](https://github.com/Xuzhen-Li/bioinfo-agent-skills)
+Default *Vitis* combo: **BRAKER3 + GeMoMa (PN40024) → EVM**, then GSAman on NLR/stilbene windows.
 
 **Author:** Xuzhen Li · [ORCID](https://orcid.org/0000-0003-3670-6657)
