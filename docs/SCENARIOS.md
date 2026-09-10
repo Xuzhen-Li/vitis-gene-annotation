@@ -324,6 +324,47 @@ Do not endless-polish for a 0.1% BUSCO bump.
 
 ---
 
+
+
+---
+
+## S13 — Helixer + Mikado (RAGNAROK-style)
+
+**When:** GPU available; want a BRAKER-alternative automated draft, or second opinion beside S1.
+
+### Steps
+
+1–5. Asm0 → Asm1 → EDTA/ProtExcluder soft-mask → RNA (HISAT/STAR and/or Iso-seq minimap2).
+
+6. **Helixer** `land_plant` on soft-masked or raw genome (follow Helixer docs) → Helixer GFF.
+
+7. **StringTie** (+ optional TransDecoder) and **miniprot** proteins → evidence tracks.
+
+8. **Mikado** pick with plant scoring (penalize Helixer microexons; see RAGNAROK YAML note) → `MERGED_GFF`.  
+   Or run upstream [RAGNAROK](https://github.com/ryandkuster/ragnarok) end-to-end and import its GFF here.
+
+9–12. Same as S1 from proteins / BUSCO / PSAURON / priority / GSAman / release.  
+    Still apply Copetti stage QC if you also have a BRAKER set for comparison.
+
+Peers: [`peers/ragnarok.md`](peers/ragnarok.md).
+
+---
+
+## S1 add-on — Copetti diagnostics (always after BRAKER)
+
+After Step 5 (BRAKER), before trusting the merge:
+
+```bash
+# Point at GeneMark / Augustus / braker GTFs inside the BRAKER working dir + optional StringTie:
+bash pipeline/A5d_stage_counts.sh \
+  "$WORK_DIR/draft/braker3/GeneMark-ETP/.../genemark.gtf" \
+  "$WORK_DIR/draft/braker3/Augustus/augustus.hints.gtf" \
+  "$WORK_DIR/draft/braker3/braker.gtf" \
+  "$WORK_DIR/rna/stringtie.gtf"
+```
+
+If BRAKER << other sets: TSEBRA rescue ([`tools/tsebra.md`](tools/tsebra.md)) before EVM. Full write-up: [`peers/copetti.md`](peers/copetti.md).
+
 ## Choosing a branch (one-liner)
 
 | Evidence / goal | Branch |

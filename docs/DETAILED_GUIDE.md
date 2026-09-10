@@ -204,6 +204,13 @@ bash pipeline/A5_agat_stats.sh "$DRAFT_GFF"
 ```
 Gene count vs near relative × ploidy — if crazy high → jump to **S10**.
 
+### Copetti check (do not skip)
+Compare GeneMark / Augustus / BRAKER / StringTie counts and mono:multi — [`peers/copetti.md`](peers/copetti.md):
+```bash
+bash pipeline/A5d_stage_counts.sh genemark.gtf augustus.hints.gtf braker.gtf stringtie.gtf
+```
+If BRAKER collapsed → TSEBRA rescue before merge ([`tools/tsebra.md`](tools/tsebra.md)).
+
 ---
 
 ## Step 6 — Second draft GeMoMa or Liftoff (A2b / A2c)

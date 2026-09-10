@@ -27,3 +27,12 @@ Scripts and notes are **rewritten** for this *Vitis* grain. No third-party genot
 | [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) | Sibling plant-trap skill |
 
 See [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
+
+## 2026-09-10 peer wave (Copetti + Helixer/Mikado + papers)
+
+- Dario Copetti — Rabiosa MAKER-P annotation dataset (doi:10.25739/1e5z-pc33); BRAKER issue #949 stage diagnostics (EDTA, StringTie, mono:multi, TSEBRA rescue).
+- Langer/Kuster et al. RAGNAROK preprint (doi:10.1101/2025.10.03.680343) — Helixer + Mikado plant pipeline.
+- Plant & Food Research genepal — BRAKER C/D + Liftoff + AGAT merge patterns.
+- PlantGenotationFlow — assembly-to-Liftoff/GALBA Snakemake outline.
+- GeneCAD preprint (doi:10.1101/2025.10.31.685877) — sequence-only foundation-model annotation (pointer only).
+- Chen, Chen & Xia (2026) GSAman / *The Innovation* — last-mile curation (already core).

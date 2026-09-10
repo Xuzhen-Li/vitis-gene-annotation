@@ -46,3 +46,11 @@ Helper that **prints** this for you: `pipeline/A2_run_draft.sh` (`DRAFT_ENGINE=b
 | Very few genes | Hard mask or empty BAM |
 | Huge tiny ORFs | TE lib / soft-mask failure |
 | “Species already exists” | Change `--species` name or reuse carefully |
+
+
+## Naming (genepal)
+
+- **Workflow C** — proteins only (our S2 / no BAM).  
+- **Workflow D** — RNA BAM + proteins (our S1).
+
+After run, always compare GeneMark / Augustus / final with [`../../pipeline/A5d_stage_counts.sh`](../../pipeline/A5d_stage_counts.sh) (Copetti habit).

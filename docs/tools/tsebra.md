@@ -19,3 +19,14 @@ gffread "$WORK_DIR/draft/tsebra.gtf" -o "$MERGED_GFF"
 ## Pitfalls
 - Feeding Liftoff GFF without conversion.  
 - Ignoring `default.cfg` transcript support rules.
+
+
+## Rescue when BRAKER gene count collapses (Copetti / Hoff)
+
+If GeneMark and Augustus look fine but final BRAKER set is tiny / BUSCO-C drops:
+
+1. Re-run TSEBRA with `-k` to keep Augustus or GeneMark models.  
+2. Or lower intron-support thresholds in the cfg when RNA is scarce.  
+3. Log before/after with `pipeline/A5d_stage_counts.sh`.
+
+See [`../peers/copetti.md`](../peers/copetti.md).

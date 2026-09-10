@@ -9,6 +9,7 @@ Full path: **genome assembly → branched annotation routes → qualified GFF**.
 | [`docs/PLAYBOOK.md`](docs/PLAYBOOK.md) | Spine + qualification checklist |
 | [`docs/SCENARIOS.md`](docs/SCENARIOS.md) | S1–S12 step-by-step how to annotate |
 | [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) | Stage index |
+| [`docs/peers/copetti.md`](docs/peers/copetti.md) | Dario Copetti scheme (MAKER-P + BRAKER diagnostics) |
 | [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md) | Blueprints |
 
 **Tool order (S1):** hifiasm → YaHS → BUSCO(genome) → ProtExcluder → RepeatMasker → HISAT2/STAR → BRAKER3 → GeMoMa/Liftoff → EVM → AGAT/gffread → BUSCO+PSAURON → GSAman → re-QC/release.  Full table: [`docs/TOOLS.md`](docs/TOOLS.md).
