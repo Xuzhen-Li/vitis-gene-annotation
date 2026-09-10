@@ -1,3 +1,5 @@
+**Full command-level detail:** [`DETAILED_GUIDE.md`](DETAILED_GUIDE.md).
+
 # Branch recipes — how to annotate in each situation
 
 Prerequisites for all branches unless noted: **Asm0 → Asm1 → A0** done; `config/local.env` filled.

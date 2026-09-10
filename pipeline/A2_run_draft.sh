@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Template launcher for the chosen draft engine.
-# Real containers / modules differ by cluster — edit the case body for your site.
-# Details: https://github.com/Xuzhen-Li/plant-gene-annotation
+# Primary draft launcher. Fill in the real binary/container lines for your cluster.
+# Full narrative: docs/DETAILED_GUIDE.md Step 5.
 set -euo pipefail
 
 : "${WORK_DIR:?}"
@@ -14,35 +13,67 @@ mkdir -p "$WORK_DIR/draft" "$(dirname "$DRAFT_GFF")"
 case "$DRAFT_ENGINE" in
   braker3)
     : "${PROTEIN_DB:?OrthoDB Viridiplantae/eudicots FASTA}"
-    : "${RNA_BAM:?HISAT2/STAR BAM or set RNA_BAM=none}"
-    echo "[INFO] BRAKER3 template — wire to your module/container"
-    if [[ "${RNA_BAM}" == "none" ]]; then
-      echo "  braker.pl --genome=$GENOME_SOFT --prot_seq=$PROTEIN_DB --softmasking --threads=$THREADS ..."
+    RNA_BAM="${RNA_BAM:-none}"
+    WD="$WORK_DIR/draft/braker3"
+    mkdir -p "$WD"
+    echo "[INFO] BRAKER3 — softmasking on; species model AUGUSTUS_SPECIES=${AUGUSTUS_SPECIES:-Vitis_custom}"
+    if [[ "$RNA_BAM" == "none" || -z "$RNA_BAM" ]]; then
+      cat <<CMD
+# Protein + ab initio (no RNA):
+braker.pl \\
+  --genome=$GENOME_SOFT \\
+  --prot_seq=$PROTEIN_DB \\
+  --softmasking \\
+  --threads=$THREADS \\
+  --species=${AUGUSTUS_SPECIES:-Vitis_custom} \\
+  --workingdir=$WD
+CMD
     else
-      echo "  braker.pl --genome=$GENOME_SOFT --prot_seq=$PROTEIN_DB --bam=$RNA_BAM --softmasking --threads=$THREADS ..."
+      cat <<CMD
+# RNA + proteins (recommended S1):
+braker.pl \\
+  --genome=$GENOME_SOFT \\
+  --prot_seq=$PROTEIN_DB \\
+  --bam=$RNA_BAM \\
+  --softmasking \\
+  --threads=$THREADS \\
+  --species=${AUGUSTUS_SPECIES:-Vitis_custom} \\
+  --workingdir=$WD
+CMD
     fi
-    echo "[STOP] Fill the real braker.pl / singularity call for your cluster, then write $DRAFT_GFF"
+    echo "# After success:"
+    echo "#   cp $WD/braker.gff3 $DRAFT_GFF"
+    echo "#   # or: gffread $WD/braker.gtf -o $DRAFT_GFF"
+    echo "[STOP] Run the printed braker.pl via your module/singularity, then copy GFF to DRAFT_GFF"
     ;;
   galba)
-    : "${PROTEIN_DB:?}"
-    echo "[INFO] GALBA template"
-    echo "  galba.pl --genome=$GENOME_SOFT --prot_seq=$PROTEIN_DB --softmasking --threads=$THREADS ..."
-    echo "[STOP] Wire GALBA, write $DRAFT_GFF"
+    : "${PROTEIN_DB:?close-relative proteins}"
+    WD="$WORK_DIR/draft/galba"
+    mkdir -p "$WD"
+    cat <<CMD
+galba.pl \\
+  --genome=$GENOME_SOFT \\
+  --prot_seq=$PROTEIN_DB \\
+  --softmasking \\
+  --threads=$THREADS \\
+  --workingdir=$WD
+# cp $WD/galba.gff3 $DRAFT_GFF
+CMD
+    echo "[STOP] Wire GALBA container/module"
     ;;
   gemoma)
     : "${REF_GFF:?}" ; : "${REF_FA:?}"
-    echo "[INFO] GeMoMa template — project $REF_GFF from $REF_FA onto $GENOME_SOFT"
-    echo "[STOP] Wire GeMoMa CLI, write $DRAFT_GFF"
+    echo "[INFO] GeMoMa — project $REF_GFF from $REF_FA onto $GENOME_SOFT"
+    echo "# See GeMoMa manual for your version’s CLI; write $DRAFT_GFF"
+    echo "[STOP] Wire GeMoMa"
     ;;
   eviann)
     : "${ISOSEQ_BAM:?}" ; : "${PROTEIN_DB:?}"
-    echo "[INFO] EviAnn-class evidence build — see Zimin et al. 2026 Nat Methods"
-    echo "[STOP] Wire EviAnn, write $DRAFT_GFF"
+    echo "[INFO] EviAnn — Iso-seq/RNA evidence + proteins → $DRAFT_GFF"
+    echo "# Follow https://github.com/alekseyzimin/EviAnn_release for current CLI"
+    echo "[STOP] Wire EviAnn"
     ;;
   *)
-    echo "unknown DRAFT_ENGINE=$DRAFT_ENGINE"; exit 1
+    echo "unknown DRAFT_ENGINE=$DRAFT_ENGINE (braker3|galba|gemoma|eviann)"; exit 1
     ;;
 esac
-
-# When the real command finishes, copy/normalize:
-#   cp braker/braker.gff3 "$DRAFT_GFF"

@@ -1,17 +1,25 @@
-# A1b — RNA-seq alignment (optional but recommended)
+# A1b — RNA align (detailed)
 
-Krabbenhoft step 4 / Sylvan dual path:
+Full examples: [`../docs/DETAILED_GUIDE.md`](../docs/DETAILED_GUIDE.md) Step 4.
 
-| Aligner | When |
-|---------|------|
-| **HISAT2** | Illumina RNA-seq; simple BRAKER BAM input |
-| **STAR** | High-depth Illumina; Sylvan default pathway |
-| Iso-seq / PacBio FLNC | Map with minimap2; feed EviAnn / PASA / GSAman |
+## Checklist
+- [ ] FASTQ from target species (multi-tissue better)
+- [ ] Index on soft-masked or raw genome (be consistent)
+- [ ] Sorted BAM + `.bai`
+- [ ] `RNA_BAM` exported in `config/local.env`
 
-Rules:
+## HISAT2
+```bash
+hisat2-build -p "$THREADS" "$GENOME_SOFT" "$WORK_DIR/rna/hisat_index"
+hisat2 -p "$THREADS" -x "$WORK_DIR/rna/hisat_index" \
+  -1 R1.fq.gz -2 R2.fq.gz \
+  | samtools sort -@ "$THREADS" -o "$WORK_DIR/rna/aligned.bam"
+samtools index "$WORK_DIR/rna/aligned.bam"
+```
 
-- Prefer species-matched RNA; tissue diversity helps UTRs and rare isoforms.
-- Do not ship private FASTQ into this git repo — only document BAM paths in `config/local.env`.
-- For haplotype-resolved assemblies, map FLNC per haplotype when possible (baozg note).
-
-Set `RNA_BAM=` after alignment for BRAKER3 / EVM.
+## Iso-seq (S3)
+```bash
+minimap2 -t "$THREADS" -ax splice:hq -uf "$GENOME_FA" flnc.fastq.gz \
+  | samtools sort -@ "$THREADS" -o "$WORK_DIR/rna/isoseq.bam"
+samtools index "$WORK_DIR/rna/isoseq.bam"
+```

@@ -4,6 +4,7 @@ Full path: **genome assembly → branched annotation routes → qualified GFF**.
 
 | Doc | |
 |-----|--|
+| **[`docs/DETAILED_GUIDE.md`](docs/DETAILED_GUIDE.md)** | **Every step detailed (commands + outputs)** |
 | [`docs/PLAYBOOK.md`](docs/PLAYBOOK.md) | Spine + qualification checklist |
 | [`docs/SCENARIOS.md`](docs/SCENARIOS.md) | S1–S12 step-by-step how to annotate |
 | [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) | Stage index |
