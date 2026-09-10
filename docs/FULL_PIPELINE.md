@@ -1,4 +1,7 @@
-# Full *Vitis* gene-structure annotation pipeline
+# Stage reference
+
+**Human entry point:** [`PLAYBOOK.md`](PLAYBOOK.md) (complete flow + scenario index).  
+**Situations:** [`SCENARIOS.md`](SCENARIOS.md).
 
 ```mermaid
 flowchart TD
@@ -9,7 +12,7 @@ flowchart TD
   C --> E2[GeMoMa / EviAnn / Liftoff]
   E1 --> F[Merge TSEBRA / EVM / evi_backbone]
   E2 --> F
-  F --> G[AGAT + optional GetaFilter-style screen]
+  F --> G[AGAT + optional expression/domain screen]
   G --> H[Proteins]
   H --> I[BUSCO + PSAURON + OMArk/Compleasm]
   I --> J[Priority loci]
@@ -21,27 +24,15 @@ flowchart TD
 
 ## Stage table
 
-| Stage | Path | Peer idea |
-|-------|------|-----------|
-| A0 / A0b | soft-mask · ProtExcluder | Krabbenhoft, vitis-te |
-| A1 / A1b | engine · RNA | plant-gene-annotation, Sylvan |
-| A2 / A2b / A2c / A2d | primary · second · Liftoff · EGAPx optional | BRAKER, GeMoMa, Liftoff, NCBI |
-| A4 | merge | TSEBRA / EVM / keen-laras |
-| A5 / A5b / A5c | AGAT · OMArk/compleasm · expression filter | AGAT, OMArk, GetaFilter |
-| A3 | proteins | — |
-| 01–06 | last mile | GSAman, SynGAP |
-| A6 | function | eggNOG |
+| Stage | Path |
+|-------|------|
+| A0 / A0b | `pipeline/A0_softmask.md` · `A0b_protexcluder.md` |
+| A1 / A1b | `A1_choose_engine.md` · `A1b_rna_align.md` |
+| A2 / A2b / A2c / A2d | draft · second · Liftoff · EGAPx |
+| A4 | `A4_merge_sets.sh` |
+| A5 / A5b / A5c | AGAT · OMArk/compleasm · GetaFilter-style |
+| A3 | `A3_proteins_from_gff.sh` |
+| 01–06 | last mile |
+| A6 | functional optional |
 
-## Default *Vitis* path
-
-1. Soft-mask (curated TE lib).  
-2. Map RNA.  
-3. **BRAKER3** + **GeMoMa or Liftoff** from PN40024.  
-4. **EVM** (or TSEBRA / evi_backbone).  
-5. AGAT → proteins → BUSCO + PSAURON (+ OMArk if installed).  
-6. GSAman on NLR / stilbene / low-ORF Liftoff loci.  
-7. Release; optional eggNOG.
-
-Optional: run **EGAPx** as a parallel set for NCBI-style comparison (`A2d`).
-
-Peers: [`PEER_PIPELINES.md`](PEER_PIPELINES.md). Config: [`../config/example.env`](../config/example.env).
+Default *Vitis*: BRAKER3 + GeMoMa/Liftoff → EVM → AGAT → BUSCO/PSAURON → GSAman (NLR-first).

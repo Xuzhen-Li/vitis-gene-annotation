@@ -1,31 +1,31 @@
 # vitis-gene-annotation
 
-Full *Vitis* gene-structure annotation: soft-mask → dual/triple draft → merge → QC → GSAman → release.
+*Vitis* gene-structure annotation: **complete playbook** + **situation handbook**.
 
-**Start:** [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) · peers: [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md)
+| Start here | |
+|------------|--|
+| **[`docs/PLAYBOOK.md`](docs/PLAYBOOK.md)** | Full default flow + scenario picker |
+| **[`docs/SCENARIOS.md`](docs/SCENARIOS.md)** | S1–S12 recipes for different evidence / goals |
+
+Also: [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) · [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md) · [`docs/ERROR_CLASSES.md`](docs/ERROR_CLASSES.md)
 
 ## This is not
 
 - Not TE library construction alone — [vitis-te](https://github.com/Xuzhen-Li/vitis-te)
 - Not graphs / PAV — [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome)
 - Not synteny — [vitis-synteny](https://github.com/Xuzhen-Li/vitis-synteny)
+- Draft engine traps — [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation)
 
 No unpublished genotypes or private BAM/FASTQ in git.
 
-## Stages
+## Default in one line
 
-| Stage | Path |
-|-------|------|
-| Full map | [`docs/FULL_PIPELINE.md`](docs/FULL_PIPELINE.md) |
-| A0 / A0b | Soft-mask · ProtExcluder |
-| A1 / A1b | Engine · RNA align |
-| A2 / A2b / A2c / A2d | Draft · second set · [Liftoff](pipeline/A2c_liftoff.md) · [EGAPx optional](pipeline/A2d_egapx_optional.md) |
-| A4 Merge | `pipeline/A4_merge_sets.sh` |
-| A5 / A5b / A5c | AGAT · [OMArk/Compleasm](pipeline/A5b_omark_compleasm.sh) · [expression filter](pipeline/A5c_expression_pfam_filter.md) |
-| A3 Proteins | `pipeline/A3_proteins_from_gff.sh` |
-| 01–06 Last mile | QC → GSAman → SynGAP → release |
-| A6 Function | eggNOG optional |
+Soft-mask → RNA → **BRAKER3 + GeMoMa/Liftoff (PN40024) → EVM** → AGAT → BUSCO/PSAURON → **GSAman on priority (NLR/stilbene first)** → release.
 
-Default: **BRAKER3 + GeMoMa/Liftoff (PN40024) → EVM → AGAT → BUSCO/PSAURON → GSAman (NLR-first)**.
+```bash
+cp config/example.env config/local.env
+set -a && source config/local.env && set +a
+# follow docs/PLAYBOOK.md §1 after wiring A2/A4 on your cluster
+```
 
 **Author:** Xuzhen Li · [ORCID](https://orcid.org/0000-0003-3670-6657)
