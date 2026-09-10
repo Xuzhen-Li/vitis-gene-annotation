@@ -41,3 +41,11 @@ See [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
 
 - [CantuLab/AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab) — step order, EVM weights, filter/rename practice; v1 [andreaminio/AnnotationPipeline-EVM_based-DClab](https://github.com/andreaminio/AnnotationPipeline-EVM_based-DClab).
 - Filter/rename helpers here are Python3 rewrites inspired by their `scripts/`; for exact lab scripts use upstream.
+
+## 2026-09-10 annotation-repo wave
+
+- Gaius-Augustus/BRAKER4 — Snakemake BRAKER modes (ET/EP/ETP/IsoSeq/Dual).
+- nschan/nf-annotate — Liftoff-weighted EVM + HRP NLR (AndolfoG/HRP); weights → config/evm_weights_nf_annotate.txt.
+- nf-core/genomeannotator, nf-core/isoseq — Nextflow eukaryote / Iso-seq annotation.
+- meiyang12/Genome-annotation-pipeline — BRAKER+miniprot+EVM+PASA spine.
+- nextgenusfs/funannotate, juliawiggeshoff/AugusMake, bwang27/Gene_Annotation_Pipeline — alternate stacks / AED.

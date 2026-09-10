@@ -19,13 +19,13 @@ Raw reads
 
 | ID | When | Draft / merge core |
 |----|------|--------------------|
-| **S1** | RNA + proteins | BRAKER3 + GeMoMa/Liftoff → EVM |
+| **S1** | RNA + proteins | **BRAKER4 ETP** (or BRAKER3) + GeMoMa/Liftoff → EVM |
 | **S2** | No usable RNA | GALBA/GeMoMa + Liftoff → EVM |
 | **S3** | Deep Iso-seq | EviAnn backbone + BRAKER orphans |
 | **S4** | Multi-hap | After S1/S3: Liftoff + SynGAP |
 | **S5** | Paper / T2T | S1/S14 + OMArk + deeper GSAman |
 | **S6** | Thin evidence | Homology-first provisional |
-| **S7** | Family / QTL | Genome draft + window GSAman |
+| **S7** | Family / QTL | Genome draft + HRP/NLR windows + GSAman |
 | **S8** | NCBI compare | Parallel EGAPx |
 | **S9** | High BUSCO-D | Annotate haps / don’t purge blind |
 | **S10** | TE gene inflation | Remask → re-enter draft |

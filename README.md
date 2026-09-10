@@ -13,7 +13,7 @@ Full path: **genome assembly → main branched process → qualified GFF**.
 | [`docs/PLAYBOOK.md`](docs/PLAYBOOK.md) | Qualification checklist |
 | [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md) | Blueprints |
 
-**Tool order (S1):** hifiasm → YaHS → BUSCO(genome) → EDTA/ProtExcluder → RepeatMasker → HISAT2/STAR → BRAKER3 → GeMoMa/Liftoff → EVM → AGAT → BUSCO+PSAURON → GSAman → release.  
+**Tool order (S1):** hifiasm → YaHS → BUSCO(genome) → EDTA/ProtExcluder → RepeatMasker → HISAT2/STAR → **BRAKER4 (or BRAKER3)** → GeMoMa/Liftoff → EVM → AGAT → BUSCO+PSAURON → GSAman → release.  
 **S14 order:** repeats → PASA → train Augustus/GeneMark → predict → EVM → PASA polish → filter → rename → same QC/GSAman/release.
 
 ## Branch flowchart (main process)

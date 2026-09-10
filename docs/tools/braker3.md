@@ -1,3 +1,5 @@
+**Prefer [`braker4.md`](braker4.md) (Snakemake) when you can; this page is classic `braker.pl`.**
+
 # BRAKER3 — primary gene prediction (RNA + proteins)
 
 **Role:** Default draft engine in **S1** (and secondary in **S3**).

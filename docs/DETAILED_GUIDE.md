@@ -172,7 +172,9 @@ export RNA_BAM="$WORK_DIR/rna/star_Aligned.sortedByCoord.out.bam"
 
 ---
 
-## Step 5 — Primary draft BRAKER3 (A2)
+## Step 5 — Primary draft BRAKER4 / BRAKER3 (A2)
+
+Prefer **BRAKER4** ETP ([`tools/braker4.md`](tools/braker4.md), [`peers/braker4.md`](peers/braker4.md)). Classic `braker.pl` below remains valid.
 
 ### Inputs
 - `GENOME_SOFT`, `RNA_BAM`, `PROTEIN_DB` (OrthoDB eudicots or Viridiplantae proteins)

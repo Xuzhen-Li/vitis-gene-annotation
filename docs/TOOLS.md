@@ -17,7 +17,7 @@ Use tools **in this sequence**. Later steps assume earlier outputs exist.
 | 4 | [EDTA](tools/edta.md) *(or curated lib)* + [ProtExcluder](tools/protexcluder.md) | TE lib / anno | soft-mask |
 | 5 | [RepeatMasker](tools/repeatmasker.md) / EDTA `make_masked.pl` | `GENOME_SOFT` | RNA + drafts |
 | 6 | [HISAT2 / STAR](tools/hisat2_star.md) (+ optional [StringTie](tools/stringtie.md)) | `RNA_BAM` | BRAKER3, GSAman, Mikado |
-| 7 | [BRAKER3](tools/braker3.md) | primary `DRAFT_GFF` | second predictor |
+| 7 | [BRAKER4](tools/braker4.md) *(preferred)* or [BRAKER3](tools/braker3.md) | primary `DRAFT_GFF` | second predictor |
 | 8 | [GeMoMa](tools/gemoma.md) *or* [Liftoff](tools/liftoff.md) *(or [miniprot](tools/miniprot.md) evidence)* | `DRAFT_GFF_B` | merge |
 | 8b | *(S13)* [Helixer](tools/helixer.md) | ab initio GFF | Mikado |
 | 9 | [EVM](tools/evm.md) *or* [TSEBRA](tools/tsebra.md) *or* [Mikado](tools/mikado.md) | `MERGED_GFF` | proteins |
@@ -58,11 +58,11 @@ Use tools **in this sequence**. Later steps assume earlier outputs exist.
 | Assembly | [`tools/hifiasm.md`](tools/hifiasm.md), [`tools/yahs.md`](tools/yahs.md) |
 | Soft-mask | [`tools/edta.md`](tools/edta.md), [`tools/repeatmasker.md`](tools/repeatmasker.md), [`tools/protexcluder.md`](tools/protexcluder.md) |
 | RNA / Iso-seq | [`tools/hisat2_star.md`](tools/hisat2_star.md), [`tools/stringtie.md`](tools/stringtie.md), [`tools/minimap2.md`](tools/minimap2.md) |
-| Draft genes | [`tools/braker3.md`](tools/braker3.md), [`tools/galba.md`](tools/galba.md), [`tools/gemoma.md`](tools/gemoma.md), [`tools/eviann.md`](tools/eviann.md), [`tools/liftoff.md`](tools/liftoff.md), [`tools/helixer.md`](tools/helixer.md), [`tools/maker_p.md`](tools/maker_p.md), [`tools/miniprot.md`](tools/miniprot.md) |
+| Draft genes | [`tools/braker4.md`](tools/braker4.md), [`tools/braker3.md`](tools/braker3.md), [`tools/galba.md`](tools/galba.md), [`tools/gemoma.md`](tools/gemoma.md), [`tools/eviann.md`](tools/eviann.md), [`tools/liftoff.md`](tools/liftoff.md), [`tools/helixer.md`](tools/helixer.md), [`tools/maker_p.md`](tools/maker_p.md), [`tools/miniprot.md`](tools/miniprot.md) |
 | Merge | [`tools/evm.md`](tools/evm.md), [`tools/tsebra.md`](tools/tsebra.md), [`tools/mikado.md`](tools/mikado.md), [`tools/pasa.md`](tools/pasa.md) |
 | GFF / proteins | [`tools/agat_gffread.md`](tools/agat_gffread.md) |
 | QC | [`tools/busco.md`](tools/busco.md), [`tools/psauron.md`](tools/psauron.md), [`tools/omark_compleasm.md`](tools/omark_compleasm.md) |
-| Curation | [`tools/gsaman.md`](tools/gsaman.md), [`tools/syngap.md`](tools/syngap.md) |
+| Curation | [`tools/gsaman.md`](tools/gsaman.md), [`tools/syngap.md`](tools/syngap.md), [`tools/hrp.md`](tools/hrp.md) |
 | Optional NCBI | [`tools/egapx.md`](tools/egapx.md) |
 
 ## Shared habits

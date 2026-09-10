@@ -29,9 +29,10 @@ Every scenario below is a full recipe. Shared early steps always mean:
 4. **Align RNA** — HISAT2 or STAR → `RNA_BAM` + index.  
    Step 4 · [`../pipeline/A1b_rna_align.md`](../pipeline/A1b_rna_align.md)
 
-5. **Primary draft** — BRAKER3 with `--bam` + `--prot_seq` + `--softmasking` → `DRAFT_GFF`.  
+5. **Primary draft** — **prefer [BRAKER4](peers/braker4.md) ETP** if Singularity works; else BRAKER3 `braker.pl`.  
    ```bash
-   DRAFT_ENGINE=braker3 bash pipeline/A2_run_draft.sh
+   # BRAKER4: see docs/tools/braker4.md (samples.csv mode=ETP)
+   DRAFT_ENGINE=braker3 bash pipeline/A2_run_draft.sh   # classic fallback
    ```
    Step 5
 
@@ -216,7 +217,8 @@ Every scenario below is a full recipe. Shared early steps always mean:
 1. Run S1 Steps 1–10 **genome-wide automated** (through priority).
 
 2. Build `families.tsv`:  
-   `gene_id<TAB>family_or_window` for Orthogroups / QTL interval genes.
+   `gene_id<TAB>family_or_window` for Orthogroups / QTL interval genes.  
+   For NLR: run [HRP](../tools/hrp.md) / nf-annotate `--r_genes` and add those IDs.
 
 3. Re-rank:  
    ```bash
@@ -407,7 +409,7 @@ If BRAKER << other sets: TSEBRA rescue ([`tools/tsebra.md`](tools/tsebra.md)) be
 
 | Evidence / goal | Branch |
 |-----------------|--------|
-| RNA + proteins, normal release | **S1** |
+| RNA + proteins, normal release | **S1** (BRAKER4 ETP if possible) |
 | No RNA | **S2** |
 | Deep Iso-seq | **S3** |
 | Multiple haps | **S4** |

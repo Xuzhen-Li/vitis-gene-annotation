@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Primary draft launcher. Fill in the real binary/container lines for your cluster.
-# Full narrative: docs/DETAILED_GUIDE.md Step 5. Tool howto: docs/tools/braker3.md
+# Full narrative: docs/DETAILED_GUIDE.md Step 5.
+# Prefer BRAKER4 (docs/tools/braker4.md) when available; this script prints classic braker.pl.
 set -euo pipefail
 
 : "${WORK_DIR:?}"

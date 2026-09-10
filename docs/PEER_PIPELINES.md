@@ -1,5 +1,20 @@
 # Peer annotation pipelines (字爹)
 
+
+## 2026-09-10 wave — more annotation repos
+
+| Peer | Stack | Idea used here |
+|------|--------|----------------|
+| [Gaius-Augustus/BRAKER4](https://github.com/Gaius-Augustus/BRAKER4) | Snakemake BRAKER (ET/EP/ETP/IsoSeq/Dual/ES) | [`peers/braker4.md`](peers/braker4.md); [`tools/braker4.md`](tools/braker4.md); preferred S1/S2/S3 runner |
+| [nschan/nf-annotate](https://github.com/nschan/nf-annotate) | Liftoff+SNAP/Augustus/miniprot+PASA+EVM+HRP NLR+HiTE | [`peers/nf_annotate.md`](peers/nf_annotate.md); `config/evm_weights_nf_annotate.txt`; [`tools/hrp.md`](tools/hrp.md) |
+| [nf-core/genomeannotator](https://github.com/nf-core/genomeannotator) | Nextflow Augustus/PASA/EVM | [`peers/nfcore_genomeannotator.md`](peers/nfcore_genomeannotator.md) |
+| [nf-core/isoseq](https://github.com/nf-core/isoseq) | PacBio Iso-seq → FLNC / bed | Pointer for S3 read prep |
+| [meiyang12/Genome-annotation-pipeline](https://github.com/meiyang12/Genome-annotation-pipeline) | RM→HISAT→BRAKER→miniprot→EVM→PASA | [`peers/meiyang_gap.md`](peers/meiyang_gap.md) |
+| [nextgenusfs/funannotate](https://github.com/nextgenusfs/funannotate) | Fungal-leaning eukaryote annotator | [`peers/funannotate.md`](peers/funannotate.md) |
+| [juliawiggeshoff/AugusMake](https://github.com/juliawiggeshoff/AugusMake) | Augustus Snakemake + Trinity | [`peers/augusmake.md`](peers/augusmake.md) |
+| [bwang27/Gene_Annotation_Pipeline](https://github.com/bwang27/Gene_Annotation_Pipeline) | MAKER + AED plots | [`peers/maker_bwang.md`](peers/maker_bwang.md) |
+| [AndolfoG/HRP](https://github.com/AndolfoG/HRP) | Full-length NB-LRR | [`tools/hrp.md`](tools/hrp.md) / S7 |
+
 | Peer | Stack | Idea used here |
 |------|--------|----------------|
 | **[CantuLab/AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab)** (+ [v1 andreaminio](https://github.com/andreaminio/AnnotationPipeline-EVM_based-DClab)) | RepeatMasker → PASA → Augustus/GeneMark → EVM → PASA polish → filter → rename | [`peers/cantulab_evm.md`](peers/cantulab_evm.md); **S14**; `A5e`/`A6b`; `config/evm_weights_cantulab.txt` |
