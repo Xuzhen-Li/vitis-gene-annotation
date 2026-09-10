@@ -1,5 +1,7 @@
 # *Vitis* annotation playbook — assembly to qualified GFF
 
+**Main spine:** [`steps/MAIN.md`](steps/MAIN.md). **AI assist:** [`AI_ASSIST.md`](AI_ASSIST.md). **S14:** [`steps/dclab/`](steps/dclab/).
+
 **Tool how-tos:** [`TOOLS.md`](TOOLS.md).
 
 **Homepage flowchart:** see repository [`README.md`](../README.md).  

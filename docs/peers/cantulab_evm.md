@@ -1,3 +1,5 @@
+**Merged main-process steps:** [`../steps/dclab/`](../steps/dclab/).
+
 # CantuLab AnnotationPipeline2 (EVM-based, DC Lab)
 
 **Upstream (follow for full commands):**  

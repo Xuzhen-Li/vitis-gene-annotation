@@ -1,5 +1,7 @@
 # Stage reference (assembly → release)
 
+**Main process index:** [`steps/MAIN.md`](steps/MAIN.md) · AI: [`AI_ASSIST.md`](AI_ASSIST.md) · S14: [`steps/dclab/`](steps/dclab/).
+
 Human guides: [`PLAYBOOK.md`](PLAYBOOK.md) · [`SCENARIOS.md`](SCENARIOS.md).  
 **Branch diagram:** repository README.
 

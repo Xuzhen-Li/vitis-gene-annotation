@@ -1,6 +1,7 @@
 # Detailed guide — every step from assembly to qualified annotation
 
-**Tool how-tos:** [`TOOLS.md`](TOOLS.md).
+**Tool how-tos:** [`TOOLS.md`](TOOLS.md).  
+**Main spine:** [`steps/MAIN.md`](steps/MAIN.md). **AI:** [`AI_ASSIST.md`](AI_ASSIST.md). **S14:** [`steps/dclab/`](steps/dclab/).
 
 
 Work directory layout assumed:
@@ -531,6 +532,7 @@ MERGE_MODE=evi_backbone bash pipeline/A4_merge_sets.sh
 Peers: [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
 
 
-## S14 — CantuLab EVM (pointer)
+## S14 — CantuLab EVM (merged into main process)
 
-Full grape-lab path: [`peers/cantulab_evm.md`](peers/cantulab_evm.md) · scenario [`SCENARIOS.md`](SCENARIOS.md) S14 · upstream https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab
+Follow [`steps/dclab/`](steps/dclab/) 00→09, then return here at Step 8 (proteins/QC) through release.  
+Peer map: [`peers/cantulab_evm.md`](peers/cantulab_evm.md). Upstream: https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab

@@ -371,6 +371,7 @@ If BRAKER << other sets: TSEBRA rescue ([`tools/tsebra.md`](tools/tsebra.md)) be
 
 ## S14 — CantuLab / DC Lab EVM pipeline (grape METHODS)
 
+**Merged runbook:** [`steps/dclab/`](steps/dclab/).  
 **When:** You want the published Cantu Lab structural-annotation path (PASA → train Augustus/GeneMark → EVM → PASA polish), as in [AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab).
 
 ### Steps (follow upstream docs for full flags)
