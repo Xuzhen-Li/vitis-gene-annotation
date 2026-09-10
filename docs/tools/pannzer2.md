@@ -1,6 +1,8 @@
+**Note:** Optional. Not part of the allowlisted journal standard stack (see [`../RECENT_HIGH_QUALITY.md`](../RECENT_HIGH_QUALITY.md)); prefer AHRD (HR HSE) for descriptions.
+
 # PANNZER2 — GO + descriptions (Camellia T2T FA stack)
 
-**Role:** High-quality plant/animal FA papers often add PANNZER2 beside eggNOG + InterProScan (*Camellia nitidissima* Sci Data 2025).
+**Role:** Optional description/GO helper. Prefer AHRD for allowlisted HR-style METHODS.
 
 ## Get it
 - Web / container options exist (e.g. community Docker images).  

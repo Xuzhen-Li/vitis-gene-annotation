@@ -118,4 +118,4 @@ python3 "$REPO_ROOT/pipeline/F_merge_tables.py" -h
 
 Then open [`FUNCTIONAL_GUIDE.md`](FUNCTIONAL_GUIDE.md) and run **F0 → F1**.
 
-Why this stack: [`RECENT_HIGH_QUALITY.md`](RECENT_HIGH_QUALITY.md) (Cell T2T collection vs plant T2T Camellia FA recipe).
+Why this stack: [`RECENT_HIGH_QUALITY.md`](RECENT_HIGH_QUALITY.md) (allowlisted journals only: Cell/Nat/Sci + MP/PC/PBJ/HR/MBE/NAR/GB).

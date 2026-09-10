@@ -35,10 +35,11 @@ python3 "$REPO_ROOT/pipeline/F_merge_tables.py" \
 
 bash "$REPO_ROOT/pipeline/F_release.sh"
 
-# Camellia-grade extras (recommended for T2T papers):
-# 1) PANNZER2 → F4b_join_pannzer.py
+# Journal-grade extras (HR HSE / MP):
+# 1) AHRD → F4_join_ahrd.py
 # 2) Mercator4 web → F6_ingest_mercator.py
-# See docs/RECENT_HIGH_QUALITY.md
+# 3) optional iTAK / KofamScan
+# Allowlist: docs/RECENT_HIGH_QUALITY.md
 ```
 
 ---

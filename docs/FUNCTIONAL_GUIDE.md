@@ -238,11 +238,11 @@ Curate in GSAman if structure is uncertain; keep functional rows for these IDs e
 
 ---
 
-# Camellia-grade add-on (T2T plant data papers)
+# Journal-grade add-ons (HR HSE / MP Mercator)
 
 After F1.5 merge, optionally:
 
-## PANNZER2
+## PANNZER2 (optional; not required by allowlisted standards)
 
 Run PANNZER2 on `$PROTEINS_FA` → `$FUNCTION_DIR/pannzer/` · [`tools/pannzer2.md`](tools/pannzer2.md)
 
@@ -255,13 +255,13 @@ python3 "$REPO_ROOT/pipeline/F4b_join_pannzer.py" \
 
 ## Mercator4
 
-Already F6 — required for MapMan BINs in Camellia-like METHODS.
+Already F6 — required for MapMan BINs (Molecular Plant Mercator4; HR-style pathway figures).
 
 ## Phobius / SignalP
 
 Optional · [`tools/phobius_signalp.md`](tools/phobius_signalp.md)
 
-Survey of sources: [`RECENT_HIGH_QUALITY.md`](RECENT_HIGH_QUALITY.md).
+Allowlisted journal sources only: [`RECENT_HIGH_QUALITY.md`](RECENT_HIGH_QUALITY.md).
 
 # Release checklist (copy)
 

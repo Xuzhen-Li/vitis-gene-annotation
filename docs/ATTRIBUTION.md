@@ -57,3 +57,6 @@ Repo primary product reframed to functional annotation. Peers: eggnog-mapper, KE
 ## T2T / recent FA survey (2026-09-10)
 
 Cell Genomics T2T collection (assembly-first); Camellia nitidissima Sci Data FA = IPS+emapper+PANNZER2+Mercator4; GeneForge FA extras; LiftOn; T2T-Hub.
+
+## Journal allowlist filter (2026-09-10)
+RECENT_HIGH_QUALITY restricted to Cell+/Nat/Sci and MP, PC, PBJ, HR, MBE, NAR, GB; Sci Data Camellia demoted; HR HSE + MP Mercator4 + MBE/NAR eggNOG as FA standard.

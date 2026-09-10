@@ -1,94 +1,116 @@
-# Recent high-quality annotation workflows (survey)
+# High-quality annotation sources — journal allowlist only
 
-What recent T2T / reference papers actually run — distilled for *this* repo.  
-**Functional stack is the main product here;** structural notes are upstream only.
+**Allowed venues only** (user rule): Cell / Cell Press sister journals and above, plus  
+**MP** (*Molecular Plant*), **PC** (*The Plant Cell*), **PBJ** (*Plant Biotechnology Journal*),  
+**HR** (*Horticulture Research*), **MBE** (*Molecular Biology and Evolution*),  
+**NAR** (*Nucleic Acids Research*), **GB** (*Genome Biology* / *Genome Research*),  
+and Nature / Science family research journals.
 
----
-
-## 1. Cell / Cell Genomics T2T collection (2025–2026)
-
-**What it is:** PacBio-centered special collection of telomere-to-telomere assemblies across animals (human/primates, rat, giraffe, voles, birds, …). Overview: PacBio blog “Complete telomere-to-telomere genome assembly across the tree of life.”  
-Issue hub example: [Cell Genomics T2T-related issue](https://www.cell.com/cell-genomics/issue?pii=S2666-979X(25)X0009-4).
-
-**Honest take for annotation:**
-
-| Topic | What the collection emphasizes | Use in our repo |
-|-------|--------------------------------|-----------------|
-| Assembly finish | Verkko-Fillet, TTT gap models | Upstream Asm0 only — not FA |
-| Gene models on T2T animals | Often **CAT + Liftoff** (CHM13-style) or lab-specific BRAKER/Liftoff | Upstream S11/S4/S1 |
-| Functional tables | Usually standard IPS / emapper / UniProt — not reinvented | **Our F1** |
-
-**Human T2T-CHM13 gene track practice (UCSC):** Comparative Annotation Toolkit (CAT) on Cactus alignments + Iso-Seq, then **Liftoff** fills missed genes/paralogs. Tool: [LiftOn](https://github.com/Kuanhao-Chao/LiftOn) (Liftoff DNA + miniprot protein maximization) for T2T lift quality.
-
-**Bottom line:** The Cell T2T专刊 is **assembly-first**. For *Vitis* functional annotation, copy the **proteome FA recipes from recent plant T2T data papers** below, not the Verkko papers.
-
-Related closed-loop structural last-mile (Cell Press family): Chen et al. 2026 *The Innovation* — GSAman (already in upstream S5/GSAman docs).
+**Excluded from standards here:** *Scientific Data*, *G3*, *Frontiers*, preprints, Zenodo-only, unreviewed GitHub pipelines.
 
 ---
 
-## 2. Plant T2T data paper — Camellia nitidissima (*Scientific Data* 2025)
+## A. Tool / method papers (cite these for METHODS)
 
-**Structural:** EarlGrey TE → soft-mask → **BRAKER3** (HISAT2 BAM + OrthoDB) + TSEBRA.  
-
-**Functional (copy this as high-quality default):**
-
-1. **InterProScan**  
-2. **eggNOG-mapper**  
-3. **PANNZER2**  
-4. **Mercator4**  
-
-This matches our **F1 + F4-like + F6**, with PANNZER2 added as `F1c` / [`tools/pannzer2.md`](tools/pannzer2.md).
-
----
-
-## 3. GeneForge (Nextflow) — dual structure + FA suite
-
-https://github.com/SequAna-Ukon/GeneForge  
-
-- Structure: BRAKER3 ∥ FunAnnotate → BUSCO winner backbone  
-- Function on consensus: **InterProScan + eggNOG-mapper + Phobius + SignalP**  
-
-Adopted here as optional **F1 extras** (secreted/TM): [`tools/phobius_signalp.md`](tools/phobius_signalp.md).
+| Tool | Venue | Citation | Role in our FA spine |
+|------|--------|----------|----------------------|
+| eggNOG-mapper v2 | **MBE** 2021 | Cantalapiedra et al. doi:10.1093/molbev/msab293 | F1/F2 core |
+| eggNOG v7 DB | **NAR** 2026 | Hernández-Plaza et al. doi:10.1093/nar/gkaf1249 | emapper DB |
+| eggNOG 5/6 DBs | **NAR** | Huerta-Cepas et al. | legacy DB notes |
+| InterPro / InterProScan | **NAR** (resource issues) | Blum / Paysan-Lafosse et al. InterPro updates | F1 domains/GO |
+| MapMan4 + Mercator4 | **MP** 2019 | Schwacke et al. doi:10.1016/j.molp.2019.01.003 | F6 plant BINs |
+| BRAKER3 | **Genome Research** 2024 | Gabriel et al. doi:10.1101/gr.278090.123 | upstream structure |
+| GSAman last-mile | **The Innovation** (Cell Press partner) 2026 | Chen, Chen & Xia doi:10.1016/j.xinn.2026.101537 | upstream curation |
+| iTAK (TF/kinase) | **MP** 2016 | Zheng et al. doi:10.1016/j.molp.2016.09.014 | optional TF call |
+| quarTeT (T2T toolkit) | **HR** 2023 | Lin et al. doi:10.1093/hr/uhad127 | upstream Asm only |
+| T2T-Hub | **NAR** 2026 | doi:10.1093/nar/gkag423 | optional online FA check |
 
 ---
 
-## 4. T2T-Hub (ZJU/NJU)
+## B. How top journals actually annotate function (recent)
 
-https://doi.org/10.1093/nar/gkag423 · https://bis.zju.edu.cn/t2thub  
+### B1. *Horticulture Research* T2T / genome papers (pattern)
 
-Uploads genome+GFF → unified QC, TF, **functional annotation**, browser. Good as an external check of your release package — not a replacement for local F1 reproducibility.
-
----
-
-## 5. Other stacks worth knowing
-
-| Source | Stack | Role |
-|--------|--------|------|
-| JSBBS plant T2T review 2025 | BRAKER3 / MAKER2 / Helixer cited | Upstream |
-| zgtools (linyuiz) | Commercial-style full T2T+Repeat+ncRNA+Denovo+Func | Peer awareness only |
-| CantuLab AnnotationPipeline2 | PASA→EVM structural | Upstream S14 |
-| RAGNAROK / nf-annotate | Helixer/Mikado; Liftoff+EVM+HRP | Upstream / F8 NLR |
-
----
-
-## 6. What we standardize as “high-quality FA” for *Vitis*
-
-**Minimum paper-grade (F1):**
+Repeated FA pattern across recent HR T2T/genome articles (e.g. broccoli uhag110; monk fruit uhag103):
 
 ```text
-proteins (1/gene)
-  → DIAMOND SwissProt
-  → eggNOG-mapper
-  → InterProScan
-  → merge → functional_master.tsv
+proteins → search multiple DBs:
+  eggNOG (± COG/KOG)
+  PFAM
+  Swiss-Prot / UniProt
+  NR
+  GO
+  KEGG
+→ report % genes hitting ≥1 DB
 ```
 
-**T2T-plant-grade add-ons (Camellia-like):**
+**Our mapping:** F1 = DIAMOND SwissProt + eggNOG-mapper + InterProScan (PFAM/GO); KEGG from emapper (± KofamScan). NR optional (heavy).
+
+### B2. HortGenome Search Engine — **HR** 2024 (uhae100)
+
+Documented FA recipe for 500+ horticultural genomes:
+
+1. BLAST vs NR, UniProt (TrEMBL+SwissProt), Arabidopsis  
+2. **AHRD** descriptions  
+3. **InterProScan** domains  
+4. **eggNOG-mapper** → GO / KEGG  
+5. **iTAK** TF / TR / kinases  
+
+**Our mapping:** F1 + F4 (AHRD) + optional iTAK (add if needed). This is the **primary horticulture-journal template** for this repo.
+
+### B3. *Molecular Plant* — MapMan4 / Mercator4
+
+Schwacke et al. **MP** 2019: plant-specific BIN ontology + Mercator4 web annotation.  
+**Our mapping:** F6 (required for plant-pathway figures in MP/HR-style papers).
+
+### B4. Cell / Cell Genomics T2T collection
+
+Assembly-first (Verkko-Fillet, TTT, …). Gene models often **CAT + Liftoff / LiftOn** (CHM13 lineage).  
+**Functional:** not a new FA standard — use A/B1–B3 above after proteins exist.  
+**Our mapping:** LiftOn → upstream S4/S11 only ([`tools/lifton.md`](tools/lifton.md)).
+
+### B5. *Nature Genetics* — Garg et al. 2024 plant T2T review
+
+doi:10.1038/s41588-024-01830-7 — assembly / pangenome / breeding impact.  
+Does **not** replace FA METHODS; cite for T2T assembly context only.
+
+### B6. *Genome Research* — BRAKER3
+
+Upstream structural default (with BRAKER4 runner). Not an FA paper.
+
+### B7. *The Innovation* — GSAman
+
+Upstream last-mile structure before FA.
+
+---
+
+## C. Standardized “journal-grade” FA for *Vitis* (this repo)
+
+Aligned to **HR HSE + HR T2T multi-DB + MP Mercator4 + MBE/NAR eggNOG + NAR InterPro**:
 
 ```text
-  → PANNZER2 descriptions
-  → Mercator4 MapMan BINs
-  → optional Phobius/SignalP
+F0  BUSCO proteins
+F1  DIAMOND SwissProt (+ optional NR)
+    eggNOG-mapper (MBE/NAR)
+    InterProScan (NAR InterPro)
+F4  AHRD descriptions (as in HR HSE)
+F6  Mercator4 MapMan BINs (MP)
+±   iTAK TF/kinases (MP)
+±   KofamScan KO (optional KEGG depth)
+→ merge → release
 ```
 
-All runnable paths: [`INSTALL_FUNCTIONAL.md`](INSTALL_FUNCTIONAL.md) · [`FUNCTIONAL_GUIDE.md`](FUNCTIONAL_GUIDE.md) · [`SCENARIOS_FUNCTIONAL.md`](SCENARIOS_FUNCTIONAL.md).
+Copy-paste: [`INSTALL_FUNCTIONAL.md`](INSTALL_FUNCTIONAL.md) → [`SCENARIOS_FUNCTIONAL.md`](SCENARIOS_FUNCTIONAL.md) **F1** then F4/F6.
+
+**PANNZER2:** useful in some pipelines but **not** retained as a tier-defining citation under this allowlist unless/until a listed journal METHODS block is added; keep tool page optional only.
+
+---
+
+## D. Do not use as standards (below allowlist)
+
+| Source | Why dropped as standard |
+|--------|-------------------------|
+| *Scientific Data* Camellia FA stack | Below allowlist (was previous draft reference) |
+| GeneForge GitHub | No allowlisted paper attached here |
+| zgtools marketing claims | Not a listed journal METHODS |
+| G3 / Frontiers genome notes | Below allowlist |
