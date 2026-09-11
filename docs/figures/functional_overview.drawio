@@ -109,7 +109,7 @@
         <mxCell id="left-logo-glyph-4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F3C44C;strokeColor=#F3C44C;" value="" vertex="1">
           <mxGeometry height="14" width="14" x="74" y="72" as="geometry" />
         </mxCell>
-        <mxCell id="left-human-directive" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=6;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="Whole-run<br><b>config</b><br><br>local.env<br><b>(FA + upstream)</b>" vertex="1">
+        <mxCell id="left-human-directive" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=6;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="Whole-run&lt;br&gt;&lt;b&gt;config&lt;/b&gt;&lt;br&gt;&lt;br&gt;local.env&lt;br&gt;&lt;b&gt;(FA + upstream)&lt;/b&gt;" vertex="1">
           <mxGeometry height="143" width="150" x="151" y="212" as="geometry" />
         </mxCell>
         <mxCell id="left-initial-hypotheses" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=6;fillColor=#F7F7F7;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="Genome +&lt;br&gt;&lt;b&gt;evidence&lt;/b&gt;" vertex="1">
@@ -172,7 +172,7 @@
         <mxCell id="left-execution-logs" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=5;fillColor=#D5E7C8;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="Master&lt;br&gt;&lt;b&gt;TSV&lt;/b&gt;" vertex="1">
           <mxGeometry height="77" width="124" x="646" y="668" as="geometry" />
         </mxCell>
-        <mxCell id="left-reward-label" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=20;" value="<i>After F1 merge</i>" vertex="1">
+        <mxCell id="left-reward-label" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=20;" value="&lt;i&gt;After F1 merge&lt;/i&gt;" vertex="1">
           <mxGeometry height="30" width="180" x="466" y="510" as="geometry" />
         </mxCell>
         <mxCell id="left-scale-caption" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=18;" value="&lt;i&gt;F4 AHRD · F6 Mercator&lt;br&gt;F8 NLR · F9 iTAK&lt;br&gt;after F1 merge.&lt;/i&gt;" vertex="1">
@@ -920,7 +920,7 @@
         <mxCell id="cs-code-line-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#1f2937;fillColor=#222222;strokeColor=#222222;strokeWidth=0;" value="" vertex="1">
           <mxGeometry height="2" width="16" x="1781" y="390" as="geometry" />
         </mxCell>
-        <mxCell id="cs-interactive" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fillColor=none;strokeColor=none;fontColor=#111111;" value="Runbook<br><b>F1</b>" vertex="1">
+        <mxCell id="cs-interactive" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;fillColor=none;strokeColor=none;fontColor=#111111;" value="Runbook&lt;br&gt;&lt;b&gt;F1&lt;/b&gt;" vertex="1">
           <mxGeometry height="65" width="130" x="1585" y="480" as="geometry" />
         </mxCell>
         <object label="" scientificIllustratorRasterReason="The source-code editor screenshot is irreducible pictorial interface content with dense syntax coloration." scientificIllustratorSourceTightlyCropped="true" scientificIllustratorAtomicRasterUnit="true" scientificIllustratorContainsReconstructableContent="false" scientificIllustratorDecompositionNote="All surrounding labels, cards, arrows, separators, chart axes, bars, ticks, and legend text are rebuilt as editable cells; only the dense editor viewport remains raster." scientificIllustratorSourcePath="/Users/lixuzhen/Downloads/杨师兄综述教程/atomic_rasters/code_screen.png" scientificIllustratorCropLeftPercent="0" scientificIllustratorCropTopPercent="0" scientificIllustratorCropRightPercent="0" scientificIllustratorCropBottomPercent="0" id="cs-code-screen">
@@ -1209,7 +1209,7 @@
       <mxCell id="left-liftoff" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=6;fillColor=#F7F7F7;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="Optional&lt;br&gt;&lt;b&gt;Liftoff&lt;/b&gt;" vertex="1">
           <mxGeometry height="74" width="158" x="358" y="290" as="geometry" />
         </mxCell>
-<mxCell id="left-gsaman" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=6;fillColor=#C9D8F6;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="Last-mile<br><b>GSAman</b><br><font style=&quot;font-size:12px&quot;>upstream</font>" vertex="1">
+<mxCell id="left-gsaman" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=6;fillColor=#C9D8F6;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="Last-mile&lt;br&gt;&lt;b&gt;GSAman&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;upstream&lt;/font&gt;" vertex="1">
           <mxGeometry height="74" width="158" x="740" y="290" as="geometry" />
         </mxCell>
 <mxCell id="left-f2-fast" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=5;fillColor=#D5E7C8;strokeColor=#111111;fontColor=#111111;fontSize=20;strokeWidth=2;" value="F2&lt;br&gt;&lt;b&gt;fast&lt;/b&gt;" vertex="1">
