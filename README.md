@@ -21,37 +21,57 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 | [`docs/CITATIONS.md`](docs/CITATIONS.md) | Papers / software to cite |
 | [`docs/METHODS_FUNCTIONAL.md`](docs/METHODS_FUNCTIONAL.md) | METHODS paragraph template |
 
-## Main flowchart (functional)
+## Inputs → outputs (read this first)
+
+| | What | Where |
+|--|------|--------|
+| **Upstream** (optional) | Structural annotation → gene models | [`docs/steps/MAIN.md`](docs/steps/MAIN.md) S1–S14, *or* bring your own release |
+| **Input (required)** | One representative protein per gene | `PROTEINS_FA` → usually `$WORK_DIR/proteins.faa` |
+| **Input (optional)** | Curated GFF for locus context | `CURATED_GFF` / `DRAFT_GFF` in `config/local.env` |
+| **This repo (main)** | Functional annotation F0–F9 | [`docs/steps/FUNCTIONAL_MAIN.md`](docs/steps/FUNCTIONAL_MAIN.md) |
+| **Output (primary)** | Gene-centric function table | `$WORK_DIR/function/merge/functional_master.tsv` |
+| **Output (release)** | Packaged TSV + proteins + METHODS stub | `$WORK_DIR/function/release/<TAG>/` via `pipeline/F_release.sh` |
+| **Downstream** | Paper METHODS, enrichment, MapMan figures, NLR lists | fill [`docs/METHODS_FUNCTIONAL.md`](docs/METHODS_FUNCTIONAL.md); optional F4/F6/F8/F9 tables beside the master TSV |
+
+**Not claimed yet:** automatic write-back of GO/KEGG into GFF column 9 (master TSV is the source of truth).
+
+## Main flowchart
 
 ```mermaid
-flowchart TD
-  inn([Input: curated GFF + proteins.faa]) --> F0[F0 Protein QC BUSCO / OMArk]
-  F0 --> pick{Functional branch}
+flowchart LR
+  subgraph up [Upstream — optional]
+    asm[Genome + evidence]
+    struct[Structural S1–S14]
+    asm --> struct
+  end
 
-  pick -->|F1 full| F1[eggNOG-mapper + InterProScan + DIAMOND]
-  pick -->|F2 fast| F2[eggNOG-mapper only]
-  pick -->|F3 EnTAP| F3[EnTAP frame]
-  pick -->|F4 names| F4[AHRD / eifunannot descriptions]
-  pick -->|F5 transcript| F5[Trinotate if CDS from RNA]
-  pick -->|F6 plant paths| F6[Mercator / MapMan optional]
-  pick -->|F7 ortho| F7[OrthoFinder panel summarize]
+  subgraph inn [Input]
+    prot[proteins.faa<br/>one per gene]
+    gff[optional curated GFF]
+  end
 
-  F1 --> merge[F_merge: tables + GFF attributes]
-  F2 --> merge
-  F3 --> merge
-  F4 --> merge
-  F5 --> merge
-  F6 --> merge
-  F7 --> merge
+  subgraph fa [This repo — functional]
+    F0[F0 BUSCO QC]
+    F1[F1 DIAMOND + eggNOG + InterProScan]
+    add[Optional add-ons<br/>F4 AHRD · F6 Mercator · F8 NLR · F9 iTAK]
+    merge[F_merge → functional_master.tsv]
+    F0 --> F1 --> merge
+    F1 -.-> add -.-> merge
+  end
 
-  merge --> special{NLR / family?}
-  special -->|yes F8| F8[HRP / domain filter + priority]
-  special -->|no| out
-  F8 --> out[Release: TSV + annotated GFF + METHODS]
+  subgraph out [Output / downstream]
+    rel[release/TAG/<br/>TSV + METHODS]
+    use[METHODS · enrichment · figures]
+  end
 
-  inn -.->|no GFF yet| struct[Upstream structural S1–S14]
-  struct -.-> inn
+  struct --> prot
+  struct --> gff
+  prot --> F0
+  gff -.-> F0
+  merge --> rel --> use
 ```
+
+Alternate fast path: **F2** (emapper only). Alternate frames: **F3** EnTAP, **F5** Trinotate, **F7** OrthoFinder then F1 on OG reps — see [`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md).
 
 ## Start here (copy-paste)
 
@@ -62,7 +82,9 @@ flowchart TD
 
 ## Default line
 
-`proteins.faa` (+ optional GFF) → **F1** (emapper + InterProScan + SwissProt DIAMOND) → merge → release under `work/function/`.
+**In:** `proteins.faa` (+ optional GFF)  
+**Run:** **F1** (SwissProt DIAMOND + eggNOG-mapper + InterProScan) → merge  
+**Out:** `work/function/merge/functional_master.tsv` → `work/function/release/<TAG>/`
 
 ```bash
 cp config/example.env config/local.env   # set PROTEINS_FA, optional DRAFT_GFF/CURATED_GFF

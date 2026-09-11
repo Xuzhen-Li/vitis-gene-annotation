@@ -2,7 +2,11 @@
 
 **Goal:** attach function to a stable gene set.  
 **Input:** representative `PROTEINS_FA` (+ optional `CURATED_GFF`).  
-**Output:** TSVs (GO, KEGG, domains, descriptions, optional MapMan) under `$WORK_DIR/function/`, plus a release folder + METHODS.
+**Output:** `$WORK_DIR/function/merge/functional_master.tsv` (+ optional AHRD/MapMan/NLR/iTAK tables), then `$WORK_DIR/function/release/<TAG>/`.
+
+**Downstream:** METHODS text, enrichment / MapMan figures, curated gene lists — not automatic GFF attribute write-back.
+
+**Upstream:** [`MAIN.md`](MAIN.md) S1–S14 *or* external GFF+proteins.
 
 ```text
 curated proteins (+ GFF)
