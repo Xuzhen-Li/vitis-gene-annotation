@@ -29,4 +29,4 @@ If GeneMark and Augustus look fine but final BRAKER set is tiny / BUSCO-C drops:
 2. Or lower intron-support thresholds in the cfg when RNA is scarce.  
 3. Log before/after with `pipeline/A5d_stage_counts.sh`.
 
-See [`../peers/copetti.md`](../peers/copetti.md).
+See [`../notes/copetti.md`](../notes/copetti.md).

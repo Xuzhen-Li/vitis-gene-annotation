@@ -4,7 +4,7 @@
 
 Use the spine below only when you still need a GFF/proteins.
 
-This is the **main** annotation process. S1–S14 are not side docs; they are named exits from the same spine. CantuLab EVM is **S14** and is fully specified under [`dclab/`](dclab/).
+This is the **main** annotation process. S1–S14 are not side docs; they are named exits from the same spine. The EVM consensus path is **S14** and is fully specified under [`dclab/`](dclab/).
 
 ```text
 Raw reads
@@ -36,7 +36,7 @@ Raw reads
 | **S11** | Quick IDs | Liftoff only provisional |
 | **S12** | Stop rules | Freeze when stable |
 | **S13** | GPU Helixer path | Helixer + Mikado |
-| **S14** | CantuLab grape METHODS | PASA → Augustus/GeneMark → EVM → PASA polish → filter → rename |
+| **S14** | EVM consensus (PASA→EVM→polish) | PASA → Augustus/GeneMark → EVM → PASA polish → filter → rename |
 
 Recipes: [`../SCENARIOS.md`](../SCENARIOS.md).  
 S14 detail: [`dclab/README.md`](dclab/README.md).  

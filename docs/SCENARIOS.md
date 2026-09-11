@@ -4,7 +4,7 @@
 
 
 **Command-level spine (read first):** [`DETAILED_GUIDE.md`](DETAILED_GUIDE.md)  
-**Checklist:** [`PLAYBOOK.md`](PLAYBOOK.md) · **Peers:** [`PEER_PIPELINES.md`](PEER_PIPELINES.md)
+**Checklist:** [`PLAYBOOK.md`](PLAYBOOK.md) · **Peers:** [`RELATED_SOFTWARE.md`](RELATED_SOFTWARE.md)
 
 Every scenario below is a full recipe. Shared early steps always mean:  
 **Asm0 → Asm1 → soft-mask (A0+A0b)** unless the scenario says otherwise.
@@ -29,7 +29,7 @@ Every scenario below is a full recipe. Shared early steps always mean:
 4. **Align RNA** — HISAT2 or STAR → `RNA_BAM` + index.  
    Step 4 · [`../pipeline/A1b_rna_align.md`](../pipeline/A1b_rna_align.md)
 
-5. **Primary draft** — **prefer [BRAKER4](peers/braker4.md) ETP** if Singularity works; else BRAKER3 `braker.pl`.  
+5. **Primary draft** — **prefer [BRAKER4](notes/braker4.md) ETP** if Singularity works; else BRAKER3 `braker.pl`.  
    ```bash
    # BRAKER4: see docs/tools/braker4.md (samples.csv mode=ETP)
    DRAFT_ENGINE=braker3 bash pipeline/A2_run_draft.sh   # classic fallback
@@ -348,7 +348,7 @@ Do not endless-polish for a 0.1% BUSCO bump.
 9–12. Same as S1 from proteins / BUSCO / PSAURON / priority / GSAman / release.  
     Still apply Copetti stage QC if you also have a BRAKER set for comparison.
 
-Peers: [`peers/ragnarok.md`](peers/ragnarok.md).
+Peers: [`notes/ragnarok.md`](notes/ragnarok.md).
 
 ---
 
@@ -365,16 +365,16 @@ bash pipeline/A5d_stage_counts.sh \
   "$WORK_DIR/rna/stringtie.gtf"
 ```
 
-If BRAKER << other sets: TSEBRA rescue ([`tools/tsebra.md`](tools/tsebra.md)) before EVM. Full write-up: [`peers/copetti.md`](peers/copetti.md).
+If BRAKER << other sets: TSEBRA rescue ([`tools/tsebra.md`](tools/tsebra.md)) before EVM. Full write-up: [`notes/copetti.md`](notes/copetti.md).
 
 
 
 ---
 
-## S14 — CantuLab / DC Lab EVM pipeline (grape METHODS)
+## S14 — EVM consensus path
 
 **Merged runbook:** [`steps/dclab/`](steps/dclab/).  
-**When:** You want the published Cantu Lab structural-annotation path (PASA → train Augustus/GeneMark → EVM → PASA polish), as in [AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab).
+**When:** You want the published Cantu Lab structural-annotation path (PASA → train Augustus/GeneMark → EVM → PASA polish), (further reading: [AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab).
 
 ### Steps (follow upstream docs for full flags)
 
@@ -389,7 +389,7 @@ If BRAKER << other sets: TSEBRA rescue ([`tools/tsebra.md`](tools/tsebra.md)) be
 5. **05–06** Genome-wide ab initio + transcript alignment tracks.
 
 6. **07 EVM** with [`../config/evm_weights_cantulab.txt`](../config/evm_weights_cantulab.txt); then **PASA polish**.  
-   Peer summary: [`peers/cantulab_evm.md`](peers/cantulab_evm.md).
+   Notes: [`notes/cantulab_evm.md`](notes/cantulab_evm.md).
 
 7. **08 Filter** — no stop / &lt;50 aa:  
    ```bash

@@ -174,7 +174,7 @@ export RNA_BAM="$WORK_DIR/rna/star_Aligned.sortedByCoord.out.bam"
 
 ## Step 5 — Primary draft BRAKER4 / BRAKER3 (A2)
 
-Prefer **BRAKER4** ETP ([`tools/braker4.md`](tools/braker4.md), [`peers/braker4.md`](peers/braker4.md)). Classic `braker.pl` below remains valid.
+Prefer **BRAKER4** ETP ([`tools/braker4.md`](tools/braker4.md), [`notes/braker4.md`](notes/braker4.md)). Classic `braker.pl` below remains valid.
 
 ### Inputs
 - `GENOME_SOFT`, `RNA_BAM`, `PROTEIN_DB` (OrthoDB eudicots or Viridiplantae proteins)
@@ -208,7 +208,7 @@ bash pipeline/A5_agat_stats.sh "$DRAFT_GFF"
 Gene count vs near relative × ploidy — if crazy high → jump to **S10**.
 
 ### Copetti check (do not skip)
-Compare GeneMark / Augustus / BRAKER / StringTie counts and mono:multi — [`peers/copetti.md`](peers/copetti.md):
+Compare GeneMark / Augustus / BRAKER / StringTie counts and mono:multi — [`notes/copetti.md`](notes/copetti.md):
 ```bash
 bash pipeline/A5d_stage_counts.sh genemark.gtf augustus.hints.gtf braker.gtf stringtie.gtf
 ```
@@ -531,10 +531,10 @@ MERGE_MODE=evi_backbone bash pipeline/A4_merge_sets.sh
 | Priority | `pipeline/02_priority_loci.py` |
 | Release | `pipeline/06_release_gff.md` |
 
-Peers: [`PEER_PIPELINES.md`](PEER_PIPELINES.md).
+Peers: [`RELATED_SOFTWARE.md`](RELATED_SOFTWARE.md).
 
 
-## S14 — CantuLab EVM (merged into main process)
+## S14 — EVM consensus (part of the main process)
 
 Follow [`steps/dclab/`](steps/dclab/) 00→09, then return here at Step 8 (proteins/QC) through release.  
-Peer map: [`peers/cantulab_evm.md`](peers/cantulab_evm.md). Upstream: https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab
+Notes: [`notes/cantulab_evm.md`](notes/cantulab_evm.md). Upstream: https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab

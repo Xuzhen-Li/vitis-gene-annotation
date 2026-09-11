@@ -63,7 +63,7 @@ Wire into `MERGE_MODE=evm` notes in `pipeline/A4_merge_sets.sh` / [`../tools/evm
 
 ## When to choose S14 (this pipeline) vs S1 (BRAKER3)
 
-| Prefer **S14 CantuLab/EVM** | Prefer **S1 BRAKER3** |
+| Prefer **S14 EVM consensus** | Prefer **S1 BRAKER3** |
 |----------------------------|------------------------|
 | Strong Iso-Seq / PASA training set | Want GeneMark-ETP+Augustus one-shot |
 | Matching published Cantu *Vitis* METHODS | Faster modern default |

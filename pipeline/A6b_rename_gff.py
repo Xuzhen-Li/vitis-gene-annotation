@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rename genes to PREFIX_chrNNgXXXXXX.tXX style (inspired by CantuLab GFF_RenameThemAll.py).
+"""Rename genes to PREFIX_chrNNgXXXXXX.tXX style (S14 rename helper).
 Usage: A6b_rename_gff.py PREFIX VERSION CHR_STRIP_PREFIX in.gff3 > out.gff3
 Example: A6b_rename_gff.py VitisVinifera 1 chr genome.gff3 > renamed.gff3
 """

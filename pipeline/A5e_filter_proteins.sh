@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Filter GFF by protein stop + min length (CantuLab AnnotationPipeline2 step 08).
+# Filter GFF by protein stop + min length (S14 protein filter).
 # Requires: gffread, GENOME_FA, input GFF → writes *.checked.gff3
 set -euo pipefail
 : "${GENOME_FA:?}"

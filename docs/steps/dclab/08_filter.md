@@ -6,4 +6,4 @@ bash "${REPO_ROOT}/pipeline/A5e_filter_proteins.sh" \
 # → gene_models.checked.gff3
 ```
 
-Logic = CantuLab step 08 (no stop `*` / length &lt; 50 aa).
+Logic: no stop `*` / length < 50 aa (no stop `*` / length &lt; 50 aa).

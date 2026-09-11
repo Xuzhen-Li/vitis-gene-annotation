@@ -1,6 +1,6 @@
 # S14 / 00 — Setup
 
-Source: CantuLab `00-Setup.md` (adapted).
+Setup for the S14 EVM consensus path.
 
 ```bash
 # After: cp config/example.env config/local.env && source it

@@ -7,4 +7,4 @@ python3 "${REPO_ROOT}/pipeline/A6b_rename_gff.py" \
   > "${FILTERING_DIR}/${GENOME_PREFIX}.renamed.gff3"
 ```
 
-Inspired by CantuLab `GFF_RenameThemAll.py`. Then **return to main spine**: AGAT, proteins, BUSCO, PSAURON, GSAman, release.
+Then **return to main spine**: AGAT, proteins, BUSCO, PSAURON, GSAman, release.

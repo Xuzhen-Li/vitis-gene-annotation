@@ -32,7 +32,7 @@ No RNA → raise homology weights, lower ab initio.
 - Skipping AGAT after merge.
 
 
-## CantuLab / DC Lab grape defaults
+## S14 EVM consensus defaults
 
-See [`../peers/cantulab_evm.md`](../peers/cantulab_evm.md) and `config/evm_weights_cantulab.txt`.  
+See [`../notes/cantulab_evm.md`](../notes/cantulab_evm.md) and `config/evm_weights_cantulab.txt`.  
 Upstream runbook: https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab/blob/main/07-EVM_consensus.md

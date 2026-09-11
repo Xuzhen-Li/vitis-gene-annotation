@@ -94,7 +94,7 @@ Last 80 lines of log:
 Working dir listing (ls of relevant folder):
 <ls>
 
-Using docs/tools/<tool>.md and peers/copetti.md if relevant:
+Using docs/tools/<tool>.md and notes/copetti.md if relevant:
 what failed, what to try once, what NOT to retry blindly.
 ```
 
@@ -131,7 +131,7 @@ Do not invent exon coordinates.
 
 ```text
 Draft a METHODS paragraph from this real tool version list and branch ID.
-Only use versions I list. Mention CantuLab S14 / BRAKER S1 accurately.
+Only use versions I list. Mention S14 (EVM) / BRAKER S1 accurately.
 Versions:
 <list>
 ```

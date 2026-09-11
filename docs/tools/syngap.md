@@ -3,7 +3,7 @@
 **Role:** **S4** — compare ref vs hap annotations after Liftoff.
 
 ## Get it
-- SynGAP (search current GitHub / paper from PEER_PIPELINES).  
+- SynGAP (search current GitHub / paper from RELATED_SOFTWARE).  
 - Notes in [`../../pipeline/05_syngap_polish.md`](../../pipeline/05_syngap_polish.md).
 
 ## Typical use

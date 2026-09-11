@@ -23,9 +23,9 @@ case "$MERGE_MODE" in
   B=$DRAFT_GFF_B
   weights=${W:-config/evm_weights_*.txt}
 S1 template:  config/evm_weights_s1_braker.txt
-S14 CantuLab: config/evm_weights_cantulab.txt  (needs transcript_alignments + repeats.gff3)
+S14 weights: config/evm_weights_cantulab.txt  (needs transcript_alignments + repeats.gff3)
 
-CantuLab-style run (after predictions.gff3 + transcript_alignments.gff3 + repeats.gff3):
+S14-style run (after predictions.gff3 + transcript_alignments.gff3 + repeats.gff3):
   \${EVM_TOOLS}/EvmUtils/partition_EVM_inputs.pl --partition_dir ./partition_dir \\
     --genome GENOME.fa --gene_predictions predictions.gff3 \\
     --transcript_alignments transcript_alignments.gff3 --repeats repeats.gff3 \\

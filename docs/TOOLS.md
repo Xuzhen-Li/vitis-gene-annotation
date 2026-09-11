@@ -57,7 +57,7 @@ Use tools **in this sequence**. Later steps assume earlier outputs exist.
 | TE inflation (**S10**) | Stop; go back to #4–#5; restart from #7 |
 | Lift-only (**S11**) | After #3 (light): only Liftoff → AGAT; skip BRAKER/EVM/GSAman claim |
 | Helixer path (**S13**) | #8b Helixer → #9 Mikado instead of BRAKER+EVM |
-| CantuLab (**S14**) | Repeats → [PASA](tools/pasa.md) train Augustus/GeneMark → EVM (cantulab weights) → PASA polish → A5e filter → A6b rename |
+| EVM consensus (**S14**) | Repeats → [PASA](tools/pasa.md) train Augustus/GeneMark → EVM (cantulab weights) → PASA polish → A5e filter → A6b rename |
 | BRAKER gene collapse | After #7 run #9b; TSEBRA `-k` rescue (Copetti) |
 
 **Install order on a new machine** (so you can actually run the sequence above):

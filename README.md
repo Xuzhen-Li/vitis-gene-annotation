@@ -3,6 +3,8 @@
 **Main product: functional annotation** of *Vitis* gene sets  
 (GO / KEGG / domains / readable names / pathway summaries).
 
+This is a standalone teaching / METHODS playbook. Cite tools and papers you use ([`docs/CITATIONS.md`](docs/CITATIONS.md)); it is not a mirror of another lab’s repo.
+
 Structural annotation (finding gene models) is **upstream input**, documented under `docs/steps/` so you can produce or accept a qualified GFF+proteins — then this repo’s primary spine starts.
 
 | Doc | |
@@ -15,7 +17,8 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 | **[`docs/AI_ASSIST.md`](docs/AI_ASSIST.md)** | AI co-pilot (prompts / data / checks) |
 | [`docs/steps/MAIN.md`](docs/steps/MAIN.md) | Upstream structural spine (S1–S14) |
 | [`docs/TOOLS.md`](docs/TOOLS.md) | Tools (functional section first) |
-| [`docs/PEER_PIPELINES.md`](docs/PEER_PIPELINES.md) | Blueprints |
+| [`docs/RELATED_SOFTWARE.md`](docs/RELATED_SOFTWARE.md) | Related tools (further reading) |
+| [`docs/CITATIONS.md`](docs/CITATIONS.md) | Papers / software to cite |
 
 ## Main flowchart (functional)
 

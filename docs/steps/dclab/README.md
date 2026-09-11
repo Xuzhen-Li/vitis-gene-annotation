@@ -1,7 +1,9 @@
-# S14 — CantuLab / DC Lab EVM path (merged into this repo)
+# S14 — EVM consensus path
 
-Adapted from [CantuLab/AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab) (v1: [andreaminio/…](https://github.com/andreaminio/AnnotationPipeline-EVM_based-DClab)).  
-Used in Cantu Lab *Vitis* G3 papers. **This folder is part of the main process** when you pick S14.
+PASA training → ab initio → EVM → PASA polish → filter → rename.  
+**Part of the main process** when you choose scenario S14.
+
+Further reading: [AnnotationPipeline2-EVM_based-DClab](https://github.com/CantuLab/AnnotationPipeline2-EVM_based-DClab) (v1: [andreaminio/…](https://github.com/andreaminio/AnnotationPipeline-EVM_based-DClab)).
 
 | Step | File |
 |------|------|
@@ -19,4 +21,4 @@ Used in Cantu Lab *Vitis* G3 papers. **This folder is part of the main process**
 
 Weights: [`../../../config/evm_weights_cantulab.txt`](../../../config/evm_weights_cantulab.txt).  
 Env: `config/example.env` (S14 block).  
-Peer map: [`../../peers/cantulab_evm.md`](../../peers/cantulab_evm.md).
+Notes: [`../../notes/cantulab_evm.md`](../../notes/cantulab_evm.md).
