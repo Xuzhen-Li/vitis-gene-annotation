@@ -2,9 +2,9 @@
 
 | File | Role |
 |------|------|
-| `functional_overview_SOURCE.drawio` | Untouched copy of the user-provided Co-Scientist style reference |
-| `functional_overview.drawio` | Working figure for this repo (same visual language: pastel bands, Helvetica cards, black arrows) |
-| `functional_overview.png` | README render (~2000 px) |
-| `functional_overview.svg` | Vector export |
+| `functional_overview_SOURCE.drawio` | Untouched user Co-Scientist figure (style donor) |
+| `functional_overview.drawio` | **Edit this** — same file, labels/modules retargeted to vitis-gene-annotation; extra cards duplicated in-place |
+| `functional_overview.png` | README render (export from draw.io desktop when CLI fails) |
+| `functional_overview.svg` | Optional vector export |
 
-Edit `functional_overview.drawio` in draw.io; re-export PNG/SVG after changes.
+Workflow: change text / swap images / duplicate modules on `functional_overview.drawio` — do not rebuild a new layout from scratch.
