@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Merge prediction sets. S1 weights vs S14 (CantuLab) weights.
+# Merge prediction sets. S1 weights vs S14 EVM weights.
 # See docs/steps/dclab/07_evm_polish.md and docs/DETAILED_GUIDE.md Step 7.
 set -euo pipefail
 : "${WORK_DIR:?}"
