@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-09-11T02:41:56.219Z" version="30.3.6">
+  <diagram id="page-1" name="Overview">
+    <mxGraphModel dx="1422" dy="762" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1680" pageHeight="780" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="__figure_title__" value="vitis-gene-annotation functional overview" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontSize=22;fontStyle=1;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="canvas-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1680" height="780" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="&lt;b&gt;vitis-gene-annotation&lt;/b&gt; — Functional annotation playbook" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="40" y="18" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Upstream is optional · Main product is function tables · No automatic GFF attribute write-back" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#555555;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="56" width="1100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="band-a-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#AFC5EE;strokeColor=#AFC5EE;" vertex="1" parent="1">
+          <mxGeometry x="36" y="100" width="300" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="band-b-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D8E4F7;strokeColor=#D8E4F7;" vertex="1" parent="1">
+          <mxGeometry x="348" y="100" width="260" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="band-c-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#BFD8AA;strokeColor=#BFD8AA;" vertex="1" parent="1">
+          <mxGeometry x="620" y="100" width="420" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="band-d-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5E7B8;strokeColor=#F5E7B8;" vertex="1" parent="1">
+          <mxGeometry x="1052" y="100" width="280" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="band-e-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDE5A2;strokeColor=#FDE5A2;" vertex="1" parent="1">
+          <mxGeometry x="1344" y="100" width="300" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="outer" value="" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#B7B7B7;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="36" y="100" width="1608" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="lab-a" value="&lt;b&gt;a. Upstream&lt;/b&gt; (optional)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="36" y="108" width="300" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="lab-b" value="&lt;b&gt;b. Input&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="348" y="108" width="260" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="lab-c" value="&lt;b&gt;c. Functional core&lt;/b&gt; (this repo)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="620" y="108" width="420" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="lab-d" value="&lt;b&gt;d. Add-ons&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1052" y="108" width="280" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="lab-e" value="&lt;b&gt;e. Output / downstream&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#111111;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1344" y="108" width="300" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Genome + evidence&lt;br&gt;&lt;b&gt;RNA / proteins / repeats&lt;/b&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="64" y="170" width="244" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Structural S1–S14&lt;br&gt;&lt;b&gt;BRAKER / EVM / GSAman&lt;/b&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F7F7F7;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="64" y="270" width="244" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="Or import external&lt;br&gt;&lt;b&gt;qualified GFF&lt;/b&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F7F7F7;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="64" y="390" width="244" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a_note" value="&lt;i&gt;docs/steps/MAIN.md&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#333333;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="64" y="490" width="244" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="&lt;b&gt;proteins.faa&lt;/b&gt;&lt;br&gt;one protein / gene&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;PROTEINS_FA&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#C9D8F6;strokeColor=#111111;fontColor=#111111;fontSize=17;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="372" y="200" width="212" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="optional&lt;br&gt;&lt;b&gt;curated GFF&lt;/b&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F7F7F7;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="372" y="340" width="212" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="b_note" value="&lt;i&gt;Required input is&lt;br&gt;the protein set&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#333333;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="372" y="460" width="212" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c0" value="F0 Protein QC — &lt;b&gt;BUSCO&lt;/b&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="660" y="160" width="340" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="&lt;b&gt;F1 default (paper)&lt;/b&gt;&lt;br&gt;DIAMOND Swiss-Prot&lt;br&gt;eggNOG-mapper&lt;br&gt;InterProScan" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#D5E7C8;strokeColor=#111111;fontColor=#111111;fontSize=17;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="660" y="250" width="340" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="F_merge → &lt;b&gt;functional_master.tsv&lt;/b&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#C9D8F6;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="660" y="400" width="340" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="c_alt" value="&lt;i&gt;Alt: F2 fast · F3 EnTAP · F5 Trinotate · F7 OrthoFinder&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#333333;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="660" y="500" width="340" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="F4 &lt;b&gt;AHRD&lt;/b&gt; names" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="170" width="224" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="F6 &lt;b&gt;Mercator4&lt;/b&gt; BINs" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="260" width="224" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="F8 NLR · F9 iTAK" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="350" width="224" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="d_note" value="&lt;i&gt;After F1 — not&lt;br&gt;parallel branches&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#333333;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="440" width="224" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="&lt;b&gt;release/&amp;lt;TAG&amp;gt;/&lt;/b&gt;&lt;br&gt;functional_master.tsv&lt;br&gt;proteins.faa · METHODS" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#FDE5A2;strokeColor=#111111;fontColor=#111111;fontSize=15;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1372" y="180" width="244" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="Downstream use&lt;br&gt;&lt;b&gt;METHODS · enrichment&lt;/b&gt;&lt;br&gt;MapMan figures · gene lists" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;spacing=4;fillColor=#F8F8F8;strokeColor=#111111;fontColor=#111111;fontSize=15;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1372" y="320" width="244" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e_note" value="&lt;i&gt;TSV is source of truth&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontColor=#333333;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1372" y="450" width="244" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Start: docs/INSTALL_FUNCTIONAL.md → docs/SCENARIOS_FUNCTIONAL.md F1 → pipeline/F_release.sh · Cite docs/CITATIONS.md" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Helvetica;fontColor=#444444;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="680" width="1600" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_a1_a2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="a1" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_a2_b1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="a2" target="b1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_a3_b2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;dashed=1;dashPattern=8 8;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="a3" target="b2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_b1_c0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="b1" target="c0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c0_c1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="c0" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c1_c2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="c1" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c1_d1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;dashed=1;dashPattern=8 8;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1" source="c1" target="d1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c1_d2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;dashed=1;dashPattern=8 8;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="c1" target="d2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c1_d3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;dashed=1;dashPattern=8 8;exitX=1;exitY=0.75;entryX=0;entryY=0.5;" edge="1" parent="1" source="c1" target="d3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d1_c2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;dashed=1;dashPattern=8 8;exitX=0;exitY=1;entryX=1;entryY=0.3;" edge="1" parent="1" source="d1" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c2_e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="c2" target="e1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_e1_e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;endFill=1;strokeColor=#111111;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="e1" target="e2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

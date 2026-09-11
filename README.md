@@ -35,7 +35,14 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 
 **Not claimed yet:** automatic write-back of GO/KEGG into GFF column 9 (master TSV is the source of truth).
 
-## Main flowchart
+## Overview figure
+
+![Functional annotation overview](docs/figures/functional_overview.png)
+
+Editable source: [`docs/figures/functional_overview.drawio`](docs/figures/functional_overview.drawio)  
+(style tokens aligned with the Co-Scientist architecture figure: pastel bands, Helvetica cards, black orthogonal arrows).
+
+## Text flowchart (fallback)
 
 ```mermaid
 flowchart LR
