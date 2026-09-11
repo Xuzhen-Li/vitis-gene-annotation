@@ -1,4 +1,6 @@
-# Toy files — test merge without downloading databases
+# Toy functional inputs (no databases required)
+
+Files are tiny fakes for testing `pipeline/F_merge_tables.py` and join helpers.
 
 ```bash
 python3 pipeline/F_merge_tables.py \
@@ -6,6 +8,7 @@ python3 pipeline/F_merge_tables.py \
   --emapper testdata/function/toy.emapper.annotations \
   --ips testdata/function/toy.ips.tsv \
   --diamond testdata/function/toy.diamond.tsv \
-  --out /tmp/toy_master.tsv
-python3 pipeline/F8_list_nlr_from_ips.py --ips testdata/function/toy.ips.tsv --out /tmp/toy_nlr.tsv
+  --out /tmp/vga_toy_master.tsv
 ```
+
+Not for biological conclusions.

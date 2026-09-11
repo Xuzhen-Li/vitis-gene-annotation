@@ -2,28 +2,42 @@
 
 **Goal:** attach function to a stable gene set.  
 **Input:** representative `PROTEINS_FA` (+ optional `CURATED_GFF`).  
-**Output:** TSVs (GO, KEGG, domains, descriptions) and optionally GFF column-9 attributes under `$WORK_DIR/function/`.
+**Output:** TSVs (GO, KEGG, domains, descriptions, optional MapMan) under `$WORK_DIR/function/`, plus a release folder + METHODS.
 
 ```text
 curated proteins (+ GFF)
-  → F0 protein QC
-  → branch F1–F8
-  → merge tables
-  → release functional package + METHODS
+  → F0 protein QC (BUSCO proteins)
+  → F1 default (DIAMOND + eggNOG-mapper + InterProScan)
+       or F2 / F3 / F5 alternate frames
+  → optional F4 AHRD · F6 Mercator4 · F8 NLR · F9 iTAK
+  → merge tables → F_release.sh
 ```
 
-If you lack a GFF/proteins, run upstream [`MAIN.md`](MAIN.md) (structural S1–S14) first, or import someone else’s release.
+No proteins yet? Upstream structural spine: [`MAIN.md`](MAIN.md) (S1–S14), then return here.
 
-| ID | When | Core tools |
-|----|------|------------|
-| **F1** | Default / paper | eggNOG-mapper + InterProScan + DIAMOND SwissProt |
-| **F2** | Fast / HPC light | eggNOG-mapper only (+ KEGGaNOG optional) |
-| **F3** | Non-model frame | EnTAP |
-| **F4** | Human-readable names | AHRD / eifunannot |
-| **F5** | Transcriptome CDS | Trinotate |
-| **F6** | Plant pathways | Mercator4 / MapMan (optional web/local) |
-| **F7** | Multi-genome | OrthoFinder → annotate OG representatives |
-| **F8** | NLR / families | HRP + Pfam/InterPro filters |
+## Default order (paper)
 
-Recipes: [`../SCENARIOS_FUNCTIONAL.md`](../SCENARIOS_FUNCTIONAL.md).  
-Commands: [`../FUNCTIONAL_GUIDE.md`](../FUNCTIONAL_GUIDE.md).
+1. [`../INSTALL_FUNCTIONAL.md`](../INSTALL_FUNCTIONAL.md)  
+2. [`../SCENARIOS_FUNCTIONAL.md`](../SCENARIOS_FUNCTIONAL.md) **F1**  
+3. **F4** + **F6** for HR/MP-style METHODS  
+4. `bash pipeline/F_release.sh`  
+5. Fill [`../METHODS_FUNCTIONAL.md`](../METHODS_FUNCTIONAL.md)
+
+## Branch table
+
+| ID | When | Core tools | In-repo runner |
+|----|------|------------|----------------|
+| **F0** | Always | BUSCO proteins | inline in scenarios |
+| **F1** | Default / paper | DIAMOND + emapper + InterProScan | `F1_diamond.sh` `F2_eggnog.sh` `F3_interproscan.sh` |
+| **F2** | Fast | emapper (± Kofam) | `F2_eggnog.sh` `F1b_kofam.sh` |
+| **F3** | EnTAP frame | EnTAP | docs + copy TSV |
+| **F4** | Readable names | AHRD | `F4_join_ahrd.py` · `F4_run_ahrd.md` |
+| **F5** | Transcriptome CDS | Trinotate (± F1) | docs/tools/trinotate.md |
+| **F6** | Plant BINs | Mercator4 | `F6_ingest_mercator.py` |
+| **F7** | Multi-genome | OrthoFinder → F1 on reps | `F7_orthofinder.sh` |
+| **F8** | NLR | IPS filter ± HRP | `F8_run.sh` `F8_list_nlr_from_ips.py` |
+| **F9** | TF / kinase | iTAK | `F9_itak.sh` |
+
+Commands: [`../FUNCTIONAL_GUIDE.md`](../FUNCTIONAL_GUIDE.md).  
+Standards: [`../RECENT_HIGH_QUALITY.md`](../RECENT_HIGH_QUALITY.md).  
+Citations: [`../CITATIONS.md`](../CITATIONS.md).

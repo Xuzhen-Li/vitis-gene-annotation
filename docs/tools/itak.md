@@ -1,7 +1,13 @@
 # iTAK — plant TF / TR / kinases
 
-**Role:** Optional after F1; used in *Horticulture Research* HortGenome Search Engine (uhae100).
+**Role:** F9 optional table (used in horticultural multi-genome FA METHODS).
 
-Paper: Zheng et al. *Molecular Plant* 2016 doi:10.1016/j.molp.2016.09.014
+**Citation:** Zheng et al. *Molecular Plant* 2016 doi:10.1016/j.molp.2016.09.014
 
-Run iTAK on `$PROTEINS_FA`; save family table under `$FUNCTION_DIR/itak/`; cite in METHODS.
+## In this playbook
+
+```bash
+RUN=1 bash "$REPO_ROOT/pipeline/F9_itak.sh"
+```
+
+Outputs under `$FUNCTION_DIR/itak/`. Keep beside `functional_master.tsv` in the release; cite in METHODS.

@@ -1,6 +1,20 @@
-# AHRD / eifunannot — human-readable descriptions
+# AHRD — human-readable descriptions
 
-- AHRD: https://github.com/groupschoof/AHRD  
-- HPC wrapper: https://github.com/EI-CoreBioinformatics/eifunannot  
+**Role:** F4 — concise protein names from BLAST/DIAMOND (+ domain) evidence (HR HSE-style METHODS).
 
-Feed DIAMOND/BLAST tabular + optional InterPro; output short gene names/descriptions for GFF `Note=` / master TSV.
+**Software:** [groupschoof/AHRD](https://github.com/groupschoof/AHRD)
+
+## Inputs from this playbook
+
+- `$FUNCTION_DIR/diamond/swissprot.tsv` (F1.1)
+- `$FUNCTION_DIR/interpro/vitis_ips.tsv` (F1.3, optional but better)
+
+## Outputs
+
+- `$FUNCTION_DIR/ahrd/ahrd_output.csv` (or TSV with description column)
+- Join: `pipeline/F4_join_ahrd.py` → `functional_master.with_ahrd.tsv`
+
+## Notes
+
+Follow upstream AHRD YAML example; point BLAST/DIAMOND tabular hits at Swiss-Prot.
+After join, release with `pipeline/F_release.sh`.

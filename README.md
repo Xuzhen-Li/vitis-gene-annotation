@@ -19,6 +19,7 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 | [`docs/TOOLS.md`](docs/TOOLS.md) | Tools (functional section first) |
 | [`docs/RELATED_SOFTWARE.md`](docs/RELATED_SOFTWARE.md) | Related tools (further reading) |
 | [`docs/CITATIONS.md`](docs/CITATIONS.md) | Papers / software to cite |
+| [`docs/METHODS_FUNCTIONAL.md`](docs/METHODS_FUNCTIONAL.md) | METHODS paragraph template |
 
 ## Main flowchart (functional)
 
@@ -55,7 +56,7 @@ flowchart TD
 ## Start here (copy-paste)
 
 1. [`docs/INSTALL_FUNCTIONAL.md`](docs/INSTALL_FUNCTIONAL.md)
-2. [`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md) **F1**
+2. [`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md) **F1** (then F4 + F6 for paper)
 3. `bash pipeline/F_release.sh`
 4. Why this stack: [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md)
 

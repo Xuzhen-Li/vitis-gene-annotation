@@ -1,10 +1,20 @@
-# Mercator4 / MapMan — plant BIN annotation
+# Mercator4 / MapMan4
 
-**Role:** F6. Web-only annotation → ingest with `pipeline/F6_ingest_mercator.py`.
+**Role:** F6 — plant pathway BINs for figures and pathway enrichment.
 
-## Steps (complete)
+**Citation:** Schwacke et al. *Molecular Plant* 2019 doi:10.1016/j.molp.2019.01.003
 
-See [`../FUNCTIONAL_GUIDE.md`](../FUNCTIONAL_GUIDE.md) section F6.  
-Portal: https://www.plabipd.de/mercator_main.html  
+## In this playbook
 
-Output columns of interest: `BINCODE`, `IDENTIFIER` (must match FASTA ids).
+1. Upload `$PROTEINS_FA` at the Mercator4 web service (Plabipd).  
+2. Download results → `$FUNCTION_DIR/mercator/mercator_results.txt`.  
+3. Ingest:
+
+```bash
+python3 "$REPO_ROOT/pipeline/F6_ingest_mercator.py" \
+  --master "$FUNCTION_DIR/merge/functional_master.tsv" \
+  --mercator "$FUNCTION_DIR/mercator/mercator_results.txt" \
+  --out "$FUNCTION_DIR/merge/functional_master.with_mapman.tsv"
+```
+
+Scenario **F6**. Record job date in METHODS.
