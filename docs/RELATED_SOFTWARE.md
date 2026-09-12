@@ -32,3 +32,15 @@ This repo is a **biology-general gene-annotation playbook** (*Vitis*/plant notes
 | [funannotate](https://github.com/nextgenusfs/funannotate) · MAKER-family stacks | Alternate eukaryote stacks |
 
 Short notes (optional reading): [`notes/`](notes/).
+
+## Newer peers (2026-09)
+
+| Software | Notes |
+|----------|-------|
+| [GALBA2](https://github.com/Gaius-Augustus/GALBA2) | Structure S2 peer (protein-only, large genomes) — see structure repo |
+| [TOGA2](https://github.com/hillerlab/TOGA2) | Vertebrate WGA transfer / orthology — structure repo |
+| [funannotate2](https://github.com/nextgenusfs/funannotate2) (+ [addons](https://github.com/nextgenusfs/funannotate2-addons)) | Fungi/eukaryote structure+FA; eggNOG/IPS align with F1 |
+| [AnnotationTOGA](https://github.com/harvardinformatics/AnnotationTOGA) | Harvard TOGA wrapper |
+
+Canonical structure playbook: [gene-structure-annotation](https://github.com/Xuzhen-Li/gene-structure-annotation) `docs/PEER_PIPELINES.md`.
+
