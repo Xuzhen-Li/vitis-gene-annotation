@@ -57,7 +57,7 @@ After a BRAKER run, fill:
 
 Helper script: [`../../pipeline/A5d_stage_counts.sh`](../../pipeline/A5d_stage_counts.sh).
 
-## What we adopted into *vitis-gene-annotation*
+## What we adopted into *gene-function-annotation*
 
 | Copetti habit | Where it lives |
 |---------------|----------------|

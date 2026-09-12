@@ -6,7 +6,7 @@
 **Main spine:** [`steps/FUNCTIONAL_MAIN.md`](steps/FUNCTIONAL_MAIN.md).
 
 ```bash
-cd /path/to/vitis-gene-annotation
+cd /path/to/gene-function-annotation
 set -a && source config/local.env && set +a
 mkdir -p "$FUNCTION_DIR"/{diamond,emapper,interpro,kofam,ahrd,mercator,merge,release,qc}
 ```
@@ -280,5 +280,5 @@ bash "$REPO_ROOT/pipeline/F_release.sh"
 Representative proteins were functionally annotated with DIAMOND blastp against UniProt Swiss-Prot (release DATE),
 eggNOG-mapper (version, database eggNOG X, tax scope …), and InterProScan (version).
 Optional: KofamScan (KEGG KO); Mercator4 (MapMan4 BINs, web job DATE); AHRD descriptions.
-Results were merged per gene into functional_master.tsv (vitis-gene-annotation pipeline).
+Results were merged per gene into functional_master.tsv (gene-function-annotation pipeline).
 ```

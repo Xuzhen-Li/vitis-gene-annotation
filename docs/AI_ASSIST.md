@@ -63,7 +63,7 @@ $WORK_DIR/{asm,mask,rna,draft,qc,curate,release}
 
 ```text
 You are helping with Vitis gene annotation using the playbook at
-https://github.com/Xuzhen-Li/vitis-gene-annotation (docs/SCENARIOS.md).
+https://github.com/Xuzhen-Li/gene-function-annotation (docs/SCENARIOS.md).
 
 Here is my MANIFEST:
 <paste>
@@ -204,7 +204,7 @@ Browser: load soft-masked genome + GFF + RNA BAM + homolog lift + TE track (Cope
 ## 7. Minimal “AI session” template
 
 ```text
-Playbook: Xuzhen-Li/vitis-gene-annotation
+Playbook: Xuzhen-Li/gene-function-annotation
 Branch: S___
 Step: ___
 MANIFEST: <attached or pasted>
@@ -234,7 +234,7 @@ AI chat is not the archive — `release/` + METHODS are.
 ### Pick F-branch
 
 ```text
-Playbook: Xuzhen-Li/vitis-gene-annotation functional spine
+Playbook: Xuzhen-Li/gene-function-annotation functional spine
 (docs/SCENARIOS_FUNCTIONAL.md). Proteins: <path or BUSCO summary>.
 Goal: paper|fast|names|NLR. Recommend F1–F8. No invented GO counts.
 ```

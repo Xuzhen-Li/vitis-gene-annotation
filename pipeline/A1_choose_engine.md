@@ -1,6 +1,6 @@
 # A1 — Choose the draft engine
 
-From [plant-gene-annotation](https://github.com/Xuzhen-Li/plant-gene-annotation) skill defaults:
+From [gene-structure-annotation](https://github.com/Xuzhen-Li/gene-structure-annotation) skill defaults:
 
 | Evidence you have | Engine | Notes |
 |-------------------|--------|-------|

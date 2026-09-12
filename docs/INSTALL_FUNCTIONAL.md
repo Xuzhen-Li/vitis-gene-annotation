@@ -1,6 +1,6 @@
 # Install everything for functional annotation (copy this)
 
-Biology-general install. Clone path may still be named `vitis-gene-annotation`; set `FUN_PREFIX`, BUSCO lineage, and `EGGNOG_TAX_SCOPE` for your species/clade.
+Biology-general install. Clone [`gene-function-annotation`](https://github.com/Xuzhen-Li/gene-function-annotation); set `FUN_PREFIX`, BUSCO lineage, and `EGGNOG_TAX_SCOPE` for your species/clade.
 
 You only need this file + `config/example.env` + `pipeline/F*.sh` to run **F1**.  
 No other websites are required for the default path except downloading the databases listed below (URLs are included).
@@ -12,8 +12,8 @@ Assumes Linux + bash. Prefer **conda/mamba** or **Singularity** on HPC.
 ## 0. Workspace
 
 ```bash
-git clone https://github.com/Xuzhen-Li/vitis-gene-annotation.git
-cd vitis-gene-annotation
+git clone https://github.com/Xuzhen-Li/gene-function-annotation.git
+cd gene-function-annotation
 cp config/example.env config/local.env
 # edit: WORK_DIR, PROTEINS_FA, THREADS, REPO_ROOT, DIAMOND_DB paths
 mkdir -p "$HOME/annot_dbs"   # or a shared scratch

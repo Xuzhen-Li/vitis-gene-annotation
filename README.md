@@ -1,4 +1,4 @@
-# vitis-gene-annotation
+# gene-function-annotation
 
 **Main product: functional annotation** of gene sets across biology  
 (GO / KEGG / domains / readable names / pathway summaries).
@@ -7,7 +7,7 @@ Organism-general teaching / METHODS playbook (not grape-only, not plant-only). C
 
 Structural annotation (finding gene models) is **upstream input**, documented under `docs/steps/` so you can produce or accept a qualified GFF+proteins — then this repo’s primary spine starts.
 
-> Repo folder name stays `vitis-gene-annotation` for history; the workflow itself is biology-general.
+> Formerly `vitis-gene-annotation`. Pair with [`gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation) for gene models.
 
 | Doc | |
 |-----|--|
