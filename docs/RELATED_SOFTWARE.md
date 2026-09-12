@@ -44,3 +44,13 @@ Short notes (optional reading): [`notes/`](notes/).
 
 Canonical structure playbook: [gene-structure-annotation](https://github.com/Xuzhen-Li/gene-structure-annotation) `docs/PEER_PIPELINES.md`.
 
+## Mainstream / AI structure peers (upstream)
+
+| Software | Notes |
+|----------|-------|
+| MAKER2 | High-citation full stack (Holt & Yandell 2011) |
+| Helixer | *Nat Methods* 2025 AI ab initio |
+| Tiberius | *Bioinformatics* 2024 AI ab initio (AUGUSTUS lab) |
+| [ANNEVO](https://github.com/xjtu-omics/ANNEVO) | Kai Ye 叶凯 lab genomic LM; non-commercial license |
+
+Details: [gene-structure-annotation](https://github.com/Xuzhen-Li/gene-structure-annotation) `docs/PEER_PIPELINES.md`.

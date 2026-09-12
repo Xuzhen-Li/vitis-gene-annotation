@@ -38,3 +38,13 @@ Journal-tier METHODS notes: [`RECENT_HIGH_QUALITY.md`](RECENT_HIGH_QUALITY.md).
 
 Catalog of commonly used annotation tools and workflows (not vendored here):  
 [`RELATED_SOFTWARE.md`](RELATED_SOFTWARE.md).
+
+## Structural / AI ab initio (upstream; cite if used)
+
+| Tool | Citation cue |
+|------|----------------|
+| Helixer | Holst et al. *Nat Methods* 2025 doi:10.1038/s41592-025-02939-1 |
+| Tiberius | Gabriel et al. *Bioinformatics* 2024 doi:10.1093/bioinformatics/btae685 |
+| ANNEVO | Zhang, Ye et al. (Kai Ye lab); https://github.com/xjtu-omics/ANNEVO — confirm venue when citing |
+| MAKER2 | Holt & Yandell *BMC Bioinformatics* 2011 doi:10.1186/1471-2105-12-491 |
+| AUGUSTUS / GeneMark / EVM / PASA | Cite the versions actually run |
