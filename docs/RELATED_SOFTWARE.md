@@ -1,7 +1,7 @@
 # Related software
 
 Public tools and workflows useful when teaching or running plant gene annotation.  
-This repo **integrates a *Vitis*-focused playbook**; links below are for citation and further reading, not a statement that any third-party project was copied wholesale.
+This repo is a **biology-general gene-annotation playbook** (*Vitis*/plant notes are examples). Links below are for citation and further reading, not a statement that any third-party project was copied wholesale.
 
 ## Functional
 
@@ -13,8 +13,8 @@ This repo **integrates a *Vitis*-focused playbook**; links below are for citatio
 | [AHRD](https://github.com/groupschoof/AHRD) · [eifunannot](https://github.com/EI-CoreBioinformatics/eifunannot) | Readable names (F4) |
 | [EnTAP](https://gitlab.com/PlantGenomicsLab/EnTAP) | Optional F3 frame |
 | [Trinotate](https://github.com/Trinotate/Trinotate) | Transcriptome FA (F5) |
-| [HRP](https://github.com/AndolfoG/HRP) | NLR focus (F8) |
-| Mercator4 / MapMan | Plant BINs (F6) |
+| [HRP](https://github.com/AndolfoG/HRP) | Plant NLR focus (optional F8) |
+| Mercator4 / MapMan | Plant BINs (optional F6) |
 | KofamScan | Optional KO |
 
 ## Structural (upstream)

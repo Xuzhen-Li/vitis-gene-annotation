@@ -4,7 +4,7 @@ After F1.1 DIAMOND (and ideally F1.3 InterProScan):
 
 1. Build AHRD input YAML/CSV per [`docs/tools/ahrd.md`](../docs/tools/ahrd.md) using:
    - `$FUNCTION_DIR/diamond/swissprot.tsv`
-   - `$FUNCTION_DIR/interpro/vitis_ips.tsv` (if present)
+   - `$FUNCTION_DIR/interpro/${FUN_PREFIX:-ann}_ips.tsv` (if present)
 2. Run AHRD → `$FUNCTION_DIR/ahrd/ahrd_output.csv` (or `.tsv`)
 3. Join:
 

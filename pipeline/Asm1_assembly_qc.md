@@ -31,7 +31,7 @@ seqkit stats -a "$GENOME_FA" | tee "$WORK_DIR/asm/seqkit_stats.txt"
 | BUSCO Complete (C) | Completeness of gene space in DNA |
 | BUSCO Duplicated (D) | High D → haplotigs or polyploid; see **S9** |
 | BUSCO Fragmented / Missing | May need better assembly before annotation |
-| N50 / #scaffolds | Contiguity; chr-scale preferred for grape claims |
+| N50 / #scaffolds | Contiguity; chr-scale preferred when claiming chromosome-level assemblies |
 | Gap % | Soft-mask still OK; many gaps hurt gene models |
 
 ## Pass / fail (set your paper bar in METHODS)

@@ -1,11 +1,13 @@
 # vitis-gene-annotation
 
-**Main product: functional annotation** of *Vitis* gene sets  
+**Main product: functional annotation** of gene sets across biology  
 (GO / KEGG / domains / readable names / pathway summaries).
 
-This is a standalone teaching / METHODS playbook. Cite tools and papers you use ([`docs/CITATIONS.md`](docs/CITATIONS.md)); it is not a mirror of another lab’s repo.
+Organism-general teaching / METHODS playbook (not grape-only, not plant-only). Core spine is eukaryote-friendly; *Vitis* / plant paths are **worked examples and optional add-ons**. Set `GENOME_PREFIX`, `FUN_PREFIX`, BUSCO lineage, and eggNOG tax scope for your species or clade. Cite tools and papers you use ([`docs/CITATIONS.md`](docs/CITATIONS.md)); it is not a mirror of another lab’s repo.
 
 Structural annotation (finding gene models) is **upstream input**, documented under `docs/steps/` so you can produce or accept a qualified GFF+proteins — then this repo’s primary spine starts.
+
+> Repo folder name stays `vitis-gene-annotation` for history; the workflow itself is biology-general.
 
 | Doc | |
 |-----|--|
@@ -60,7 +62,7 @@ flowchart LR
   subgraph fa [This repo — functional]
     F0[F0 BUSCO QC]
     F1[F1 DIAMOND + eggNOG + InterProScan]
-    add[Optional add-ons<br/>F4 AHRD · F6 Mercator · F8 NLR · F9 iTAK]
+    add[Optional add-ons<br/>F4 AHRD · F6/F8/F9 plant extras]
     merge[F_merge → functional_master.tsv]
     F0 --> F1 --> merge
     F1 -.-> add -.-> merge
@@ -83,7 +85,7 @@ Alternate fast path: **F2** (emapper only). Alternate frames: **F3** EnTAP, **F5
 ## Start here (copy-paste)
 
 1. [`docs/INSTALL_FUNCTIONAL.md`](docs/INSTALL_FUNCTIONAL.md)
-2. [`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md) **F1** (then F4 + F6 for paper)
+2. [`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md) **F1** (then F4; plant papers often + F6)
 3. `bash pipeline/F_release.sh`
 4. Why this stack: [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md)
 
@@ -102,8 +104,8 @@ set -a && source config/local.env && set +a
 ## This is not
 
 - Not primarily a gene-finder package — use upstream S1–S14 or bring your own GFF  
-- Not TE-only — [vitis-te](https://github.com/Xuzhen-Li/vitis-te)  
-- Not graphs — [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome)
+- Not TE-only — use a clade-appropriate TE library (grape example: [vitis-te](https://github.com/Xuzhen-Li/vitis-te))  
+- Not graphs / pangenomes — separate playbooks (grape example: [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome))
 
 No private FASTQ/BAM in git.
 

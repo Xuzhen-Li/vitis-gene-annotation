@@ -5,7 +5,7 @@ Full command narrative: [`../docs/DETAILED_GUIDE.md`](../docs/DETAILED_GUIDE.md)
 ## Purpose
 Produce the FASTA that annotation will treat as truth. Annotation cannot fix a shattered or wrongly purged assembly.
 
-## Typical *Vitis* inputs
+## Typical plant inputs (example: *Vitis*)
 | Data | Role |
 |------|------|
 | PacBio HiFi | Contigs (hifiasm / HiCanu) |
@@ -17,7 +17,7 @@ Produce the FASTA that annotation will treat as truth. Annotation cannot fix a s
 
 ```bash
 # 1) Contigs
-hifiasm -o "$WORK_DIR/asm/vitis" -t "$THREADS" hifi.fastq.gz
+hifiasm -o "$WORK_DIR/asm/genome" -t "$THREADS" hifi.fastq.gz
 # Extract primary / hap1 / hap2 per hifiasm docs (gfa → fa)
 
 # 2) Optional purge (only if clearly haplotig-inflated AND not polyploid — see S9)

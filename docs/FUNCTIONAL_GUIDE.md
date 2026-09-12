@@ -16,9 +16,8 @@ mkdir -p "$FUNCTION_DIR"/{diamond,emapper,interpro,kofam,ahrd,mercator,merge,rel
 # F0 — Protein QC (always)
 
 ```bash
-busco -i "$PROTEINS_FA" -l viridiplantae_odb12 -m proteins \
-  -o prot_busco --out_path "$FUNCTION_DIR/qc" -c "$THREADS" || \
-busco -i "$PROTEINS_FA" -l eudicots_odb10 -m proteins \
+# set BUSCO_LINEAGE_PROTEIN to your clade (eukaryota / viridiplantae / metazoa / fungi / ...)
+busco -i "$PROTEINS_FA" -l "${BUSCO_LINEAGE_PROTEIN:-eukaryota_odb10}" -m proteins \
   -o prot_busco --out_path "$FUNCTION_DIR/qc" -c "$THREADS"
 
 seqkit stats "$PROTEINS_FA" | tee "$FUNCTION_DIR/qc/seqkit_stats.txt"
@@ -55,10 +54,10 @@ Or: `bash pipeline/F1_diamond.sh` (prints the same; remove `[STOP]` by exporting
 
 ```bash
 emapper.py -i "$PROTEINS_FA" \
-  --output vitis_fun --output_dir "$FUNCTION_DIR/emapper" \
+  --output ${FUN_PREFIX:-ann}_fun --output_dir "$FUNCTION_DIR/emapper" \
   --cpu "$THREADS" --type proteins -m diamond \
   --data_dir "${EGGNOG_DATA_DIR}" \
-  --tax_scope "${EGGNOG_TAX_SCOPE:-Viridiplantae}" \
+  --tax_scope "${EGGNOG_TAX_SCOPE:-auto}" \
   --go_evidence non-electronic \
   --pfam_realign realtime
 
@@ -70,7 +69,7 @@ head -20 "$FUNCTION_DIR/emapper"/*.emapper.annotations
 
 ```bash
 singularity exec "$EGGNOG_SIF" emapper.py -i "$PROTEINS_FA" \
-  --output vitis_fun --output_dir "$FUNCTION_DIR/emapper" \
+  --output ${FUN_PREFIX:-ann}_fun --output_dir "$FUNCTION_DIR/emapper" \
   --cpu "$THREADS" --type proteins -m diamond \
   --data_dir "$EGGNOG_DATA_DIR" \
   --tax_scope "${EGGNOG_TAX_SCOPE:-auto}"
@@ -82,10 +81,10 @@ singularity exec "$EGGNOG_SIF" emapper.py -i "$PROTEINS_FA" \
 "$INTERPROSCAN_HOME/interproscan.sh" \
   -i "$PROTEINS_FA" -f tsv,gff3 -dp \
   -cpu "$THREADS" \
-  -b "$FUNCTION_DIR/interpro/vitis_ips"
+  -b "$FUNCTION_DIR/interpro/${FUN_PREFIX:-ann}_ips"
 
-ls "$FUNCTION_DIR/interpro"/vitis_ips.tsv
-wc -l "$FUNCTION_DIR/interpro"/vitis_ips.tsv
+ls "$FUNCTION_DIR/interpro"/${FUN_PREFIX:-ann}_ips.tsv
+wc -l "$FUNCTION_DIR/interpro"/${FUN_PREFIX:-ann}_ips.tsv
 ```
 
 ## F1.4 Optional — KofamScan (KEGG KO)
@@ -104,8 +103,8 @@ exec_annotation -o "$FUNCTION_DIR/kofam/kofam.tsv" \
 ```bash
 python3 "$REPO_ROOT/pipeline/F_merge_tables.py" \
   --proteins "$PROTEINS_FA" \
-  --emapper "$FUNCTION_DIR/emapper"/vitis_fun.emapper.annotations \
-  --ips "$FUNCTION_DIR/interpro"/vitis_ips.tsv \
+  --emapper "$FUNCTION_DIR/emapper"/${FUN_PREFIX:-ann}_fun.emapper.annotations \
+  --ips "$FUNCTION_DIR/interpro"/${FUN_PREFIX:-ann}_ips.tsv \
   --diamond "$FUNCTION_DIR/diamond/swissprot.tsv" \
   --out "$FUNCTION_DIR/merge/functional_master.tsv"
 
@@ -210,7 +209,7 @@ orthofinder -f "$WORK_DIR/orthofinder_in" -t "$THREADS" -a "$THREADS"
 ```bash
 # After InterProScan: filter NLR domains OR run HRP (tools/hrp.md)
 python3 "$REPO_ROOT/pipeline/F8_list_nlr_from_ips.py" \
-  --ips "$FUNCTION_DIR/interpro"/vitis_ips.tsv \
+  --ips "$FUNCTION_DIR/interpro"/${FUN_PREFIX:-ann}_ips.tsv \
   --out "$FUNCTION_DIR/merge/nlr_candidates.tsv"
 ```
 

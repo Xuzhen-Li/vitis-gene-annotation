@@ -1,6 +1,8 @@
 **Primary checklist (functional):** see [`FUNCTIONAL_GUIDE.md`](FUNCTIONAL_GUIDE.md) release list.
 
-# *Vitis* annotation playbook — assembly to qualified GFF
+# Gene annotation playbook — assembly to qualified GFF
+
+Biology-general spine (eukaryotes). *Vitis* / PN40024 / plant-only tools in linked notes are examples or optional modules.
 
 **Main spine:** [`steps/MAIN.md`](steps/MAIN.md). **AI assist:** [`AI_ASSIST.md`](AI_ASSIST.md). **S14:** [`steps/dclab/`](steps/dclab/).
 
@@ -17,7 +19,7 @@
 ```text
 Asm0  Assemble / phase / purge / scaffold
 Asm1  Assembly QC gate (genome BUSCO, N50, ploidy decision)
-A0    Soft-mask TE (ProtExcluder; no NLR in TE lib)
+A0    Soft-mask repeats (ProtExcluder: keep genes out of TE lib)
   │
   ├─► branch by evidence / goal  (SCENARIOS S1–S11)
   │

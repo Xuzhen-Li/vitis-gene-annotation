@@ -1,6 +1,6 @@
 # Upstream structural spine (optional)
 
-**This repo’s primary deliverable is functional annotation** — see [`FUNCTIONAL_MAIN.md`](FUNCTIONAL_MAIN.md).
+Biology-general (any species with a genome + evidence). **This repo’s primary deliverable is functional annotation** — see [`FUNCTIONAL_MAIN.md`](FUNCTIONAL_MAIN.md).
 
 Use the spine below only when you still need a GFF/proteins.
 

@@ -1,5 +1,7 @@
 # Install everything for functional annotation (copy this)
 
+Biology-general install. Clone path may still be named `vitis-gene-annotation`; set `FUN_PREFIX`, BUSCO lineage, and `EGGNOG_TAX_SCOPE` for your species/clade.
+
 You only need this file + `config/example.env` + `pipeline/F*.sh` to run **F1**.  
 No other websites are required for the default path except downloading the databases listed below (URLs are included).
 
@@ -40,9 +42,9 @@ mkdir -p "$FUNCTION_DIR"/{diamond,emapper,interpro,kofam,ahrd,mercator,merge,rel
 ### Lane A — conda/mamba (laptop / shared node)
 
 ```bash
-mamba create -n vitis_fun -c bioconda -c conda-forge \
+mamba create -n gene_ann -c bioconda -c conda-forge \
   diamond busco seqkit gffread agat parallel pigz python=3.11 -y
-mamba activate vitis_fun
+mamba activate gene_ann
 # eggNOG-mapper and InterProScan are LARGE — often better as containers (Lane B)
 ```
 

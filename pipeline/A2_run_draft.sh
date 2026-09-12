@@ -17,7 +17,7 @@ case "$DRAFT_ENGINE" in
     RNA_BAM="${RNA_BAM:-none}"
     WD="$WORK_DIR/draft/braker3"
     mkdir -p "$WD"
-    echo "[INFO] BRAKER3 — softmasking on; species model AUGUSTUS_SPECIES=${AUGUSTUS_SPECIES:-Vitis_custom}"
+    echo "[INFO] BRAKER3 — softmasking on; species model AUGUSTUS_SPECIES=${AUGUSTUS_SPECIES:-generic}"
     if [[ "$RNA_BAM" == "none" || -z "$RNA_BAM" ]]; then
       cat <<CMD
 # Protein + ab initio (no RNA):
@@ -26,7 +26,7 @@ braker.pl \\
   --prot_seq=$PROTEIN_DB \\
   --softmasking \\
   --threads=$THREADS \\
-  --species=${AUGUSTUS_SPECIES:-Vitis_custom} \\
+  --species=${AUGUSTUS_SPECIES:-generic} \\
   --workingdir=$WD
 CMD
     else
@@ -38,7 +38,7 @@ braker.pl \\
   --bam=$RNA_BAM \\
   --softmasking \\
   --threads=$THREADS \\
-  --species=${AUGUSTUS_SPECIES:-Vitis_custom} \\
+  --species=${AUGUSTUS_SPECIES:-generic} \\
   --workingdir=$WD
 CMD
     fi

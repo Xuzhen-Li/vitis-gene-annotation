@@ -3,7 +3,7 @@
 See also [`../docs/DETAILED_GUIDE.md`](../docs/DETAILED_GUIDE.md) Step 3.
 
 ## 1. TE library
-Prefer curated lib from [vitis-te](https://github.com/Xuzhen-Li/vitis-te). Else EDTA / RepeatModeler, then clean.
+Prefer a curated species TE library (grape example: [vitis-te](https://github.com/Xuzhen-Li/vitis-te)). Else EDTA / RepeatModeler, then clean.
 
 ## 2. Remove host genes from lib (A0b)
 BLAST TE consensi to UniProt plant / grape proteins; exclude significant gene hits (NLR, LRR, kinase, …) — ProtExcluder pattern.

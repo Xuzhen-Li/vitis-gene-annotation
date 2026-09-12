@@ -24,7 +24,7 @@ cat > "$REL/METHODS.md" << MTX
 - eggNOG-mapper: version FILL ; database FILL ; tax_scope FILL
 - InterProScan: version FILL
 - Optional: KofamScan / Mercator4 / AHRD — FILL dates
-- Merge: vitis-gene-annotation pipeline/F_merge_tables.py
+- Merge: plant FA playbook (this repo) pipeline/F_merge_tables.py
 - QC: BUSCO protein summary under qc/
 
 Do not distribute private BAM/FASTQ with this release.

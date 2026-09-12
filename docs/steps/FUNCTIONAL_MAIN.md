@@ -1,6 +1,6 @@
 # Main process — functional annotation
 
-**Goal:** attach function to a stable gene set.  
+Biology-general. **Goal:** attach function to a stable gene set.  
 **Input:** representative `PROTEINS_FA` (+ optional `CURATED_GFF`).  
 **Output:** `$WORK_DIR/function/merge/functional_master.tsv` (+ optional AHRD/MapMan/NLR/iTAK tables), then `$WORK_DIR/function/release/<TAG>/`.
 
@@ -23,7 +23,7 @@ No proteins yet? Upstream structural spine: [`MAIN.md`](MAIN.md) (S1–S14), the
 
 1. [`../INSTALL_FUNCTIONAL.md`](../INSTALL_FUNCTIONAL.md)  
 2. [`../SCENARIOS_FUNCTIONAL.md`](../SCENARIOS_FUNCTIONAL.md) **F1**  
-3. **F4** + **F6** for HR/MP-style METHODS  
+3. **F4** for readable names; **F6/F8/F9** when doing plant HR/MP-style METHODS  
 4. `bash pipeline/F_release.sh`  
 5. Fill [`../METHODS_FUNCTIONAL.md`](../METHODS_FUNCTIONAL.md)
 
@@ -37,10 +37,10 @@ No proteins yet? Upstream structural spine: [`MAIN.md`](MAIN.md) (S1–S14), the
 | **F3** | EnTAP frame | EnTAP | docs + copy TSV |
 | **F4** | Readable names | AHRD | `F4_join_ahrd.py` · `F4_run_ahrd.md` |
 | **F5** | Transcriptome CDS | Trinotate (± F1) | docs/tools/trinotate.md |
-| **F6** | Plant BINs | Mercator4 | `F6_ingest_mercator.py` |
+| **F6** | Plant MapMan BINs (optional) | Mercator4 | `F6_ingest_mercator.py` |
 | **F7** | Multi-genome | OrthoFinder → F1 on reps | `F7_orthofinder.sh` |
-| **F8** | NLR | IPS filter ± HRP | `F8_run.sh` `F8_list_nlr_from_ips.py` |
-| **F9** | TF / kinase | iTAK | `F9_itak.sh` |
+| **F8** | Plant NLR (optional) | IPS filter ± HRP | `F8_run.sh` `F8_list_nlr_from_ips.py` |
+| **F9** | Plant TF / kinase (optional) | iTAK | `F9_itak.sh` |
 
 Commands: [`../FUNCTIONAL_GUIDE.md`](../FUNCTIONAL_GUIDE.md).  
 Standards: [`../RECENT_HIGH_QUALITY.md`](../RECENT_HIGH_QUALITY.md).  

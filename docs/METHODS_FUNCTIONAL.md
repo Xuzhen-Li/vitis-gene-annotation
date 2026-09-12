@@ -10,11 +10,10 @@ and annotated with eggNOG-mapper vFILL (eggNOG database FILL; taxonomic scope FI
 and InterProScan vFILL. Gene ontology and KEGG orthology terms were taken from
 eggNOG-mapper (and/or KofamScan, FILL). Domain architectures were taken from
 InterProScan. Optional human-readable descriptions were assigned with AHRD (FILL).
-Optional MapMan4 BINs were assigned with Mercator4 (job date FILL; Schwacke et al.
-Mol. Plant 2019). Optional transcription-factor / kinase families were predicted
-with iTAK (Zheng et al. Mol. Plant 2016). Optional NLR candidates were listed from
-InterProScan domain hits and/or HRP (FILL). Per-gene tables were merged with the
-vitis-gene-annotation functional pipeline (functional_master.tsv). Protein-set
+When applicable (e.g. plants), optional MapMan4 BINs were assigned with Mercator4 (job date FILL; Schwacke et al.
+Mol. Plant 2019); optional transcription-factor / kinase families with iTAK (Zheng et al. Mol. Plant 2016);
+optional NLR candidates from InterProScan domain hits and/or HRP (FILL). Per-gene tables were merged with the
+this repository’s functional-annotation pipeline (functional_master.tsv). Protein-set
 completeness was summarized with BUSCO (lineage FILL; mode proteins).
 ```
 

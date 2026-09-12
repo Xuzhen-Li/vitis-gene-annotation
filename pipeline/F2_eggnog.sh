@@ -7,7 +7,8 @@ THREADS="${THREADS:-32}"
 FUNCTION_DIR="${FUNCTION_DIR:-$WORK_DIR/function}"
 OUT="$FUNCTION_DIR/emapper"
 mkdir -p "$OUT"
-TAX="${EGGNOG_TAX_SCOPE:-Viridiplantae}"
+TAX="${EGGNOG_TAX_SCOPE:-auto}"
+FUN_PREFIX="${FUN_PREFIX:-ann}"
 DATA_ARGS=()
 [[ -n "${EGGNOG_DATA_DIR:-}" ]] && DATA_ARGS=(--data_dir "$EGGNOG_DATA_DIR")
 
@@ -17,7 +18,7 @@ else
   PRE=()
 fi
 
-CMD=("${PRE[@]}" emapper.py -i "$PROTEINS_FA" --output vitis_fun --output_dir "$OUT"
+CMD=("${PRE[@]}" emapper.py -i "$PROTEINS_FA" --output "${FUN_PREFIX}_fun" --output_dir "$OUT"
   --cpu "$THREADS" --type proteins -m diamond --tax_scope "$TAX" "${DATA_ARGS[@]}")
 printf '[CMD] '; printf '%q ' "${CMD[@]}"; echo
 if [[ "${RUN:-0}" == "1" ]]; then

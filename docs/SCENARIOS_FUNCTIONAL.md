@@ -15,7 +15,7 @@ mkdir -p "$FUNCTION_DIR"/{qc,diamond,emapper,interpro,merge,release,ahrd,mercato
 
 ```bash
 # F0
-busco -i "$PROTEINS_FA" -l viridiplantae_odb12 -m proteins -o prot_busco --out_path "$FUNCTION_DIR/qc" -c "$THREADS"
+busco -i "$PROTEINS_FA" -l "${BUSCO_LINEAGE_PROTEIN:-eukaryota_odb10}" -m proteins -o prot_busco --out_path "$FUNCTION_DIR/qc" -c "$THREADS"
 
 # DIAMOND
 RUN=1 bash "$REPO_ROOT/pipeline/F1_diamond.sh"
@@ -31,8 +31,8 @@ RUN=1 bash "$REPO_ROOT/pipeline/F3_interproscan.sh"
 
 python3 "$REPO_ROOT/pipeline/F_merge_tables.py" \
   --proteins "$PROTEINS_FA" \
-  --emapper "$FUNCTION_DIR/emapper"/vitis_fun.emapper.annotations \
-  --ips "$FUNCTION_DIR/interpro"/vitis_ips.tsv \
+  --emapper "$FUNCTION_DIR/emapper"/${FUN_PREFIX:-ann}_fun.emapper.annotations \
+  --ips "$FUNCTION_DIR/interpro"/${FUN_PREFIX:-ann}_ips.tsv \
   --diamond "$FUNCTION_DIR/diamond/swissprot.tsv" \
   --out "$FUNCTION_DIR/merge/functional_master.tsv"
 
@@ -50,12 +50,12 @@ bash "$REPO_ROOT/pipeline/F_release.sh"
 ## F2 — Fast
 
 ```bash
-busco -i "$PROTEINS_FA" -l viridiplantae_odb12 -m proteins -o prot_busco --out_path "$FUNCTION_DIR/qc" -c "$THREADS"
+busco -i "$PROTEINS_FA" -l "${BUSCO_LINEAGE_PROTEIN:-eukaryota_odb10}" -m proteins -o prot_busco --out_path "$FUNCTION_DIR/qc" -c "$THREADS"
 RUN=1 bash "$REPO_ROOT/pipeline/F2_eggnog.sh"
 # optional: RUN=1 bash "$REPO_ROOT/pipeline/F1b_kofam.sh"
 python3 "$REPO_ROOT/pipeline/F_merge_tables.py" \
   --proteins "$PROTEINS_FA" \
-  --emapper "$FUNCTION_DIR/emapper"/vitis_fun.emapper.annotations \
+  --emapper "$FUNCTION_DIR/emapper"/${FUN_PREFIX:-ann}_fun.emapper.annotations \
   --out "$FUNCTION_DIR/merge/functional_master.tsv"
 bash "$REPO_ROOT/pipeline/F_release.sh"
 ```
@@ -134,8 +134,8 @@ RUN=1 bash "$REPO_ROOT/pipeline/F2_eggnog.sh"
 RUN=1 bash "$REPO_ROOT/pipeline/F3_interproscan.sh"
 python3 "$REPO_ROOT/pipeline/F_merge_tables.py" \
   --proteins "$PROTEINS_FA" \
-  --emapper "$FUNCTION_DIR/emapper"/vitis_fun.emapper.annotations \
-  --ips "$FUNCTION_DIR/interpro"/vitis_ips.tsv \
+  --emapper "$FUNCTION_DIR/emapper"/${FUN_PREFIX:-ann}_fun.emapper.annotations \
+  --ips "$FUNCTION_DIR/interpro"/${FUN_PREFIX:-ann}_ips.tsv \
   --diamond "$FUNCTION_DIR/diamond/swissprot.tsv" \
   --out "$FUNCTION_DIR/merge/functional_master.tsv"
 bash "$REPO_ROOT/pipeline/F_release.sh"
@@ -185,7 +185,7 @@ export PROTEINS_FA="$FUNCTION_DIR/orthofinder/reps.faa"
 
 ```bash
 # Need InterProScan TSV from F1.3:
-#   $FUNCTION_DIR/interpro/vitis_ips.tsv
+#   $FUNCTION_DIR/interpro/${FUN_PREFIX:-ann}_ips.tsv
 
 bash "$REPO_ROOT/pipeline/F8_run.sh"
 
@@ -225,12 +225,13 @@ wc -l /tmp/vga_toy_master.tsv
 
 | Goal | Branch |
 |------|--------|
-| Paper-ready | **F1** (+ F4 + F6) |
+| Paper-ready (general) | **F1** (+ F4) |
+| Paper-ready (plant / HR–MP) | **F1** (+ F4 + F6) |
 | Quick | **F2** |
 | EnTAP lab | **F3** |
 | Readable names | **F1 → F4** |
-| MapMan BINs | **F1 → F6** |
+| MapMan BINs (plants) | **F1 → F6** |
 | Transcriptome only | **F5** |
 | Multi-genome panel | **F7 → F1** |
-| NLR focus | **F1 → F8** |
-| TF / kinase table | **F9** |
+| NLR focus (plants) | **F1 → F8** |
+| TF / kinase table (plants) | **F9** |

@@ -2,7 +2,7 @@
 """Build a triage list for GSAman: low PSAURON first.
 
 Optional: merge a gene-family table (TSV: gene_id\\tfamily) to boost
-NLR / stilbene / other Vitis targets even when scores look OK.
+NLR / pathway / QTL targets for your species even when scores look OK.
 """
 from __future__ import annotations
 

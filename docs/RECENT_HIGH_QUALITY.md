@@ -84,23 +84,23 @@ Upstream last-mile structure before FA.
 
 ---
 
-## C. Standardized “journal-grade” FA for *Vitis* (this repo)
+## C. Standardized “journal-grade” FA (this repo)
 
-Aligned to **HR HSE + HR T2T multi-DB + MP Mercator4 + MBE/NAR eggNOG + NAR InterPro**:
+Biology-general core (*Vitis*/horticulture papers are one evidence lane). Core aligned to **MBE/NAR eggNOG + NAR InterPro + Swiss-Prot**; plant extras (Mercator4 / iTAK / HR HSE) are optional:
 
 ```text
-F0  BUSCO proteins
+F0  BUSCO proteins (lineage = your clade)
 F1  DIAMOND SwissProt (+ optional NR)
-    eggNOG-mapper (MBE/NAR)
+    eggNOG-mapper (MBE/NAR; tax scope = your clade)
     InterProScan (NAR InterPro)
-F4  AHRD descriptions (as in HR HSE)
-F6  Mercator4 MapMan BINs (MP)
-±   iTAK TF/kinases (MP)
+F4  AHRD descriptions (optional; HR HSE-style)
+±   F6 Mercator4 MapMan BINs (plants / MP)
+±   F8/F9 NLR / iTAK (plants)
 ±   KofamScan KO (optional KEGG depth)
 → merge → release
 ```
 
-Copy-paste: [`INSTALL_FUNCTIONAL.md`](INSTALL_FUNCTIONAL.md) → [`SCENARIOS_FUNCTIONAL.md`](SCENARIOS_FUNCTIONAL.md) **F1** then F4/F6.
+Copy-paste: [`INSTALL_FUNCTIONAL.md`](INSTALL_FUNCTIONAL.md) → [`SCENARIOS_FUNCTIONAL.md`](SCENARIOS_FUNCTIONAL.md) **F1** then F4 (± F6 for plants).
 
 **PANNZER2:** useful in some pipelines but **not** retained as a tier-defining citation under this allowlist unless/until a listed journal METHODS block is added; keep tool page optional only.
 
