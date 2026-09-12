@@ -1,5 +1,8 @@
 # Upstream structural spine (optional)
 
+> **Canonical structural spine moved to** [`Xuzhen-Li/gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation) (`docs/steps/MAIN.md`, `docs/PLAYBOOK.md`). This copy remains as a local mirror for links inside this repo.
+
+
 Biology-general (any species with a genome + evidence). **This repo’s primary deliverable is functional annotation** — see [`FUNCTIONAL_MAIN.md`](FUNCTIONAL_MAIN.md).
 
 Use the spine below only when you still need a GFF/proteins.

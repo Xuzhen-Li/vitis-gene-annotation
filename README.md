@@ -17,7 +17,7 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 | **[`docs/FUNCTIONAL_GUIDE.md`](docs/FUNCTIONAL_GUIDE.md)** | Functional steps + commands |
 | **[`docs/SCENARIOS_FUNCTIONAL.md`](docs/SCENARIOS_FUNCTIONAL.md)** | F1–F8 situations |
 | **[`docs/AI_ASSIST.md`](docs/AI_ASSIST.md)** | AI co-pilot (prompts / data / checks) |
-| [`docs/steps/MAIN.md`](docs/steps/MAIN.md) | Upstream structural spine (S1–S14) |
+| [`gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation) | Upstream structural spine (S1–S14) |
 | [`docs/TOOLS.md`](docs/TOOLS.md) | Tools (functional section first) |
 | [`docs/RELATED_SOFTWARE.md`](docs/RELATED_SOFTWARE.md) | Related tools (further reading) |
 | [`docs/CITATIONS.md`](docs/CITATIONS.md) | Papers / software to cite |
@@ -27,7 +27,7 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 
 | | What | Where |
 |--|------|--------|
-| **Upstream** (optional) | Structural annotation → gene models | [`docs/steps/MAIN.md`](docs/steps/MAIN.md) S1–S14, *or* bring your own release |
+| **Upstream** (optional) | Structural annotation → gene models | sibling [`gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation) (S1–S14), *or* bring your own release |
 | **Input (required)** | One representative protein per gene | `PROTEINS_FA` → usually `$WORK_DIR/proteins.faa` |
 | **Input (optional)** | Curated GFF for locus context | `CURATED_GFF` / `DRAFT_GFF` in `config/local.env` |
 | **This repo (main)** | Functional annotation F0–F9 | [`docs/steps/FUNCTIONAL_MAIN.md`](docs/steps/FUNCTIONAL_MAIN.md) |
@@ -103,7 +103,7 @@ set -a && source config/local.env && set +a
 
 ## This is not
 
-- Not primarily a gene-finder package — use upstream S1–S14 or bring your own GFF  
+- Not primarily a gene-finder package — use [`gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation) or bring your own GFF  
 - Not TE-only — use a clade-appropriate TE library (grape example: [vitis-te](https://github.com/Xuzhen-Li/vitis-te))  
 - Not graphs / pangenomes — separate playbooks (grape example: [vitis-pangenome](https://github.com/Xuzhen-Li/vitis-pangenome))
 

@@ -2,6 +2,8 @@
 
 # Gene annotation playbook — assembly to qualified GFF
 
+> **Canonical copy:** [`gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation). Functional FA remains this repo.
+
 Biology-general spine (eukaryotes). *Vitis* / PN40024 / plant-only tools in linked notes are examples or optional modules.
 
 **Main spine:** [`steps/MAIN.md`](steps/MAIN.md). **AI assist:** [`AI_ASSIST.md`](AI_ASSIST.md). **S14:** [`steps/dclab/`](steps/dclab/).
