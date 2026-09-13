@@ -9,6 +9,18 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 
 > Formerly `vitis-gene-annotation`. Pair with [`gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation) for gene models.
 
+
+## Relationship to structure (Ji *NRG* 2026)
+
+Gene **structure** (exon–intron / CDS / proteins) and gene **function** (names / GO / domains / pathways) are **two layers**. This repo is the second layer only.
+
+1. Finish a qualified GFF + `proteins.faa` in [`gene-structure-annotation`](https://github.com/Xuzhen-Li/gene-structure-annotation) (evidence chooser: close ref → liftover; else BRAKER / GALBA / EviAnn / …).  
+2. Point `PROTEINS_FA` here and run **F1** (DIAMOND Swiss-Prot + eggNOG-mapper + InterProScan → merge).  
+3. Optional plant add-ons (F4/F6/F8/F9) sit **after** F1 — they do not replace structure.
+
+Chooser reviews live in structure [`docs/REVIEWS.md`](https://github.com/Xuzhen-Li/gene-structure-annotation/blob/main/docs/REVIEWS.md); FA journal patterns stay in [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md).
+
+
 | Doc | |
 |-----|--|
 | [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md) | Allowlisted journals only (Cell+ / MP PC PBJ HR MBE NAR GB) |
