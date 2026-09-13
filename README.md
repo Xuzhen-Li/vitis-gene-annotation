@@ -12,6 +12,7 @@ Structural annotation (finding gene models) is **upstream input**, documented un
 | Doc | |
 |-----|--|
 | [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md) | Allowlisted journals only (Cell+ / MP PC PBJ HR MBE NAR GB) |
+| [`docs/REVIEWS.md`](docs/REVIEWS.md) | Structure-side reviews/benchmarks (chooser; FA uses RECENT_HIGH_QUALITY) |
 | **[`docs/INSTALL_FUNCTIONAL.md`](docs/INSTALL_FUNCTIONAL.md)** | **Install DBs + tools (start here)** |
 | **[`docs/steps/FUNCTIONAL_MAIN.md`](docs/steps/FUNCTIONAL_MAIN.md)** | **Main process — functional** |
 | **[`docs/FUNCTIONAL_GUIDE.md`](docs/FUNCTIONAL_GUIDE.md)** | Functional steps + commands |
