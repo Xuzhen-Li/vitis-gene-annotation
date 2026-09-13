@@ -1,5 +1,8 @@
 # gene-function-annotation
 
+> **New here?** [`docs/QUICKSTART.md`](docs/QUICKSTART.md) · [`docs/STAGE_IO.md`](docs/STAGE_IO.md) (what each step produces).
+
+
 **Main product: functional annotation** of gene sets across biology  
 (GO / KEGG / domains / readable names / pathway summaries).
 
@@ -23,6 +26,8 @@ Chooser reviews live in structure [`docs/REVIEWS.md`](https://github.com/Xuzhen-
 
 | Doc | |
 |-----|--|
+| **[`docs/QUICKSTART.md`](docs/QUICKSTART.md)** | **Start here** — F1 walkthrough + what each file means |
+| [`docs/STAGE_IO.md`](docs/STAGE_IO.md) | F0–release: inputs → outputs → checks |
 | [`docs/RECENT_HIGH_QUALITY.md`](docs/RECENT_HIGH_QUALITY.md) | Allowlisted journals only (Cell+ / MP PC PBJ HR MBE NAR GB) |
 | [`docs/REVIEWS.md`](docs/REVIEWS.md) | Structure-side reviews/benchmarks (chooser; FA uses RECENT_HIGH_QUALITY) |
 | **[`docs/INSTALL_FUNCTIONAL.md`](docs/INSTALL_FUNCTIONAL.md)** | **Install DBs + tools (start here)** |
