@@ -70,3 +70,14 @@ Catalog of commonly used annotation tools and workflows (not vendored here):
 | compleasm | Huang et al. (miniprot+BUSCO completeness) |
 | ProteInfer | Google Research — confirm paper on use |
 | EGAPx / Gnomon | NCBI CGR / RefSeq EGAP docs |
+
+## Fold-in (2026-09-13c)
+
+| Tool | Cue |
+|------|-----|
+| NetGO 3.0 | NAR 2023 — SJTU server |
+| dbCAN3 | NAR 2023 |
+| SignalP 6.0 | Nat Biotechnol 2022 |
+| DeepLoc 2.0 | NAR 2022 |
+| OrionGeno | bioRxiv 2026 — BGI |
+| PSAURON | NAR Genom Bioinform 2025 |

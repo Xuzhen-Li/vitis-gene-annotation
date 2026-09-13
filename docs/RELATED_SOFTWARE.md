@@ -76,3 +76,12 @@ Structure haul (EviAnn / FINDER / CAT / LiftOn / Earl Grey / MetaEuk): [gene-str
 | OMArk · compleasm | Proteome QC (upstream qualify) |
 
 Structure deep hunt: [PEER_PIPELINES](https://github.com/Xuzhen-Li/gene-structure-annotation/blob/main/docs/PEER_PIPELINES.md) § Deep hunt.
+
+## Fold-in FA (2026-09-13c)
+
+| Software | Notes |
+|----------|-------|
+| [NetGO 3.0](https://dmiip.sjtu.edu.cn/ng3.0) | SJTU PLM GO (NAR 2023) |
+| dbCAN3 | CAZyme FA |
+| DeepLoc 2.0 · SignalP 6.0 | Localization / signal peptides |
+| OrionGeno · GETA | Structure peers (BGI / CN pipeline) — see structure repo |
