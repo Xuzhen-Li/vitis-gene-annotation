@@ -65,3 +65,14 @@ Details: [gene-structure-annotation](https://github.com/Xuzhen-Li/gene-structure
 | DeepGOPlus (DeepGO family) | DL GO — post-F1 optional |
 
 Structure haul (EviAnn / FINDER / CAT / LiftOn / Earl Grey / MetaEuk): [gene-structure-annotation PEER_PIPELINES](https://github.com/Xuzhen-Li/gene-structure-annotation/blob/main/docs/PEER_PIPELINES.md).
+
+## Deep FA / isoform peers (2026-09-13b)
+
+| Software | Notes |
+|----------|-------|
+| [ProteInfer](https://github.com/google-research/proteinfer) | DL GO/EC from sequence |
+| DeepFRI | DL GO (structure/sequence graphs) |
+| IsoAnnot / FIT | Isoform FA after SQANTI3 |
+| OMArk · compleasm | Proteome QC (upstream qualify) |
+
+Structure deep hunt: [PEER_PIPELINES](https://github.com/Xuzhen-Li/gene-structure-annotation/blob/main/docs/PEER_PIPELINES.md) § Deep hunt.

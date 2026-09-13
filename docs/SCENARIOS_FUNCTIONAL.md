@@ -236,4 +236,5 @@ wc -l /tmp/vga_toy_master.tsv
 | NLR focus (plants) | **F1 → F8** |
 | TF / kinase table (plants) | **F9** |
 | Extra KO (KEGG) | F1b Kofam / DeepKOALA / BlastKOALA |
-| Extra GO DL | DeepGOPlus after F1 (optional) |
+| Extra GO DL | DeepGOPlus / ProteInfer / DeepFRI after F1 (optional) |
+| Isoform FA | SQANTI3 → IsoAnnot/FIT (after LR structure) |

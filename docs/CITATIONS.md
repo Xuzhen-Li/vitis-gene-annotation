@@ -59,3 +59,14 @@ Catalog of commonly used annotation tools and workflows (not vendored here):
 | EviAnn (structure upstream) | *Nat Methods* 2026 doi:10.1038/s41592-026-03156-0 |
 | Earl Grey (masking) | Baril et al. *MBE* 2024 doi:10.1093/molbev/msae068 |
 | MetaEuk | Levy Karin et al. *Microbiome* 2020 |
+
+## Deep hunt extras (cite if used)
+
+| Tool | Citation cue |
+|------|----------------|
+| IsoQuant | Prjibelski et al. *Nat Biotechnol* 2023 doi:10.1038/s41587-022-01565-y |
+| SQANTI3 | Pardo-Palacios et al. *Nat Methods* 2024 doi:10.1038/s41592-024-02229-2 |
+| OMArk | Nevers et al. *Nat Biotechnol* 2024 doi:10.1038/s41587-024-02147-w |
+| compleasm | Huang et al. (miniprot+BUSCO completeness) |
+| ProteInfer | Google Research — confirm paper on use |
+| EGAPx / Gnomon | NCBI CGR / RefSeq EGAP docs |
