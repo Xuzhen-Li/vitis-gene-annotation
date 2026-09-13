@@ -54,3 +54,14 @@ Canonical structure playbook: [gene-structure-annotation](https://github.com/Xuz
 | [ANNEVO](https://github.com/xjtu-omics/ANNEVO) | Kai Ye 叶凯 lab genomic LM; non-commercial license |
 
 Details: [gene-structure-annotation](https://github.com/Xuzhen-Li/gene-structure-annotation) `docs/PEER_PIPELINES.md`.
+
+## FA KO / GO peers (2026-09-13)
+
+| Software | Notes |
+|----------|-------|
+| BlastKOALA / GhostKOALA | Kanehisa *JMB* 2016 — classic KEGG KO web |
+| KofamScan / KofamKOALA | HMM KO (optional F1b) |
+| [DeepKOALA](https://github.com/zhaoxi120/deepkoala) | DL KO assignment; fast batch |
+| DeepGOPlus (DeepGO family) | DL GO — post-F1 optional |
+
+Structure haul (EviAnn / FINDER / CAT / LiftOn / Earl Grey / MetaEuk): [gene-structure-annotation PEER_PIPELINES](https://github.com/Xuzhen-Li/gene-structure-annotation/blob/main/docs/PEER_PIPELINES.md).

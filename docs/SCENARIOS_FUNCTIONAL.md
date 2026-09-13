@@ -235,3 +235,5 @@ wc -l /tmp/vga_toy_master.tsv
 | Multi-genome panel | **F7 → F1** |
 | NLR focus (plants) | **F1 → F8** |
 | TF / kinase table (plants) | **F9** |
+| Extra KO (KEGG) | F1b Kofam / DeepKOALA / BlastKOALA |
+| Extra GO DL | DeepGOPlus after F1 (optional) |

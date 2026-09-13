@@ -48,3 +48,14 @@ Catalog of commonly used annotation tools and workflows (not vendored here):
 | ANNEVO | Zhang, Ye et al. (Kai Ye lab); https://github.com/xjtu-omics/ANNEVO — confirm venue when citing |
 | MAKER2 | Holt & Yandell *BMC Bioinformatics* 2011 doi:10.1186/1471-2105-12-491 |
 | AUGUSTUS / GeneMark / EVM / PASA | Cite the versions actually run |
+
+## FA KO / GO extras (cite if used)
+
+| Tool | Citation cue |
+|------|----------------|
+| BlastKOALA / GhostKOALA | Kanehisa et al. *JMB* 2016 |
+| DeepKOALA | Briefings in Bioinformatics / GenomeNet — confirm on use |
+| DeepGOPlus | Kulmanov et al. lineage — confirm version/paper on use |
+| EviAnn (structure upstream) | *Nat Methods* 2026 doi:10.1038/s41592-026-03156-0 |
+| Earl Grey (masking) | Baril et al. *MBE* 2024 doi:10.1093/molbev/msae068 |
+| MetaEuk | Levy Karin et al. *Microbiome* 2020 |
